@@ -8,17 +8,12 @@ public class WorldController : MonoBehaviour {
     public int num;
     Vector3 warpPos;
     PlayerController player;
-
-    public GameObject test;
-
-    // Optional, allows user to drag left/right to rotate the world.
-    private const float DRAG_RATE = .2f;
-    float dragYawDegrees;
-
+    Vector3 originalPos;
 
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
+        originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
 	}
 	
@@ -39,54 +34,18 @@ public class WorldController : MonoBehaviour {
                 }
 
             }
-        } 
+        }
 
         //LOCK ROTATION---------------------
-        if(player.selectedWorld == num)
+        if (player.selectedWorld == num)
         {
-            //player.transform.position = gameObject.transform.forward;
-            //test.transform.position = transform.position + transform.forward;
-            //test.transform.LookAt(transform.position);
 
-            if (XRSettings.enabled)
-            {
-                // Unity takes care of updating camera transform in VR.
-                return;
-            }
+            transform.parent = player.transform;
+            transform.position = new Vector3(0.03f, 1f, 1.55f);
 
-            // android-developers.blogspot.com/2010/09/one-screen-turn-deserves-another.html
-            // developer.android.com/guide/topics/sensors/sensors_overview.html#sensors-coords
-            //
-            //     y                                       x
-            //     |  Gyro upright phone                   |  Gyro landscape left phone
-            //     |                                       |
-            //     |______ x                      y  ______|
-            //     /                                       \
-            //    /                                         \
-            //   z                                           z
-            //
-            //
-            //     y
-            //     |  z   Unity
-            //     | /
-            //     |/_____ x
-            //
-
-            // Update `dragYawDegrees` based on user touch.
-            //CheckDrag();
-
-            transform.localRotation =
-              // Allow user to drag left/right to adjust direction they're facing.
-              Quaternion.Euler(0f, -dragYawDegrees, 0f) *
-
-              // Neutral position is phone held upright, not flat on a table.
-              Quaternion.Euler(90f, 0f, 0f) *
-
-              // Sensor reading, assuming default `Input.compensateSensors == true`.
-              Input.gyro.attitude *
-
-              // So image is not upside down.
-              Quaternion.Euler(0f, 0f, 180f);
+        } else {
+            transform.parent = null;
+            transform.position = originalPos;
         }
 
     }
