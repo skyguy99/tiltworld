@@ -39,9 +39,11 @@ public class WorldController : MonoBehaviour {
         //LOCK ROTATION---------------------
         if (player.selectedWorld == num)
         {
+            //Snap to front of camera
 
             transform.parent = player.transform;
-            transform.position = new Vector3(0.03f, 1f, 1.55f);
+            transform.position = player.transform.position + player.transform.forward * 1.36f;
+            transform.rotation = new Quaternion(0.0f, player.transform.rotation.y, 0.0f, player.transform.rotation.w);
 
         } else {
             transform.parent = null;
@@ -53,7 +55,7 @@ public class WorldController : MonoBehaviour {
     //EDITOR TESTING
     private void OnMouseDown()
     {
-        Debug.Log("clicked");
+        //Debug.Log("clicked");
         player.selectedWorld = num;
     }
 }

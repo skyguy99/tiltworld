@@ -4,30 +4,29 @@ using UnityEngine;
 
 public class CharController : MonoBehaviour
 {
-    public float speed = 1f;
+    public float speed;
+    public FloatingJoystick joystick;
 
     void Start()
     {
+       joystick = GameObject.FindObjectOfType<FloatingJoystick>();
         Input.multiTouchEnabled = false;
     }
 
-
-    void Update()
+    private void Update()
     {
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
+        Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
 
-            Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
-            transform.Translate(Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime) - transform.position);
-
-        } 
-        if(Input.touchCount > 0)
+        if (moveVector != Vector3.zero)
         {
-            print("TOUCH!");
+            transform.rotation = Quaternion.LookRotation(moveVector);
+            transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
         }
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        GameObject.FindObjectOfType<iOSHapticFeedback>().Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
+        GameObject.FindObjectOfType<iOSHapticFeedback>().Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
     }
+   
 }
