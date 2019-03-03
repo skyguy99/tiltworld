@@ -42,7 +42,7 @@ public class GyroController : MonoBehaviour
         //
 
         // Update `dragYawDegrees` based on user touch.
-        CheckDrag();
+        //CheckDrag();
 
         transform.localRotation =
           // Allow user to drag left/right to adjust direction they're facing.

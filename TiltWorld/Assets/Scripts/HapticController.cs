@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HapticController : MonoBehaviour {
 
+    iOSHapticFeedback iosHaptic;
+
 	// Use this for initialization
 	void Start () {
 		
