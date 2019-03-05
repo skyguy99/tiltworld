@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public int selectedWorld;
     public bool inWorld;
 
-    public GameObject character;
+    public CharController character;
     private Vector3 offset;
 
     float distance;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        character = GameObject.FindObjectOfType<CharController>().gameObject;
+        character = GameObject.FindObjectOfType<CharController>();
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         offset = transform.position - character.transform.position;
 
@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour {
         //transform.LookAt(character.transform.position);
 
         //playerPrevPos = character.transform.position;
+
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,13 +45,18 @@ public class PlayerController : MonoBehaviour {
         {
             print("World enter!!");
             iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
+           
+            selectedWorld = other.GetComponent<WorldController>().num;
         }
     }
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "WorldBox")
         {
             print("World exit!!");
+           
         }
     }
 }

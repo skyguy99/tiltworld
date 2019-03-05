@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - WorldBox
-  - Wall
+  - Pause
+  - CameraCharacthers
+  - CameraUI
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - Character Selector Pro
   - 
   - 
   - 

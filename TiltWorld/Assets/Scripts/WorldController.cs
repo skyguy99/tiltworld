@@ -10,6 +10,8 @@ public class WorldController : MonoBehaviour {
     PlayerController player;
     Vector3 originalPos;
 
+    public float ShakeForceMultiplier;
+    public Rigidbody2D[] ShakingRigidbodies;
 
     // Use this for initialization
     void Awake () {
@@ -29,7 +31,7 @@ public class WorldController : MonoBehaviour {
 
                 if (raycastHit.collider.CompareTag("WorldBox"))
                 {
-                    Debug.Log("clicked");
+                    //Debug.Log("clicked");
                     player.selectedWorld = num;
                 }
 
@@ -43,7 +45,9 @@ public class WorldController : MonoBehaviour {
 
             transform.parent = player.transform;
             transform.position = player.transform.position + player.transform.forward * 1.36f;
-            transform.rotation = new Quaternion(0.0f, player.transform.rotation.y, 0.0f, player.transform.rotation.w);
+            //transform.rotation = new Quaternion(0.0f, player.transform.rotation.y, 0.0f, player.transform.rotation.w);
+            //transform.LookAt(player.transform);
+            //transform.rotation = player.transform.rotation;
 
         } else {
             transform.parent = null;
@@ -52,10 +56,12 @@ public class WorldController : MonoBehaviour {
 
     }
 
-    //EDITOR TESTING
-    private void OnMouseDown()
+    public void ShakeandReset(Vector3 deviceAcceleration)
     {
-        //Debug.Log("clicked");
-        player.selectedWorld = num;
+        //foreach (Rigidbody rb in ShakingRigidbodies)
+        //{
+        //    rb.AddForce(deviceAcceleration * ShakeForceMultiplier, ForceMode2D.Impulse);
+        //}
     }
+
 }
