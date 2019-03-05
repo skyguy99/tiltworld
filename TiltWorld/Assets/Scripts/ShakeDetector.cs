@@ -3,8 +3,8 @@
 public class ShakeDetector : MonoBehaviour
 {
 
-    public float ShakeDetectionThreshold;
-    public float MinShakeInterval;
+    public float ShakeDetectionThreshold = 3.6f;
+    public float MinShakeInterval = 0.2f;
 
     private float sqrShakeDetectionThreshold;
     private float timeSinceLastShake;
