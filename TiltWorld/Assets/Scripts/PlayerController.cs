@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     float distance;
     Vector3 playerPrevPos, playerMoveDir;
 
+    public Transform testprefab;
+
     // Use this for initialization
     void Start()
     {

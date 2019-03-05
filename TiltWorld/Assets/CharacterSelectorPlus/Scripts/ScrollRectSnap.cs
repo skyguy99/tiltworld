@@ -8,16 +8,12 @@ public class ScrollRectSnap : MonoBehaviour {
 
 	public RectTransform panel;
 	public RectTransform center;
-	public GameObject[] prefab;
+    public GameObject[] prefab;
 
-	public GameObject btnFree;
-	public GameObject btnPrice;
+    public GameObject selectedPrefab;
 
 	public Text txtName;
 
-	public Text txtGeneralCash;
-	public Text txtPriceCash;
-	public Text txtPriceSold;
     public int cameraXSpan = 0;
 	public int cameraYSpan = 0;
     public int cameraZSpan = 0;
@@ -34,10 +30,6 @@ public class ScrollRectSnap : MonoBehaviour {
 	public int bttnDistance = 300;
 
 	Swipe swipeDirection = Swipe.None;
-
-	void OnEnable() {
-		txtGeneralCash.text = "" + PlayerPrefs.GetInt ("money", 0);
-	}
 
 	void Start(){
 		distance = new float[prefab.Length];
@@ -66,10 +58,10 @@ public class ScrollRectSnap : MonoBehaviour {
 			if (minDistance == distance [a]) {
 				minButtonNum = a;
 				if(minButtonNum != currentSelectedPly){
-					lookAtPrice (minButtonNum);
+					
 					scaleButtonCenter (minButtonNum);
 					currentSelectedPly = minButtonNum;
-					txtName.text = prefab [minButtonNum].GetComponent<CharacterProperty> ().nameObj;
+					//txtName.text = prefab [minButtonNum].GetComponent<CharacterProperty> ().nameObj;
 				}
 			}
 		}
@@ -81,6 +73,8 @@ public class ScrollRectSnap : MonoBehaviour {
 
 		//move the selection of the player using joystick or keyboard
 		checkJoystickKeyboardInput ();
+
+        selectedPrefab = prefab[currentSelectedPly];
 			
 	}
 
@@ -109,18 +103,7 @@ public class ScrollRectSnap : MonoBehaviour {
 	/*
 	 * If the prefab is not free, show the price button
 	 */
-	public void lookAtPrice (int minButtonNum){
-		CharacterProperty chrProperty = prefab [minButtonNum].GetComponent<CharacterProperty> ();
-		if (chrProperty.price == 0 || PlayerPrefs.GetInt(chrProperty.name,-1) == 7) {
-			btnFree.SetActive (true);
-			btnPrice.SetActive (false);
-		} else {
-			btnFree.SetActive (false);
-			btnPrice.SetActive (true);
-			txtPriceCash.text = "" + ((int)CharacterProperty.CONVERSION_RATE*chrProperty.price);
-			txtPriceSold.text = chrProperty.price + " €";
-		}
-	}
+
 
 	/*
 	 * Courutine for change the scale
@@ -130,8 +113,7 @@ public class ScrollRectSnap : MonoBehaviour {
 		float currentTime = 0.0f;
 		bool done = false;
 
-		txtGeneralCash.color = new Color (255,255,255); // reset color to white
-
+		
 		while (!done){
 			float percent = Mathf.Abs(currentTime / completeTime);
 			if (percent >= 1.0f){
@@ -184,54 +166,7 @@ public class ScrollRectSnap : MonoBehaviour {
 		}
 	}
 
-	/*
-	 * Called when player try to buy character with cash
-	 */
-	public void buyCharacterWithCash(){
-		CharacterProperty chrProperty = prefab [minButtonNum].GetComponent<CharacterProperty> ();
-		int cashNedeed = (int)(CharacterProperty.CONVERSION_RATE*chrProperty.price);
-		int totalCash = int.Parse (txtGeneralCash.text);
-		if (cashNedeed <= totalCash) {
-			totalCash -= cashNedeed;
-			txtGeneralCash.text = "" + totalCash;
-
-			btnFree.SetActive (true);
-			btnPrice.SetActive (false);
-
-			PlayerPrefs.SetInt (chrProperty.name, 7);
-			PlayerPrefs.SetInt ("money", totalCash);
-		} else {
-			txtGeneralCash.color = new Color (255,0,0);
-		}
-	}
-
-	/*
-	 * Change to use the desired payment method
-	 */
-	public void buyCharacterWithPayment(){
-		CharacterProperty chrProperty = prefab [minButtonNum].GetComponent<CharacterProperty> ();
-		float price = chrProperty.price;
-
-		/*
-		 * Implement here your pay function 
-		 */
-
-		Debug.Log ("You must pay ! ;) Price: " + price + "€");
-
-		/*
-		if(paymentConfirm){
-			paymentConfirmed(chrProperty);     <--- Call this when player confirm payment !
-		}*/
-	}
-
-	/**
-	 * Unlock the character and save the purchase
-	 */
-	private void paymentConfirmed(CharacterProperty chrProperty){
-		PlayerPrefs.SetInt (chrProperty.name, 7);
-		btnFree.SetActive (true);
-		btnPrice.SetActive (false);
-	}
+	
 
 	/**
 	 * Abs on Vector3
