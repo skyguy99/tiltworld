@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     public CharController character;
 
     public Transform testprefab;
+    public Material[] skyboxes;
 
     // Use this for initialization
     void Start()
@@ -27,31 +28,17 @@ public class PlayerController : MonoBehaviour {
         //playerMoveDir.Normalize();
         //transform.position = character.transform.position - playerMoveDir * distance;
 
-        //transform.LookAt(character.transform.position);
-
-        //playerPrevPos = character.transform.position;
-
+        //TEST ----------------------
+        UpdateSkybox();
        
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void UpdateSkybox()
     {
-        if(other.tag == "WorldBox") //and isnt attached
-        {
-            print("World enter!!");
-            iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
-           
-            selectedWorld = other.GetComponent<WorldController>().num;
-        }
+        //RenderSettings.skybox.Lerp(skyboxes[0], skyboxes[1], 0.5f * Time.deltaTime);
+        RenderSettings.skybox.SetColor("Top Color", Color.Lerp(Color.white, Color.black, Mathf.PingPong(Time.time, 1)));
+
     }
 
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "WorldBox")
-        {
-            print("World exit!!");
-           
-        }
-    }
+  
 }

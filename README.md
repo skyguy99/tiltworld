@@ -3,8 +3,7 @@
 ### What is this repository for? ###
 
 * TiltWorld - an open world exploration powered by the accelerometer.
-* 1.0
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Ver 1.0
 
 ### External assets used ###
 
@@ -14,6 +13,7 @@
 * Character Selector Pro (https://assetstore.unity.com/packages/templates/systems/character-selector-pro-113136)
 * Skybox Shaders (https://github.com/keijiro/UnitySkyboxShaders)
 * UI Builder (https://assetstore.unity.com/packages/tools/gui/ui-builder-29757)
+* Post Processing (Unity)
 
 
 ### Who do I talk to? ###

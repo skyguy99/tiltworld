@@ -9,6 +9,7 @@ public class ScrollRectSnap : MonoBehaviour {
 	public RectTransform panel;
 	public RectTransform center;
     public GameObject[] prefab;
+    PlayerController player;
 
     public GameObject selectedPrefab;
 
@@ -32,6 +33,7 @@ public class ScrollRectSnap : MonoBehaviour {
 	Swipe swipeDirection = Swipe.None;
 
 	void Start(){
+        player = GameObject.FindObjectOfType<PlayerController>();
 		distance = new float[prefab.Length];
 
 		//instatiate the prefab
@@ -63,7 +65,11 @@ public class ScrollRectSnap : MonoBehaviour {
 					
 					scaleButtonCenter (minButtonNum);
 					currentSelectedPly = minButtonNum;
-					//txtName.text = prefab [minButtonNum].GetComponent<CharacterProperty> ().nameObj;
+                    //txtName.text = prefab [minButtonNum].GetComponent<CharacterProperty> ().nameObj;
+
+                    //SELECTS OBJECT
+                    //print("Select- "+ currentSelectedPly);
+                    player.GetComponent<iOSHapticFeedback>().Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
 				}
 			}
 		}

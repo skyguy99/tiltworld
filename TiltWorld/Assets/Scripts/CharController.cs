@@ -11,12 +11,28 @@ public class CharController : MonoBehaviour
     Animator anim;
     PlayerController player;
 
+    public bool swordEnable;
+    public bool accessoryEnable;
+    Transform sword;
+    Transform accessory;
+
     void Start()
     {
       
         Input.multiTouchEnabled = false;
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<PlayerController>();
+
+        foreach(Transform t in transform)
+        {
+            if(t.name == "Tiltworld-6-5")
+            {
+                accessory = t;
+            } else if (t.name == "Tiltworld-6-5_001")
+            {
+                sword = t;
+            }
+        }
     }
 
     private void Update()
@@ -29,40 +45,12 @@ public class CharController : MonoBehaviour
         //    transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
         //}
 
+        sword.gameObject.SetActive(swordEnable);
+        accessory.gameObject.SetActive(accessoryEnable);
         isRunning = (rb.velocity.x > 0.1f || rb.velocity.z > 0.1f);
 
 
         }
-
-    //NOT NEEDED (pivoted mechanics):
-
-    //IEnumerator waitForKinematic()
-    //{
-    //    yield return new WaitForSeconds(1f);
-    //    rb.isKinematic = false;
-
-    //}
-
-    //public void MoveToWorld(WorldController world)
-    //{
-    //    Vector3 pos = world.transform.position;
-    //    print("MOVE CHARACTER");
-    //    rb.isKinematic = true;
-    //    iTween.MoveTo(gameObject, iTween.Hash("position", pos, "easetype", iTween.EaseType.easeOutSine, "time", 1f, "delay", 0f));
-    //    //wait and then set iskinematic to false
-    //    StartCoroutine(waitForKinematic());
-    //    transform.parent = world.transform;
-
-    //}
-
-    //public void ExitWorld()
-    //{
-    //    rb.isKinematic = true;
-    //    iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(), "easetype", iTween.EaseType.easeOutSine, "time", 1f, "delay", 0f));
-    //    //wait and then set iskinematic to false
-    //    StartCoroutine(waitForKinematic());
-    //    transform.parent = null;
-    //}
 
     void updateAnimations()
     {
