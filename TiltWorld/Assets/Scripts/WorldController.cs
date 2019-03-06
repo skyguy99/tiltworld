@@ -55,11 +55,11 @@ public class WorldController : MonoBehaviour {
 
             //2nd VALUE - percentage
             float percent = Mathf.Abs((Camera.main.WorldToScreenPoint(transform.position).y) / (Screen.height*0.84f));
-            if(percent <= 0.9f && percent >= 0.2f)
+            if(percent <= 0.89f && percent >= 0.2f)
             {
                 animator.SetFloat("AnimStateTime", percent, 1, 10 * Time.deltaTime);
             }
-            print(percent);
+            //print(percent);
 
         }
 

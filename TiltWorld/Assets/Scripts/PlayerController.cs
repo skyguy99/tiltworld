@@ -9,10 +9,6 @@ public class PlayerController : MonoBehaviour {
     public bool inWorld;
 
     public CharController character;
-    private Vector3 offset;
-
-    float distance;
-    Vector3 playerPrevPos, playerMoveDir;
 
     public Transform testprefab;
 
@@ -21,10 +17,7 @@ public class PlayerController : MonoBehaviour {
     {
         character = GameObject.FindObjectOfType<CharController>();
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
-        offset = transform.position - character.transform.position;
 
-        distance = offset.magnitude;
-        playerPrevPos = character.transform.position;
     }
 
     void Update()
