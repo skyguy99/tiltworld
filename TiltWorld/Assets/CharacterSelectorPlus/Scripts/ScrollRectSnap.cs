@@ -24,7 +24,7 @@ public class ScrollRectSnap : MonoBehaviour {
 	bool checkJoystick = true;
 
 	int minButtonNum;
-	int currentSelectedPly = -1;
+	public int currentSelectedPly = -1;
 
 	public float objectScale = 1.7f;
 	public int bttnDistance = 300;
@@ -40,7 +40,9 @@ public class ScrollRectSnap : MonoBehaviour {
 			prefab [i].transform.SetParent(panel.transform);
 			Vector3 pos = prefab[i].GetComponent<RectTransform>().anchoredPosition;
 			pos.y += (i * bttnDistance);
-			prefab [i].GetComponent<RectTransform> ().anchoredPosition = pos; 
+			prefab [i].GetComponent<RectTransform> ().anchoredPosition = pos;
+
+            prefab[i].GetComponent<WorldController>().num = i;
 		}
 	}
 
@@ -120,7 +122,8 @@ public class ScrollRectSnap : MonoBehaviour {
 				percent = 1;
 				done = true;
 			}
-			transformTrg.localScale = absV3(Vector3.Lerp(initScale, endScale, percent));
+            transformTrg.localScale = absV3(Vector3.Lerp(initScale, endScale, percent));
+
 			currentTime += Time.deltaTime;
 			yield return new WaitForEndOfFrame();
 		}
@@ -138,32 +141,6 @@ public class ScrollRectSnap : MonoBehaviour {
 	 */
 	public void EndDrag(){
 		dragging = false;
-	}
-
-	/*
-	 * Called when character is selected, it change the player model
-	 */
-	public void CharacterSelected(){
-		bool oneEnable = false;
-		string nameSelected = prefab [currentSelectedPly].GetComponent<CharacterProperty> ().name;
-		nameSelected = nameSelected.Split('(')[0];
-		GameObject player = GameObject.Find ("CharactersPlayer");
-		if(player != null){
-			foreach (Transform child in player.transform) {
-				if (child.gameObject.name == nameSelected) {
-					child.gameObject.SetActive (true);
-					oneEnable = true;
-					PlayerPrefs.SetString ("SelectedPlayer", nameSelected);
-				} else {
-					child.gameObject.SetActive (false);
-				}
-			}
-
-			// if no one was selected
-			if (oneEnable == false) {
-				player.transform.GetChild (0).gameObject.SetActive (true);
-			}
-		}
 	}
 
 	
