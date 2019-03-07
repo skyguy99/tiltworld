@@ -2435,7 +2435,7 @@ GameObject:
   - component: {fileID: 8263615820017663404}
   - component: {fileID: 8263615820017663403}
   - component: {fileID: 8263615820017663405}
-  - component: {fileID: 4346519424681362119}
+  - component: {fileID: 1731546878903087151}
   m_Layer: 0
   m_Name: container
   m_TagString: Untagged
@@ -2512,7 +2512,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.75877, y: 126.985306, z: 112.03603}
   m_Center: {x: -44.92062, y: 22.442642, z: 9.81671}
---- !u!65 &4346519424681362119
+--- !u!65 &1731546878903087151
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2539,7 +2539,7 @@ GameObject:
   - component: {fileID: 3055710184450883933}
   - component: {fileID: 2675165025028449826}
   m_Layer: 8
-  m_Name: WorldCubePrefab
+  m_Name: WorldCubePrefab8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
