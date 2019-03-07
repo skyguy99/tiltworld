@@ -8,17 +8,21 @@ public class PlayerController : MonoBehaviour {
     public int selectedWorld;
     public bool inWorld;
 
-    public CharController character;
+    public GameObject character;
+    private Vector3 offset;
 
-    public Transform testprefab;
-    public Material[] skyboxes;
+    float distance;
+    Vector3 playerPrevPos, playerMoveDir;
 
     // Use this for initialization
     void Start()
     {
-        character = GameObject.FindObjectOfType<CharController>();
+        character = GameObject.FindObjectOfType<CharController>().gameObject;
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
+        offset = transform.position - character.transform.position;
 
+        distance = offset.magnitude;
+        playerPrevPos = character.transform.position;
     }
 
     void Update()
@@ -28,17 +32,24 @@ public class PlayerController : MonoBehaviour {
         //playerMoveDir.Normalize();
         //transform.position = character.transform.position - playerMoveDir * distance;
 
-        //TEST ----------------------
-        UpdateSkybox();
-       
+        //transform.LookAt(character.transform.position);
+
+        //playerPrevPos = character.transform.position;
     }
 
-    public void UpdateSkybox()
+    private void OnTriggerEnter(Collider other)
     {
-        //RenderSettings.skybox.Lerp(skyboxes[0], skyboxes[1], 0.5f * Time.deltaTime);
-        RenderSettings.skybox.SetColor("Top Color", Color.Lerp(Color.white, Color.black, Mathf.PingPong(Time.time, 1)));
-
+        if(other.tag == "WorldBox") //and isnt attached
+        {
+            print("World enter!!");
+            iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
+        }
     }
-
-  
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "WorldBox")
+        {
+            print("World exit!!");
+        }
+    }
 }
