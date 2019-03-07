@@ -27,7 +27,7 @@ public class ScrollRectSnap : MonoBehaviour {
 	int minButtonNum;
 	public int currentSelectedPly = -1;
 
-	public float objectScale = 1.7f;
+	public float objectScale = 1.7f; //was 1.9f
 	public int bttnDistance = 300;
 
 	Swipe swipeDirection = Swipe.None;
@@ -79,9 +79,6 @@ public class ScrollRectSnap : MonoBehaviour {
 			LerpToBttn (currentSelectedPly* (-bttnDistance));
 		}
 
-		//move the selection of the player using joystick or keyboard
-		checkJoystickKeyboardInput ();
-
         selectedPrefab = prefab[currentSelectedPly];
 			
 	}
@@ -117,7 +114,7 @@ public class ScrollRectSnap : MonoBehaviour {
 	 * Courutine for change the scale
 	 */
 	IEnumerator ScaleTransform(Transform transformTrg,Vector3 initScale,Vector3 endScale){
-		float completeTime = 0.2f;//How much time will it take to scale
+		float completeTime = 0.5f;//How much time will it take to scale was 0.2f
 		float currentTime = 0.0f;
 		bool done = false;
 
@@ -161,27 +158,27 @@ public class ScrollRectSnap : MonoBehaviour {
 	/*
 	 * Check and switch player selection from a generic joystick or keyboard
 	 */
-	void checkJoystickKeyboardInput(){
-		//Joystick Input
-		if(Input.GetAxis ("Horizontal") == 0)checkJoystick = true;
-		if (checkJoystick) {
-			if (Input.GetAxis ("Horizontal") > 0){
-				swipeDirection = Swipe.Right; // gets right
-				checkJoystick = false;
-			}
-			if (Input.GetAxis ("Horizontal") < 0){
-				swipeDirection = Swipe.Left; // gets left
-				checkJoystick = false;
-			}
+	//void checkJoystickKeyboardInput(){
+	//	//Joystick Input
+	//	if(Input.GetAxis ("Horizontal") == 0)checkJoystick = true;
+	//	if (checkJoystick) {
+	//		if (Input.GetAxis ("Horizontal") > 0){
+	//			swipeDirection = Swipe.Right; // gets right
+	//			checkJoystick = false;
+	//		}
+	//		if (Input.GetAxis ("Horizontal") < 0){
+	//			swipeDirection = Swipe.Left; // gets left
+	//			checkJoystick = false;
+	//		}
 
-			if (swipeDirection == Swipe.Right) {
-				Vector2 newPosition = new Vector2 (panel.anchoredPosition.x, panel.anchoredPosition.y - bttnDistance);
-				panel.anchoredPosition = newPosition;
-			} else if (swipeDirection == Swipe.Left) {
-				Vector2 newPosition = new Vector2 (panel.anchoredPosition.x, panel.anchoredPosition.y + bttnDistance);
-				panel.anchoredPosition = newPosition;
-			}
-			swipeDirection = Swipe.None;
-		}
-	}
+	//		if (swipeDirection == Swipe.Right) {
+	//			Vector2 newPosition = new Vector2 (panel.anchoredPosition.x, panel.anchoredPosition.y - bttnDistance);
+	//			panel.anchoredPosition = newPosition;
+	//		} else if (swipeDirection == Swipe.Left) {
+	//			Vector2 newPosition = new Vector2 (panel.anchoredPosition.x, panel.anchoredPosition.y + bttnDistance);
+	//			panel.anchoredPosition = newPosition;
+	//		}
+	//		swipeDirection = Swipe.None;
+	//	}
+	//}
 }
