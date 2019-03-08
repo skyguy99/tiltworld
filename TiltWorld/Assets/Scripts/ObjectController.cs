@@ -7,6 +7,8 @@ public class ObjectController : MonoBehaviour
     public string objName;
     public string partnerName;
 
+    public bool triggerAttack;
+
     public bool isPriority; //only priority creates combine object
     Vector3 originalPos; //resets
 

@@ -6,8 +6,10 @@ public class CharController : MonoBehaviour
 {
     public float speed;
     public FloatingJoystick joystick;
-    Animator anim;
+    public Animator anim;
     Rigidbody rb;
+    Vector3 moveVector;
+    PlayerController player;
 
     void Start()
     {
@@ -15,6 +17,7 @@ public class CharController : MonoBehaviour
         Input.multiTouchEnabled = false;
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
+        player = GameObject.FindObjectOfType<PlayerController>();
     }
 
     private void Update()
@@ -25,18 +28,23 @@ public class CharController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(moveVector);
             transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
+
         }
-    }
+        anim.SetBool("run", (moveVector != Vector3.zero));
 
-    void UpdateAnim()
-    {
-
-        anim.SetBool("run", (rb.velocity.z > 0.1f || rb.velocity.x > 0.1f));
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         GameObject.FindObjectOfType<iOSHapticFeedback>().Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
+
+        if(collision.gameObject.GetComponent<ObjectController>() != null)
+        {
+            if (collision.gameObject.GetComponent<ObjectController>().triggerAttack)
+            {
+                anim.SetTrigger("attack");
+            }
+        }
     }
    
 }
