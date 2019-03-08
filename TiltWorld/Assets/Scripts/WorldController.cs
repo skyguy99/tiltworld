@@ -30,7 +30,7 @@ public class WorldController : MonoBehaviour {
                 if (raycastHit.collider.CompareTag("WorldBox"))
                 {
                     Debug.Log("clicked");
-                    player.selectedWorld = num;
+                    //player.selectedWorld = num;
                 }
 
             }
@@ -42,7 +42,7 @@ public class WorldController : MonoBehaviour {
             //Snap to front of camera
 
             transform.parent = player.transform;
-            transform.position = player.transform.position + player.transform.forward * 1.36f;
+            //transform.position = player.transform.position + player.transform.forward * 1.36f;
             transform.rotation = new Quaternion(0.0f, player.transform.rotation.y, 0.0f, player.transform.rotation.w);
 
         } else {
@@ -56,6 +56,6 @@ public class WorldController : MonoBehaviour {
     private void OnMouseDown()
     {
         //Debug.Log("clicked");
-        player.selectedWorld = num;
+        //player.selectedWorld = num;
     }
 }

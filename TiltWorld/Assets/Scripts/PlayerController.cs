@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour {
         //transform.LookAt(character.transform.position);
 
         //playerPrevPos = character.transform.position;
+        selectedWorld = 2;
     }
 
     private void OnTriggerEnter(Collider other)

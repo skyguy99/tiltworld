@@ -7,12 +7,14 @@ public class CharController : MonoBehaviour
     public float speed;
     public FloatingJoystick joystick;
     Animator anim;
+    Rigidbody rb;
 
     void Start()
     {
        joystick = GameObject.FindObjectOfType<FloatingJoystick>();
         Input.multiTouchEnabled = false;
         anim = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -24,6 +26,12 @@ public class CharController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(moveVector);
             transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
         }
+    }
+
+    void UpdateAnim()
+    {
+
+        anim.SetBool("run", (rb.velocity.z > 0.1f || rb.velocity.x > 0.1f));
     }
 
     private void OnCollisionEnter(Collision collision)
