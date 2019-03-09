@@ -16,10 +16,12 @@ public class CharController : MonoBehaviour
 
     Transform sword;
     Transform accessory;
+    PinchZoom pinchZoom;
 
     void Start()
     {
        joystick = GameObject.FindObjectOfType<FloatingJoystick>();
+        pinchZoom = GameObject.FindObjectOfType<PinchZoom>();
         Input.multiTouchEnabled = false;
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -44,26 +46,38 @@ public class CharController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
 
-        if (moveVector != Vector3.zero)
+        if (!pinchZoom.isPinching)
         {
-            transform.rotation = Quaternion.LookRotation(moveVector);
-            transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
+            Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
 
-        }
-        anim.SetBool("run", (moveVector != Vector3.zero));
-
-        Vector3 rotation = transform.forward;
-
-        RaycastHit hit;
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), rotation.normalized*rayDistance, Color.green);
-        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), rotation, out hit, rayDistance))
-        {
-            print(hit.transform);
-            if (hit.transform.GetComponent<Platform>() != null)
+            if (moveVector != Vector3.zero)
             {
-                Jump(hit.transform);
+                transform.rotation = Quaternion.LookRotation(moveVector);
+                transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
+
+            }
+            anim.SetBool("run", (moveVector != Vector3.zero));
+
+
+            //raycasting
+
+            Vector3 rotation = transform.forward;
+            RaycastHit hit;
+            Vector3 startPoint = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
+            if (Physics.Raycast(startPoint, rotation, out hit, 1f))
+            {
+                Debug.DrawRay(startPoint, rotation * hit.distance, Color.yellow);
+                //Debug.Log("Did Hit"+hit.transform.name);
+                if (hit.transform.GetComponent<Platform>() != null)
+                {
+                    Jump(hit.transform);
+                }
+                }
+            else
+            {
+                Debug.DrawRay(startPoint, rotation * 1000, Color.white);
+                //Debug.Log("Did not Hit");
             }
         }
 
@@ -99,7 +113,7 @@ public class CharController : MonoBehaviour
 
         //fall
         rb.isKinematic = true;
-        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(transform.position.x, -1.05f, transform.position.z), "time", 0.4f, "easetype", "bounce", "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(transform.position.x, -1.05f, transform.position.z), "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
 
         player.selectedWorld = -1;
     }
@@ -107,7 +121,7 @@ public class CharController : MonoBehaviour
     void Jump(Transform other)
     {
         rb.isKinematic = true;
-        iTween.MoveTo(gameObject, iTween.Hash("position", other.GetComponent<Platform>().lerpPos, "time", 0.4f, "easetype", "bounce", "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        iTween.MoveTo(gameObject, iTween.Hash("position", other.GetComponent<Platform>().lerpPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutCubic, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
     }
 
     private void OnCollisionEnter(Collision collision)

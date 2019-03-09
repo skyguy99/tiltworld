@@ -129,28 +129,28 @@ public class iOSHapticFeedback : MonoBehaviour {
     protected void InstantiateFeedbackGenerator(int id)
     {
         if (debug)
-            Debug.Log("Instantiate iOS feedback generator "+(iOSFeedbackType)id);
+            //Debug.Log("Instantiate iOS feedback generator "+(iOSFeedbackType)id);
         _instantiateFeedbackGenerator(id);
     }
 
     protected void PrepareFeedbackGenerator(int id)
     {
         if (debug)
-            Debug.Log("Prepare iOS feedback generator "+(iOSFeedbackType)id);
+            //Debug.Log("Prepare iOS feedback generator "+(iOSFeedbackType)id);
         _prepareFeedbackGenerator(id);
     }
 
     protected void TriggerFeedbackGenerator(int id, bool advanced)
     {
         if (debug)
-            Debug.Log("Trigger iOS feedback generator "+(iOSFeedbackType)id + ", advanced mode: "+advanced);
+            //Debug.Log("Trigger iOS feedback generator "+(iOSFeedbackType)id + ", advanced mode: "+advanced);
         _triggerFeedbackGenerator(id, advanced);
     }
 
     protected void ReleaseFeedbackGenerator(int id)
     {
         if (debug)
-            Debug.Log("Release iOS feedback generator "+(iOSFeedbackType)id);
+            //Debug.Log("Release iOS feedback generator "+(iOSFeedbackType)id);
         _releaseFeedbackGenerator(id);
     }
 
