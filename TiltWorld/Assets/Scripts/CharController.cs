@@ -11,6 +11,9 @@ public class CharController : MonoBehaviour
     Vector3 moveVector;
     PlayerController player;
 
+    public bool isOnPlatform;
+    public float originalY;
+
     void Start()
     {
        joystick = GameObject.FindObjectOfType<FloatingJoystick>();
@@ -18,6 +21,7 @@ public class CharController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<PlayerController>();
+        originalY = transform.position.y;
     }
 
     private void Update()
@@ -32,8 +36,37 @@ public class CharController : MonoBehaviour
         }
         anim.SetBool("run", (moveVector != Vector3.zero));
 
+        print(transform.position);
+
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "PlatformBase")
+        {
+            isOnPlatform = true;
+        } else {
+            isOnPlatform = false;
+        }
+    }
+
+    void DisableKinematic()
+    {
+        rb.isKinematic = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Platform>() != null)
+        {
+
+            if (transform.position.y < other.transform.position.y-1f)
+            {
+                rb.isKinematic = true;
+                iTween.MoveTo(gameObject, iTween.Hash("position", other.GetComponent<Platform>().lerpPos, "time", 0.4f, "easetype", "easeOutSine", "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+            }
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         GameObject.FindObjectOfType<iOSHapticFeedback>().Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
@@ -45,6 +78,8 @@ public class CharController : MonoBehaviour
                 anim.SetTrigger("attack");
             }
         }
+
+
     }
    
 }

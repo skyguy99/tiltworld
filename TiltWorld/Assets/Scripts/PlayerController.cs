@@ -40,17 +40,18 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "WorldBox") //and isnt attached
+        iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
+        if (other.tag == "WorldBox") //and isnt attached
         {
             print("World enter!!");
-            iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
+
         }
+       
+
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "WorldBox")
-        {
-            print("World exit!!");
-        }
+
+       
     }
 }
