@@ -86,11 +86,14 @@ public class CharController : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "WorldBox")
         {
             player.selectedWorld = other.GetComponent<WorldController>().num;
+            //Physics.IgnoreCollision(transform.GetComponent<Collider>(), other, true);
+
+           
         }
     }
 
@@ -99,6 +102,7 @@ public class CharController : MonoBehaviour
         if (other.tag == "WorldBox")
         {
             player.selectedWorld = -1;
+           //Physics.IgnoreCollision(transform.GetComponent<Collider>(), other,false);
         }
     }
 

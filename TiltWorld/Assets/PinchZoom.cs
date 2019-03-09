@@ -9,11 +9,15 @@ public class PinchZoom : MonoBehaviour
 
     void Update()
     {
+
+        print(Input.touchCount);
         // If there are two touches on the device...
         if (Input.touchCount == 2)
         {
 
             print("ZOOMING");
+            isPinching = true;
+
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -31,7 +35,7 @@ public class PinchZoom : MonoBehaviour
 
             // If the camera is orthographic...
 
-            isPinching = true;
+
             if (Camera.main.orthographic)
             {
                 // ... change the orthographic size based on the change in distance between the touches.

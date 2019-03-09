@@ -243,6 +243,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 222922072185697670, guid: cdd5474b97f1a9d40bea678ca8dec2bb,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd5474b97f1a9d40bea678ca8dec2bb, type: 3}
 --- !u!224 &182719952 stripped
@@ -1478,7 +1483,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173025787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: febf706ad2dbb47f0b40ab694a3b2f07, type: 3}
   m_Name: 
@@ -1510,7 +1515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbcb5b3c61a348f1a3d99fdaac719f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedWorld: 2
+  selectedWorld: -1
   inWorld: 0
   worldAnchor: {fileID: 0}
   character: {fileID: 0}
@@ -2383,7 +2388,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1334, y: 750}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -2624,7 +2629,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903167340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e8a21f2e88eb4cb2b1441517bf71c4d, type: 3}
   m_Name: 
@@ -2671,7 +2676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903167340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.644, y: -1.09, z: -1.736}
+  m_LocalPosition: {x: 0, y: -1.09, z: -1.736}
   m_LocalScale: {x: 3.2, y: 3.2, z: 3.2}
   m_Children:
   - {fileID: 1525079823}
@@ -3078,7 +3083,7 @@ BoxCollider:
   m_GameObject: {fileID: 5314376929496475051}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.9241343, y: 126.98539, z: 112.03617}
   m_Center: {x: 50.38275, y: 22.44264, z: 9.81671}
@@ -3396,7 +3401,7 @@ BoxCollider:
   m_GameObject: {fileID: 5314376929496475051}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 98.9863, y: 128.49738, z: 10.060001}
   m_Center: {x: 0.1612723, y: 23.40156, z: -40.790012}
@@ -3431,6 +3436,7 @@ GameObject:
   - component: {fileID: 5314376929496475052}
   - component: {fileID: 5314376929496475056}
   - component: {fileID: 5314376929496475057}
+  - component: {fileID: 5314376929496475058}
   m_Layer: 0
   m_Name: WORLDBOX-2
   m_TagString: WorldBox
@@ -3531,6 +3537,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5314376929496475058
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314376929496475051}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 102.79851, y: 124.50226, z: 104.461525}
+  m_Center: {x: 1.482765, y: 21.339308, z: 7.9246407}
 --- !u!33 &5467828228098965151
 MeshFilter:
   m_ObjectHideFlags: 0

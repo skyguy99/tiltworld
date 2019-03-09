@@ -39,7 +39,8 @@ public class ShakeDetector : MonoBehaviour
         {
 
             player.character.LeaveWorld();
-            Invoke("ResetCurrentWorld", 0.5f);
+            ResetCurrentWorld();
+        
             
             print("SHAKE!");
             timeSinceLastShake = Time.unscaledTime;
