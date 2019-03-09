@@ -11,8 +11,11 @@ public class CharController : MonoBehaviour
     Vector3 moveVector;
     PlayerController player;
 
-    public bool isOnPlatform;
-    public float originalY;
+    public float heightOffset;
+    public float rayDistance = 1.2f;
+
+    Transform sword;
+    Transform accessory;
 
     void Start()
     {
@@ -21,7 +24,22 @@ public class CharController : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        originalY = transform.position.y;
+
+        foreach(Transform t in transform)
+        {
+            foreach (Transform j in t)
+            {
+                if (j.name == "sword")
+                {
+                    sword = j;
+                }
+                if (j.name == "goggle")
+                {
+                    accessory = j;
+                }
+            }
+        }
+
     }
 
     private void Update()
@@ -36,17 +54,37 @@ public class CharController : MonoBehaviour
         }
         anim.SetBool("run", (moveVector != Vector3.zero));
 
-        print(transform.position);
+        Vector3 rotation = transform.forward;
+
+        RaycastHit hit;
+        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), rotation.normalized*rayDistance, Color.green);
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z), rotation, out hit, rayDistance))
+        {
+            print(hit.transform);
+            if (hit.transform.GetComponent<Platform>() != null)
+            {
+                Jump(hit.transform);
+            }
+        }
+
+        sword.gameObject.SetActive(anim.GetCurrentAnimatorStateInfo(0).IsName("attack"));
+        accessory.gameObject.SetActive(anim.GetCurrentAnimatorStateInfo(0).IsName("attack"));
 
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "PlatformBase")
+        if(other.tag == "WorldBox")
         {
-            isOnPlatform = true;
-        } else {
-            isOnPlatform = false;
+            player.selectedWorld = other.GetComponent<WorldController>().num;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "WorldBox")
+        {
+            player.selectedWorld = -1;
         }
     }
 
@@ -55,18 +93,12 @@ public class CharController : MonoBehaviour
         rb.isKinematic = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void Jump(Transform other)
     {
-        if (other.GetComponent<Platform>() != null)
-        {
-
-            if (transform.position.y < other.transform.position.y-1f)
-            {
-                rb.isKinematic = true;
-                iTween.MoveTo(gameObject, iTween.Hash("position", other.GetComponent<Platform>().lerpPos, "time", 0.4f, "easetype", "easeOutSine", "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
-            }
-        }
+        rb.isKinematic = true;
+        iTween.MoveTo(gameObject, iTween.Hash("position", other.GetComponent<Platform>().lerpPos, "time", 0.4f, "easetype", "easeOutSine", "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         GameObject.FindObjectOfType<iOSHapticFeedback>().Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     iOSHapticFeedback iosHaptic;
-    public int selectedWorld;
+    public int selectedWorld = -1;
     public bool inWorld;
 
     public GameObject character;
@@ -23,30 +23,28 @@ public class PlayerController : MonoBehaviour {
 
         distance = offset.magnitude;
         playerPrevPos = character.transform.position;
+
     }
 
     void Update()
     {
-        inWorld = (selectedWorld > 0);
+        inWorld = (selectedWorld > -1);
         //playerMoveDir = character.transform.position - playerPrevPos;
         //playerMoveDir.Normalize();
         //transform.position = character.transform.position - playerMoveDir * distance;
 
-        //transform.LookAt(character.transform.position);
+        //TEST
+       
 
-        //playerPrevPos = character.transform.position;
-        selectedWorld = 2;
+        //Check direction
+
+
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
         iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
-        if (other.tag == "WorldBox") //and isnt attached
-        {
-            print("World enter!!");
-
-        }
-       
 
     }
     private void OnTriggerExit(Collider other)
