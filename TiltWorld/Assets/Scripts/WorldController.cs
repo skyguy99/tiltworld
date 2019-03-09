@@ -19,7 +19,7 @@ public class WorldController : MonoBehaviour {
 
 
     // Use this for initialization
-    void Awake () {
+    void Start () {
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
         foreach(Transform t in transform.Find("OBJECTS"))

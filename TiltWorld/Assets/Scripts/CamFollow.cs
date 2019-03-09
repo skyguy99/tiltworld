@@ -5,8 +5,8 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour
 {
     public GameObject player;
-   float cameraHeight = 2.79f;
-    float cameraZ = -5.29f;
+   float cameraHeight = 2f;
+    float cameraZ = -2f;
 
 
     private void Awake()
