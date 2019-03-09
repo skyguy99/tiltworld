@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     iOSHapticFeedback iosHaptic;
     public int selectedWorld = -1;
     public bool inWorld;
+    public Transform worldAnchor;
 
     public GameObject character;
     private Vector3 offset;
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour {
         distance = offset.magnitude;
         playerPrevPos = character.transform.position;
 
+
+
     }
 
     void Update()
@@ -34,11 +37,11 @@ public class PlayerController : MonoBehaviour {
         //transform.position = character.transform.position - playerMoveDir * distance;
 
         //TEST
-       
+
 
         //Check direction
-
-
+        //Utils.CheckIsFacing(transform, worldAnchor);
+      
        
     }
 

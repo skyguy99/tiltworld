@@ -10,6 +10,11 @@ public class WorldController : MonoBehaviour {
     PlayerController player;
     Vector3 originalPos;
 
+    public AudioClip[] audioClips;
+
+    //Combination objects to instantiate in ObjectController
+    public GameObject[] comboObjectsStandby;
+
 
     // Use this for initialization
     void Awake () {

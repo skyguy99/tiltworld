@@ -66,6 +66,11 @@ public class Utils : MonoBehaviour {
 
 		return bestTarget;
 	}
+    public static bool CheckIsFacing(Transform transformA, Transform transformB)
+    {
+        return (Vector3.Angle(transformA.forward, transformB.position - transformA.position) < 10);
+       
+    }
 	public static AudioSource AddAudio(AudioClip clip, bool loop, bool playAwake, float vol, GameObject gameObj) { 
 		AudioSource newAudio = gameObj.AddComponent<AudioSource>();
 		newAudio.clip = clip; 
@@ -92,6 +97,8 @@ public static class TransformDeepChildExtension
 		return null;
 	}
 }
+
+
 //------------------------------------------------------------------*****************************************
 
 //Misc code
