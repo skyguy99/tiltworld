@@ -93,10 +93,21 @@ public class CharController : MonoBehaviour
         rb.isKinematic = false;
     }
 
+    //triggered by shake
+    public void LeaveWorld()
+    {
+
+        //fall
+        rb.isKinematic = true;
+        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(transform.position.x, -1.05f, transform.position.z), "time", 0.4f, "easetype", "bounce", "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+
+        player.selectedWorld = -1;
+    }
+
     void Jump(Transform other)
     {
         rb.isKinematic = true;
-        iTween.MoveTo(gameObject, iTween.Hash("position", other.GetComponent<Platform>().lerpPos, "time", 0.4f, "easetype", "easeOutSine", "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        iTween.MoveTo(gameObject, iTween.Hash("position", other.GetComponent<Platform>().lerpPos, "time", 0.4f, "easetype", "bounce", "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
     }
 
     private void OnCollisionEnter(Collision collision)

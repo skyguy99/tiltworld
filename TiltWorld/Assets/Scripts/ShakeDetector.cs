@@ -9,12 +9,27 @@ public class ShakeDetector : MonoBehaviour
     private float sqrShakeDetectionThreshold;
     private float timeSinceLastShake;
 
-    WorldController worldController;
+    WorldController[] worldControllers;
+    PlayerController player;
+    
 
     void Start()
     {
         sqrShakeDetectionThreshold = Mathf.Pow(ShakeDetectionThreshold, 2);
-        worldController = GetComponent<WorldController>();
+        worldControllers = GameObject.FindObjectsOfType<WorldController>();
+        player = GameObject.FindObjectOfType<PlayerController>();
+    }
+
+    void ResetCurrentWorld()
+    {
+        foreach (WorldController w in worldControllers)
+        {
+            if (w.num == player.selectedWorld)
+            {
+                w.ResetWorld();
+                //and move away
+            }
+        }
     }
 
     void Update()
@@ -22,9 +37,21 @@ public class ShakeDetector : MonoBehaviour
         if (Input.acceleration.sqrMagnitude >= sqrShakeDetectionThreshold
                    && Time.unscaledTime >= timeSinceLastShake + MinShakeInterval)
         {
-            //worldController.ShakeandReset(Input.acceleration);
+
+            player.character.LeaveWorld();
+            Invoke("ResetCurrentWorld", 0.5f);
+            
             print("SHAKE!");
             timeSinceLastShake = Time.unscaledTime;
+        }
+
+        //TEST EDITOR
+        if(Input.GetKey("space"))
+        {
+            player.character.LeaveWorld();
+            Invoke("ResetCurrentWorld", 0.5f);
+
+            print("SHAKE!");
         }
     }
 }

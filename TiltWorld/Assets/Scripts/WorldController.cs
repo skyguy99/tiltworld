@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using System.Linq;
 
 public class WorldController : MonoBehaviour {
 
     public int num;
     Vector3 warpPos;
     PlayerController player;
-    Vector3 originalPos;
+    public Vector3 originalPos;
 
     public AudioClip[] audioClips;
+    public List<ObjectController> myObjects;
 
     //Combination objects to instantiate in ObjectController
     public GameObject[] comboObjectsStandby;
@@ -20,6 +22,13 @@ public class WorldController : MonoBehaviour {
     void Awake () {
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
+        foreach(Transform t in transform.Find("OBJECTS"))
+        {
+            if(t.GetComponent<ObjectController>() != null)
+            {
+                myObjects.Add(t.GetComponent<ObjectController>());
+            }
+        }
 	}
 	
 	// Update is called once per frame
@@ -57,10 +66,20 @@ public class WorldController : MonoBehaviour {
 
     }
 
-    //EDITOR TESTING
-    private void OnMouseDown()
+    void ResetRotation()
     {
-        //Debug.Log("clicked");
-        //player.selectedWorld = num;
+        iTween.RotateTo(gameObject, iTween.Hash("rotation", Quaternion.identity, iTween.EaseType.easeOutBounce, "time", 0.5f));
+    }
+
+    public void ResetWorld()
+    {
+        print("RESETTING WORLD " + num);
+        iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.6f, "easetype", "easeOutBounce", "oncomplete", "ResetRotation", "oncompletetarget", gameObject));
+
+
+        foreach(ObjectController o in myObjects)
+        {
+            //o.Invoke("ResetObject", 0.3f);
+        }
     }
 }

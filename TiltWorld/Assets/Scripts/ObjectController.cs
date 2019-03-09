@@ -34,7 +34,9 @@ public class ObjectController : MonoBehaviour
 
     public void ResetObject()
     {
+        print("ResetObject");
         transform.position = originalPos;
+        transform.rotation = Quaternion.identity;
     }
 
     private void OnCollisionEnter(Collision collision)
