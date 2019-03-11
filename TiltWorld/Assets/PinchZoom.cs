@@ -10,7 +10,7 @@ public class PinchZoom : MonoBehaviour
     void Update()
     {
 
-        print(Input.touchCount);
+        //print(Input.touchCount);
         // If there are two touches on the device...
         if (Input.touchCount == 2)
         {

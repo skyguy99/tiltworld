@@ -14,9 +14,6 @@ public class WorldController : MonoBehaviour {
     public AudioClip[] audioClips;
     public List<ObjectController> myObjects;
 
-    //Combination objects to instantiate in ObjectController
-    public GameObject[] comboObjectsStandby;
-
 
     // Use this for initialization
     void Start () {
@@ -27,6 +24,14 @@ public class WorldController : MonoBehaviour {
             if(t.GetComponent<ObjectController>() != null)
             {
                 myObjects.Add(t.GetComponent<ObjectController>());
+            }
+        }
+
+        for (int i = 2; i < myObjects.Count + 1; i++)
+        {
+            if(i%2 == 0)
+            {
+                myObjects[i - 2].isPriority = true; //assigns to half
             }
         }
 	}

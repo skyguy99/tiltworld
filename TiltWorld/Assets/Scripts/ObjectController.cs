@@ -14,15 +14,18 @@ public class ObjectController : MonoBehaviour
 
     public bool isPriority; //only priority creates combine object
     Vector3 originalPos; //resets
+    public bool wasSpawned;
 
-    public GameObject combineObject;
+    PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         audio = GameObject.FindObjectOfType<AudioSource>();
         originalPos = transform.position;
+        player = GameObject.FindObjectOfType<PlayerController>();
         myWorld = transform.parent.GetComponentInParent<WorldController>();
+
      
     }
 
@@ -51,14 +54,23 @@ public class ObjectController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       
-       
 
         if (other.GetComponent<ObjectController>() != null)
         {
-            if (other.GetComponent<ObjectController>().objName == partnerName)
+            if (other.GetComponent<ObjectController>().objName == partnerName && isPriority)
             {
-                Destroy(this);
+
+                Destroy(other.gameObject);   
+
+                if(player.objectsStandby.ContainsKey(objName))
+                {
+                    GameObject obj = player.objectsStandby[objName].gameObject;
+                    Instantiate(obj, transform.position, Quaternion.identity);
+                    Destroy(this);
+                    audio.PlayOneShot(myWorld.audioClips[1]); //accent
+
+                    print("NEW OBJECT between " + objName + "| " + partnerName);
+                }
 
             }
         }
