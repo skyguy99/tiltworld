@@ -11,7 +11,7 @@ public class CharController : MonoBehaviour
     Vector3 moveVector;
     PlayerController player;
 
-    public float heightOffset;
+    Vector3 originalPos;
     public float rayDistance = 1.2f;
 
     Transform sword;
@@ -20,6 +20,7 @@ public class CharController : MonoBehaviour
 
     void Start()
     {
+        originalPos = transform.position;
        joystick = GameObject.FindObjectOfType<FloatingJoystick>();
         pinchZoom = GameObject.FindObjectOfType<PinchZoom>();
         Input.multiTouchEnabled = false;
@@ -90,10 +91,8 @@ public class CharController : MonoBehaviour
     {
         if(other.tag == "WorldBox")
         {
+            print("ENTERING WORLD: "+ other.GetComponent<WorldController>().num);
             player.selectedWorld = other.GetComponent<WorldController>().num;
-            //Physics.IgnoreCollision(transform.GetComponent<Collider>(), other, true);
-
-           
         }
     }
 
@@ -102,7 +101,6 @@ public class CharController : MonoBehaviour
         if (other.tag == "WorldBox")
         {
             player.selectedWorld = -1;
-           //Physics.IgnoreCollision(transform.GetComponent<Collider>(), other,false);
         }
     }
 
@@ -112,12 +110,13 @@ public class CharController : MonoBehaviour
     }
 
     //triggered by shake
-    public void LeaveWorld()
+    public void LeaveWorld(WorldController world)
     {
-
+        print("Leaving world");
+       
         //fall
         rb.isKinematic = true;
-        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(transform.position.x, -1.05f, transform.position.z), "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
 
         player.selectedWorld = -1;
     }

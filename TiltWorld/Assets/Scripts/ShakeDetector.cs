@@ -27,6 +27,7 @@ public class ShakeDetector : MonoBehaviour
             if (w.num == player.selectedWorld)
             {
                 w.ResetWorld();
+                player.character.LeaveWorld(w);
                 //and move away
             }
         }
@@ -38,7 +39,7 @@ public class ShakeDetector : MonoBehaviour
                    && Time.unscaledTime >= timeSinceLastShake + MinShakeInterval)
         {
 
-            player.character.LeaveWorld();
+
             ResetCurrentWorld();
         
             
@@ -49,9 +50,8 @@ public class ShakeDetector : MonoBehaviour
         //TEST EDITOR
         if(Input.GetKey("space"))
         {
-            player.character.LeaveWorld();
-            Invoke("ResetCurrentWorld", 0.5f);
 
+            ResetCurrentWorld();
             print("SHAKE!");
         }
     }

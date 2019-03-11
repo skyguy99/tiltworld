@@ -14,9 +14,9 @@ public class ObjectController : MonoBehaviour
 
     public bool isPriority; //only priority creates combine object
     Vector3 originalPos; //resets
-    public bool wasSpawned;
 
     PlayerController player;
+    public Transform ObjectToSpawn;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,30 +49,23 @@ public class ObjectController : MonoBehaviour
             iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
             audio.PlayOneShot(myWorld.audioClips[0]);
         }
-    }
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.GetComponent<ObjectController>() != null)
+        if (collision.gameObject.GetComponent<ObjectController>() != null)
         {
-            if (other.GetComponent<ObjectController>().objName == partnerName && isPriority)
+            if (collision.gameObject.GetComponent<ObjectController>().objName == partnerName && isPriority && ObjectToSpawn != null)
             {
 
-                Destroy(other.gameObject);   
+                Destroy(collision.gameObject.gameObject);
 
-                if(player.objectsStandby.ContainsKey(objName))
-                {
-                    GameObject obj = player.objectsStandby[objName].gameObject;
-                    Instantiate(obj, transform.position, Quaternion.identity);
-                    Destroy(this);
-                    audio.PlayOneShot(myWorld.audioClips[1]); //accent
+                Transform g = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
+                g.parent = transform.parent;
+                Destroy(this);
+                audio.PlayOneShot(myWorld.audioClips[1]); //accent
 
-                    print("NEW OBJECT between " + objName + "| " + partnerName);
-                }
+                print("NEW OBJECT between " + objName + "| " + partnerName);
 
             }
         }
     }
+
 }

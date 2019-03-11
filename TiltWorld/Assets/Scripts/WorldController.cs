@@ -15,11 +15,12 @@ public class WorldController : MonoBehaviour {
     public List<ObjectController> myObjects;
 
 
+
     // Use this for initialization
     void Start () {
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
-        foreach(Transform t in transform.Find("OBJECTS"))
+        foreach(Transform t in transform.GetChild(0))
         {
             if(t.GetComponent<ObjectController>() != null)
             {
@@ -38,22 +39,6 @@ public class WorldController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
-        {
-            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            RaycastHit raycastHit;
-            if (Physics.Raycast(raycast, out raycastHit))
-            {
-                //OR with Tag
-
-                if (raycastHit.collider.CompareTag("WorldBox"))
-                {
-                    Debug.Log("clicked");
-                    player.selectedWorld = num;
-                }
-
-            }
-        }
 
         //LOCK ROTATION---------------------
         if (player.selectedWorld == num)
@@ -64,10 +49,7 @@ public class WorldController : MonoBehaviour {
             //transform.position = player.transform.position + player.transform.forward * 1.36f;
             transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
 
-        } else {
-            //transform.parent = null;
-            //transform.position = originalPos;
-        }
+        } 
 
     }
 
