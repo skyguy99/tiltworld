@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: 84c0f723e670c44b6a26af6f0b79ce41
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature.002
+    100002: BezierCircle
+    100004: BezierCircle.002
+    100006: BezierCircle.004
+    100008: BezierCircle.007
+    100010: hands_b_l_grip
+    100012: hands_b_l_grip_end
+    100014: hands_b_l_hand
+    100016: hands_b_l_hand_ignore
+    100018: hands_b_l_hand_ignore_end
+    100020: hands_b_l_index1
+    100022: hands_b_l_index2
+    100024: hands_b_l_index3
+    100026: hands_b_l_index_ignore
+    100028: hands_b_l_index_ignore_end
+    100030: hands_b_l_middle1
+    100032: hands_b_l_middle2
+    100034: hands_b_l_middle3
+    100036: hands_b_l_middle_ignore
+    100038: hands_b_l_middle_ignore_end
+    100040: hands_b_l_pinky0
+    100042: hands_b_l_pinky1
+    100044: hands_b_l_pinky2
+    100046: hands_b_l_pinky3
+    100048: hands_b_l_pinky_ignore
+    100050: hands_b_l_pinky_ignore_end
+    100052: hands_b_l_ring1
+    100054: hands_b_l_ring2
+    100056: hands_b_l_ring3
+    100058: hands_b_l_ring_ignore
+    100060: hands_b_l_ring_ignore_end
+    100062: hands_b_l_thumb1
+    100064: hands_b_l_thumb2
+    100066: hands_b_l_thumb3
+    100068: hands_b_l_thumb_ignore
+    100070: hands_b_l_thumb_ignore_end
+    100072: hands_l_hand_world
+    100074: hands_Lhand.001
+    100076: //RootNode
+    100078: Sun
+    400000: Armature.002
+    400002: BezierCircle
+    400004: BezierCircle.002
+    400006: BezierCircle.004
+    400008: BezierCircle.007
+    400010: hands_b_l_grip
+    400012: hands_b_l_grip_end
+    400014: hands_b_l_hand
+    400016: hands_b_l_hand_ignore
+    400018: hands_b_l_hand_ignore_end
+    400020: hands_b_l_index1
+    400022: hands_b_l_index2
+    400024: hands_b_l_index3
+    400026: hands_b_l_index_ignore
+    400028: hands_b_l_index_ignore_end
+    400030: hands_b_l_middle1
+    400032: hands_b_l_middle2
+    400034: hands_b_l_middle3
+    400036: hands_b_l_middle_ignore
+    400038: hands_b_l_middle_ignore_end
+    400040: hands_b_l_pinky0
+    400042: hands_b_l_pinky1
+    400044: hands_b_l_pinky2
+    400046: hands_b_l_pinky3
+    400048: hands_b_l_pinky_ignore
+    400050: hands_b_l_pinky_ignore_end
+    400052: hands_b_l_ring1
+    400054: hands_b_l_ring2
+    400056: hands_b_l_ring3
+    400058: hands_b_l_ring_ignore
+    400060: hands_b_l_ring_ignore_end
+    400062: hands_b_l_thumb1
+    400064: hands_b_l_thumb2
+    400066: hands_b_l_thumb3
+    400068: hands_b_l_thumb_ignore
+    400070: hands_b_l_thumb_ignore_end
+    400072: hands_l_hand_world
+    400074: hands_Lhand.001
+    400076: //RootNode
+    400078: Sun
+    2100000: hand2
+    2100002: watch1
+    2100004: hand.-emiss.001
+    2100006: hand
+    2100008: Asset 6
+    2300000: BezierCircle
+    2300002: BezierCircle.002
+    2300004: BezierCircle.004
+    2300006: BezierCircle.007
+    3300000: BezierCircle
+    3300002: BezierCircle.002
+    3300004: BezierCircle.004
+    3300006: BezierCircle.007
+    4300000: BezierCircle.002
+    4300002: BezierCircle.004
+    4300004: BezierCircle
+    4300006: hands_Lhand.001
+    4300008: BezierCircle.007
+    7400000: Armature.002|Armature.002Action
+    7400002: Armature.002|Armature.002Action.001
+    7400004: Armature.002|Armature.002Action.002
+    7400006: Armature.002|ArmatureAction.001
+    9500000: //RootNode
+    10800000: Sun
+    13700000: hands_Lhand.001
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

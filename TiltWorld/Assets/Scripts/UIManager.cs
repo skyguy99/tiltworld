@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     Canvas canvas;
     public Transform objectShowContainer;
+    public Transform overallObjectsContainer;
+    PlayerController player;
 
     void Start()
     {
@@ -14,6 +16,7 @@ public class UIManager : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+        player = GameObject.FindObjectOfType<PlayerController>();
     }
 
     public void ShowObjectCreated(string name)
@@ -22,13 +25,22 @@ public class UIManager : MonoBehaviour
         {
             if(child.GetComponent<ObjectController>().objName == name)
             {
+                //print("SHOW " + name);
                 child.gameObject.SetActive(true);
+                overallObjectsContainer.GetComponent<Animator>().SetBool("up", true);
+
             }
         }
+
+        StartCoroutine(BackToNoObject());
     }
 
-    void BackToNoObject()
+    IEnumerator BackToNoObject()
     {
+        yield return new WaitForSeconds(7f);
+        overallObjectsContainer.GetComponent<Animator>().SetBool("up", false);
+
+        yield return new WaitForSeconds(1f);
         foreach (Transform child in objectShowContainer)
         {
             child.gameObject.SetActive(false);
@@ -38,6 +50,13 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        foreach (Transform child in objectShowContainer)
+        {
+            if (child.GetComponent<ObjectController>().objName == name)
+            {
+                transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+            }
+
+        }
     }
 }

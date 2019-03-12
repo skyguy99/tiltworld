@@ -17,6 +17,7 @@ public class ObjectController : MonoBehaviour
 
     PlayerController player;
     public Transform ObjectToSpawn;
+    UIManager uIManager;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class ObjectController : MonoBehaviour
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
         myWorld = transform.parent.GetComponentInParent<WorldController>();
-
+        uIManager = GameObject.FindObjectOfType<UIManager>();
      
     }
 
@@ -64,7 +65,7 @@ public class ObjectController : MonoBehaviour
                 audio.PlayOneShot(myWorld.audioClips[1]); //accent
 
                 print("NEW OBJECT between " + objName + "| " + partnerName);
-
+                uIManager.ShowObjectCreated(g.GetComponent<ObjectController>().objName);
 
             }
         }
