@@ -17,6 +17,7 @@ public class ObjectController : MonoBehaviour
 
     PlayerController player;
     public Transform ObjectToSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +64,7 @@ public class ObjectController : MonoBehaviour
                 audio.PlayOneShot(myWorld.audioClips[1]); //accent
 
                 print("NEW OBJECT between " + objName + "| " + partnerName);
+
 
             }
         }
