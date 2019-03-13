@@ -11,6 +11,8 @@ public class PinchZoom : MonoBehaviour
         // If there are two touches on the device...
         if (Input.touchCount == 2)
         {
+
+            print("PINCH: "+Time.time);
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     public FloatingJoystick joystick;
 
     public CharController character;
+    Vector3 originPos;
 
     // Use this for initialization
     void Start()
@@ -19,6 +20,11 @@ public class PlayerController : MonoBehaviour {
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
 
 
+    }
+
+    public void ResetPosition()
+    {
+        iTween.MoveTo(gameObject, iTween.Hash("position", originPos, "time", 0.45f, "easetype", iTween.EaseType.easeOutBounce));
     }
 
     void Update()

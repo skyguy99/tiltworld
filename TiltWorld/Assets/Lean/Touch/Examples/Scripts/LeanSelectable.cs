@@ -78,6 +78,10 @@ namespace Lean.Touch
 		[Tooltip("If the selecting fingers are still active, only return those to RequiredSelectable queries?")]
 		public bool IsolateSelectingFingers;
 
+
+        //Skylar added
+        Rigidbody rb;
+        bool rbHadGravity;
         PlayerController player;
 
         /// <summary>Returns isSelected, or false if HideWithFinger is true and SelectingFinger is still set.</summary>
@@ -385,6 +389,8 @@ namespace Lean.Touch
         private void Start()
         {
             player = GameObject.FindObjectOfType<PlayerController>();
+            rb = GetComponent<Rigidbody>();
+
         }
 
         private void Update()
@@ -392,7 +398,13 @@ namespace Lean.Touch
             if(isSelected)
             {
                 transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+
             }
+            if (rb != null)
+            {
+                rb.isKinematic = (isSelected);
+            }
+
 
 
         }
