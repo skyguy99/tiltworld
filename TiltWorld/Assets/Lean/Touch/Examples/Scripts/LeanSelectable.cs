@@ -13,6 +13,7 @@ namespace Lean.Touch
 	{
 		private bool showEvents;
 
+
 		// Draw the whole inspector
 		public override void OnInspectorGUI()
 		{
@@ -77,8 +78,10 @@ namespace Lean.Touch
 		[Tooltip("If the selecting fingers are still active, only return those to RequiredSelectable queries?")]
 		public bool IsolateSelectingFingers;
 
-		/// <summary>Returns isSelected, or false if HideWithFinger is true and SelectingFinger is still set.</summary>
-		public bool IsSelected
+        PlayerController player;
+
+        /// <summary>Returns isSelected, or false if HideWithFinger is true and SelectingFinger is still set.</summary>
+        public bool IsSelected
 		{
 			get
 			{
@@ -378,8 +381,23 @@ namespace Lean.Touch
 				Deselect();
 			}
 		}
+        //SKYLAR MOD -------------
+        private void Start()
+        {
+            player = GameObject.FindObjectOfType<PlayerController>();
+        }
 
-		protected virtual void LateUpdate()
+        private void Update()
+        {
+            if(isSelected)
+            {
+                transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+            }
+
+
+        }
+
+        protected virtual void LateUpdate()
 		{
 			// Null the selecting finger?
 			// NOTE: This is done in LateUpdate so certain OnFingerUp actions that require checking SelectingFinger can still work properly

@@ -1088,7 +1088,6 @@ GameObject:
   - component: {fileID: 765569157}
   - component: {fileID: 765569158}
   - component: {fileID: 765569159}
-  - component: {fileID: 765569160}
   m_Layer: 0
   m_Name: ObjectText
   m_TagString: ObjectText
@@ -1220,23 +1219,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.6, y: 2.89, z: 0.5}
   m_Center: {x: 0, y: 0.71, z: 0}
---- !u!114 &765569160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765569156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IgnoreStartedOverGui: 1
-  IgnoreIsOverGui: 0
-  RequiredFingerCount: 0
-  RequiredSelectable: {fileID: 0}
-  Camera: {fileID: 0}
 --- !u!1 &799924249
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,7 +2132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &928098713
 Transform:
   m_ObjectHideFlags: 0
@@ -3052,6 +3034,7 @@ GameObject:
   - component: {fileID: 1173025793}
   - component: {fileID: 1173025794}
   - component: {fileID: 1173025795}
+  - component: {fileID: 1173025789}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3076,6 +3059,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1173025789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173025787}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d1dc161741d4b91894b67e48c78ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perspectiveZoomSpeed: 0.5
+  orthoZoomSpeed: 0.5
 --- !u!114 &1173025790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7601,6 +7598,7 @@ GameObject:
   - component: {fileID: 5314376929496475057}
   - component: {fileID: 5314376929496475058}
   - component: {fileID: 5314376929496475059}
+  - component: {fileID: 5314376929496475060}
   m_Layer: 0
   m_Name: WORLDBOX-2
   m_TagString: Draggable
@@ -7730,6 +7728,42 @@ MonoBehaviour:
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 0}
   Camera: {fileID: 0}
+--- !u!114 &5314376929496475060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314376929496475051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83dcd8dace8b7fe449d796b980cb121d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeselectOnUp: 1
+  HideWithFinger: 0
+  IsolateSelectingFingers: 1
+  OnSelect:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Lean.Touch.LeanSelectable+LeanFingerEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSelectSet:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Lean.Touch.LeanSelectable+LeanFingerEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSelectUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Lean.Touch.LeanSelectable+LeanFingerEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDeselect:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  isSelected: 0
 --- !u!33 &5467828228098965151
 MeshFilter:
   m_ObjectHideFlags: 0
