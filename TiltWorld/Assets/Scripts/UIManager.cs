@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     public Transform overallObjectsContainer;
     PlayerController player;
 
+    float deltaTime;
+
     void Start()
     {
         foreach (Transform child in objectShowContainer)
@@ -58,5 +60,10 @@ public class UIManager : MonoBehaviour
             }
 
         }
+
+        //TESTING
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        float fps = 1.0f / deltaTime;
+        print("fps: " + fps);
     }
 }
