@@ -46,11 +46,11 @@ public class ObjectController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "WorldBox")
-        {
-            iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
-            audio.PlayOneShot(myWorld.audioClips[0]);
-        }
+        //if (collision.gameObject.tag == "WorldBox")
+        //{
+        //    iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
+        //    audio.PlayOneShot(myWorld.audioClips[0]);
+        //}
 
         if (collision.gameObject.GetComponent<ObjectController>() != null)
         {
@@ -65,7 +65,7 @@ public class ObjectController : MonoBehaviour
                 audio.PlayOneShot(myWorld.audioClips[1]); //accent
 
                 print("NEW OBJECT between " + objName + "| " + partnerName);
-                uIManager.ShowObjectCreated(g.GetComponent<ObjectController>().objName);
+                uIManager.ShowObjectText(g, g.GetComponent<ObjectController>().objName, "Subtext here");
 
             }
         }

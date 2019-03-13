@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CharController : MonoBehaviour
 {
-    public float speed;
-    public FloatingJoystick joystick;
     public Animator anim;
     Rigidbody rb;
     Vector3 moveVector;
@@ -21,8 +19,6 @@ public class CharController : MonoBehaviour
     void Start()
     {
         originalPos = transform.position;
-       joystick = GameObject.FindObjectOfType<FloatingJoystick>();
-        pinchZoom = GameObject.FindObjectOfType<PinchZoom>();
         Input.multiTouchEnabled = false;
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -47,17 +43,7 @@ public class CharController : MonoBehaviour
 
     private void Update()
     {
-
-        if (!pinchZoom.isPinching)
-        {
-            Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
-
-            if (moveVector != Vector3.zero)
-            {
-                transform.rotation = Quaternion.LookRotation(moveVector);
-                transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
-
-            }
+    
             anim.SetBool("run", (moveVector != Vector3.zero));
 
 
@@ -80,30 +66,13 @@ public class CharController : MonoBehaviour
                 Debug.DrawRay(startPoint, rotation * 1000, Color.white);
                 //Debug.Log("Did not Hit");
             }
-        }
 
         sword.gameObject.SetActive(anim.GetCurrentAnimatorStateInfo(0).IsName("attack"));
         accessory.gameObject.SetActive(anim.GetCurrentAnimatorStateInfo(0).IsName("attack"));
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "WorldBox")
-        {
-            GameObject.FindObjectOfType<iOSHapticFeedback>().Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
-            print("ENTERING WORLD: "+ other.GetComponent<WorldController>().num);
-            player.selectedWorld = other.GetComponent<WorldController>().num;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "WorldBox")
-        {
-            player.selectedWorld = -1;
-        }
-    }
+   
 
     void DisableKinematic()
     {
@@ -113,13 +82,13 @@ public class CharController : MonoBehaviour
     //triggered by shake
     public void LeaveWorld(WorldController world)
     {
-        print("Leaving world");
+        //print("Leaving world");
        
-        //fall
-        rb.isKinematic = true;
-        iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        ////fall
+        //rb.isKinematic = true;
+        //iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
 
-        player.selectedWorld = -1;
+        //player.selectedWorld = -1;
     }
 
     void Jump(Transform other)

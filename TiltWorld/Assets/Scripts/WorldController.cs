@@ -20,36 +20,39 @@ public class WorldController : MonoBehaviour {
     void Start () {
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
-        foreach(Transform t in transform.GetChild(0))
+        if(transform.childCount > 0)
         {
-            if(t.GetComponent<ObjectController>() != null)
+            foreach (Transform t in transform.GetChild(0))
             {
-                myObjects.Add(t.GetComponent<ObjectController>());
+                if (t.GetComponent<ObjectController>() != null)
+                {
+                    myObjects.Add(t.GetComponent<ObjectController>());
+                }
             }
-        }
 
-        for (int i = 2; i < myObjects.Count + 1; i++)
-        {
-            if(i%2 == 0)
+            for (int i = 2; i < myObjects.Count + 1; i++)
             {
-                myObjects[i - 2].isPriority = true; //assigns to half
+                if (i % 2 == 0)
+                {
+                    myObjects[i - 2].isPriority = true; //assigns to half
+                }
             }
-        }
+        } 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
         //LOCK ROTATION---------------------
-        if (player.selectedWorld == num)
-        {
-            //Snap to front of camera
+        //if (player.selectedWorld == num)
+        //{
+        //    //Snap to front of camera
 
-            //transform.parent = player.transform;
-            //transform.position = player.transform.position + player.transform.forward * 1.36f;
-            transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+        //    //transform.parent = player.transform;
+        //    //transform.position = player.transform.position + player.transform.forward * 1.36f;
+        //    transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
 
-        } 
+        //} 
 
     }
 

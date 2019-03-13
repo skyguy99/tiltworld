@@ -1,73 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     Canvas canvas;
-    public Transform objectShowContainer;
-    public Transform overallObjectsContainer;
     PlayerController player;
+    Transform ObjectText;
 
+    TextMeshPro textHeadline;
+    TextMeshPro textSubtitle;
     public bool menuIsUp;
 
     float deltaTime;
+    Transform target;
 
     void Start()
     {
-        foreach (Transform child in objectShowContainer)
-        {
-            child.gameObject.SetActive(false);
-        }
         player = GameObject.FindObjectOfType<PlayerController>();
-    }
+        ObjectText = GameObject.FindGameObjectWithTag("ObjectText").transform;
+        ObjectText.GetComponent<LineRenderer>().startWidth = 0.2f;
+        ObjectText.GetComponent<LineRenderer>().endWidth = 0.2f;
 
-    public void ShowObjectCreated(string name)
-    {
-        foreach(Transform child in objectShowContainer)
-        {
-            if(child.GetComponent<ObjectController>().objName == name)
-            {
-                //print("SHOW " + name);
-                child.gameObject.SetActive(true);
-                overallObjectsContainer.GetComponent<Animator>().SetBool("up", true);
-
-            }
-        }
-
-        StartCoroutine(BackToNoObject());
+        textHeadline = ObjectText.GetChild(0).GetComponent<TextMeshPro>();
+        textSubtitle = ObjectText.GetChild(1).GetComponent<TextMeshPro>();
+        ObjectText.gameObject.SetActive(false);
     }
 
     IEnumerator BackToNoObject()
     {
-        yield return new WaitForSeconds(7f);
-        overallObjectsContainer.GetComponent<Animator>().SetBool("up", false);
+        yield return new WaitForSeconds(20f);
+        target = null;
 
-        yield return new WaitForSeconds(1f);
-        foreach (Transform child in objectShowContainer)
-        {
-            child.gameObject.SetActive(false);
-        }
 
     }
-    // Update is called once per frame
+    public void ShowObjectText(Transform obj, string headline, string subtext)
+    {
+        target = obj;
+        textHeadline.text = headline.ToUpper();
+        textSubtitle.text = subtext;
+       
+        StartCoroutine(BackToNoObject());
+    }
+
+   
     void Update()
     {
-        menuIsUp = false;
-        foreach (Transform child in objectShowContainer)
+        ObjectText.gameObject.SetActive(target != null);
+        if (target != null)
         {
-            if (child.gameObject.activeSelf)
-            {
-                menuIsUp = true;
-                //transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
-            }
+            ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3.5f, target.transform.position.z - 0.3f);
+
+            ObjectText.GetComponent<LineRenderer>().SetPosition(0, new Vector3(ObjectText.transform.position.x, ObjectText.transform.position.y - 0.5f, ObjectText.transform.position.z));
+            ObjectText.GetComponent<LineRenderer>().SetPosition(1, target.position);
+            //make it face player?
 
         }
 
+
         //TESTING
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-        float fps = 1.0f / deltaTime;
-        print("fps: " + fps);
+        //deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        //float fps = 1.0f / deltaTime;
+        //print("fps: " + fps);
     }
 }

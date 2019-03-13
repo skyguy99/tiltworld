@@ -11,7 +11,7 @@ public class CamFollow : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindObjectOfType<CharController>().gameObject;
+        //player = GameObject.FindObjectOfType<CharController>().gameObject;
     }
     void Update()
     {
