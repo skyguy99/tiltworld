@@ -91,6 +91,7 @@ public class CharController : MonoBehaviour
     {
         if(other.tag == "WorldBox")
         {
+            GameObject.FindObjectOfType<iOSHapticFeedback>().Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
             print("ENTERING WORLD: "+ other.GetComponent<WorldController>().num);
             player.selectedWorld = other.GetComponent<WorldController>().num;
         }

@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     public Transform overallObjectsContainer;
     PlayerController player;
 
+    public bool menuIsUp;
+
     float deltaTime;
 
     void Start()
@@ -52,11 +54,13 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        menuIsUp = false;
         foreach (Transform child in objectShowContainer)
         {
-            if (child.GetComponent<ObjectController>().objName == name)
+            if (child.gameObject.activeSelf)
             {
-                transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+                menuIsUp = true;
+                //transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
             }
 
         }
