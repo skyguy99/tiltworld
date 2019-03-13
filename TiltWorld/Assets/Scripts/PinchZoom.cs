@@ -2,22 +2,15 @@
 
 public class PinchZoom : MonoBehaviour
 {
-    public float perspectiveZoomSpeed = 0.2f;        // The rate of change of the field of view in perspective mode.
-    public float orthoZoomSpeed = 0.2f;        // The rate of change of the orthographic size in orthographic mode.
+    public float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
+    public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
 
-    public bool isPinching;
 
     void Update()
     {
-
-        //print(Input.touchCount);
         // If there are two touches on the device...
         if (Input.touchCount == 2)
         {
-
-            print("ZOOMING");
-            isPinching = true;
-
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -33,30 +26,11 @@ public class PinchZoom : MonoBehaviour
             // Find the difference in the distances between each frame.
             float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-            // If the camera is orthographic...
-
-
-            if (Camera.main.orthographic)
-            {
-                // ... change the orthographic size based on the change in distance between the touches.
-                Camera.main.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
-
-                // Make sure the orthographic size never drops below zero.
-                Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, 0.1f);
-            }
-            else
-            {
                 // Otherwise change the field of view based on the change in distance between the touches.
-                Camera.main.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+            Camera.main.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
 
-                // Clamp the field of view to make sure it's between 0 and 180.
-                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 0.1f, 179.9f);
-
-
-            }
-        }
-        else {
-            isPinching = false;
+            // Clamp the field of view to make sure it's between 0 and 180.
+            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 0.1f, 179.9f);
         }
     }
 }

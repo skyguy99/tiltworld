@@ -6,7 +6,7 @@ public class Draggable : MonoBehaviour
     private float dist;
     private bool dragging = false;
     private Vector3 offset;
-    private Transform toDrag;
+    public Transform toDrag;
     PlayerController player;
 
     private void Start()
@@ -30,11 +30,11 @@ public class Draggable : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(pos);
-            if (Physics.Raycast(ray, out hit) && (hit.transform == transform))
+            if (Physics.Raycast(ray, out hit) && (hit.collider.tag == "Draggable"))
             {
-                Debug.Log("Touched: "+hit.transform.name);
+               
                 toDrag = hit.transform;
-
+                Debug.Log("Dragging: " + toDrag.name);
                 dist = hit.transform.position.z - Camera.main.transform.position.z;
                 v3 = new Vector3(pos.x, pos.y, dist);
                 v3 = Camera.main.ScreenToWorldPoint(v3);
@@ -56,7 +56,7 @@ public class Draggable : MonoBehaviour
         //ROTATION PART
         if(dragging)
         {
-            transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+            toDrag.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
         }
     }
 }

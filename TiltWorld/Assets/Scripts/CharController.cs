@@ -14,7 +14,6 @@ public class CharController : MonoBehaviour
 
     Transform sword;
     Transform accessory;
-    PinchZoom pinchZoom;
 
     void Start()
     {
@@ -43,8 +42,10 @@ public class CharController : MonoBehaviour
 
     private void Update()
     {
-    
-            anim.SetBool("run", (moveVector != Vector3.zero));
+
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z + 2f);
+        //transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
+        anim.SetBool("run", (rb.velocity.magnitude > 0.1f));
 
 
             //raycasting

@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
      
     iOSHapticFeedback iosHaptic;
-    public int selectedWorld = -1;
-    public Transform worldAnchor;
+    public Transform selectedObject;
 
     public float speed = 1f;
     public FloatingJoystick joystick;
