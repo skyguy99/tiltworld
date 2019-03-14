@@ -6,7 +6,6 @@ public class ObjectController : MonoBehaviour
 {
     public string objName;
     public string partnerName;
-    WorldController myWorld;
 
     public bool triggerAttack;
     iOSHapticFeedback iosHaptic;
@@ -14,6 +13,7 @@ public class ObjectController : MonoBehaviour
 
     public bool isPriority; //only priority creates combine object
     Vector3 originalPos; //resets
+    BoxCollider room;
 
     PlayerController player;
     public Transform ObjectToSpawn;
@@ -24,9 +24,8 @@ public class ObjectController : MonoBehaviour
     {
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         audio = GameObject.FindObjectOfType<AudioSource>();
-        originalPos = transform.position;
+        room = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        myWorld = transform.parent.GetComponentInParent<WorldController>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
      
     }
@@ -34,7 +33,10 @@ public class ObjectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(!room.bounds.Contains(transform.position))
+        {
+            ResetObject();
+        }
     }
 
     public void ResetObject()
@@ -46,11 +48,10 @@ public class ObjectController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.gameObject.tag == "WorldBox")
-        //{
-        //    iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
-        //    audio.PlayOneShot(myWorld.audioClips[0]);
-        //}
+        if (collision.gameObject.tag == "Wall" && originalPos == Vector3.zero)
+        {
+            originalPos = transform.position;
+        }
 
         if (collision.gameObject.GetComponent<ObjectController>() != null)
         {
@@ -62,7 +63,7 @@ public class ObjectController : MonoBehaviour
                 Transform g = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
                 g.parent = transform.parent;
                 Destroy(this);
-                audio.PlayOneShot(myWorld.audioClips[1]); //accent
+                //audio.PlayOneShot(myWorld.audioClips[1]); //accent
 
                 print("NEW OBJECT between " + objName + "| " + partnerName);
                 uIManager.ShowObjectText(g, g.GetComponent<ObjectController>().objName, "Subtext here");

@@ -15,10 +15,14 @@ public class CharController : MonoBehaviour
     Transform sword;
     Transform accessory;
 
+    Vector3 currentPlayerPos;
+    Vector3 lastPlayerPos;
+    BoxCollider room;
+
     void Start()
     {
         originalPos = transform.position;
-
+        room = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<PlayerController>();
@@ -38,12 +42,28 @@ public class CharController : MonoBehaviour
             }
         }
 
+        currentPlayerPos = player.transform.position;
+
     }
 
     private void Update()
     {
+        if (!room.bounds.Contains(transform.position))
+        {
+            rb.isKinematic = true;
+            iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        }
 
-        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z + 2f);
+
+        currentPlayerPos = player.transform.position;
+        if(currentPlayerPos != lastPlayerPos)
+        {
+            //print("pos changed!");
+            UpdateMovement();
+        }
+        lastPlayerPos = currentPlayerPos;
+
+
         //transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
         anim.SetBool("run", (rb.velocity.magnitude > 0.1f));
 
@@ -73,23 +93,18 @@ public class CharController : MonoBehaviour
 
     }
 
-   
+    void UpdateMovement()
+    {
+        rb.isKinematic = true;
+        iTween.MoveTo(gameObject, iTween.Hash("position", new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z + 2f), "time", 0.55f, "easetype", iTween.EaseType.easeOutCubic, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        //transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z + 2f);
+    }
+
+
 
     void DisableKinematic()
     {
         rb.isKinematic = false;
-    }
-
-    //triggered by shake
-    public void LeaveWorld(WorldController world)
-    {
-        //print("Leaving world");
-       
-        ////fall
-        //rb.isKinematic = true;
-        //iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
-
-        //player.selectedWorld = -1;
     }
 
     void Jump(Transform other)
