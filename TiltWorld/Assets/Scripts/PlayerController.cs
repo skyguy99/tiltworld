@@ -7,11 +7,10 @@ public class PlayerController : MonoBehaviour {
     iOSHapticFeedback iosHaptic;
     public Transform selectedObject;
 
-    public float speed = 1f;
-    public FloatingJoystick joystick;
     public BoxCollider room;
     public CharController character;
     Vector3 originPos;
+    public Transform followObject;
 
     // Use this for initialization
     void Start()
@@ -32,17 +31,9 @@ public class PlayerController : MonoBehaviour {
     {
         if (!room.bounds.Contains(transform.position))
         {
-            ResetPosition();
+            //ResetPosition();
         }
-
-            Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
-
-            if (moveVector != Vector3.zero)
-            {
-                //transform.rotation = Quaternion.LookRotation(moveVector);
-                transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
-
-            }
+        transform.position = new Vector3(followObject.position.x, followObject.position.y+3f, followObject.position.z-3f);
            
         }
 

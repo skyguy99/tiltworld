@@ -308,6 +308,8 @@ namespace Lean.Touch
 		/// <summary>This selects the current object with the specified finger.</summary>
 		public void Select(LeanFinger finger)
 		{
+
+            print("SELECT!");
 			isSelected = true;
 
 			if (finger != null)

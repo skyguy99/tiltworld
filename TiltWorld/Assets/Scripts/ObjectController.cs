@@ -36,7 +36,7 @@ public class ObjectController : MonoBehaviour
         room = player.room;
         if (!room.bounds.Contains(transform.position))
         {
-            ResetObject();
+            //ResetObject();
         }
     }
 

@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 13482838}
   - component: {fileID: 13482844}
   - component: {fileID: 13482843}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: obj1 (2)
   m_TagString: Draggable
   m_Icon: {fileID: 0}
@@ -259,7 +259,6 @@ MonoBehaviour:
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 13482844}
   Camera: {fileID: 0}
-  room: {fileID: 0}
 --- !u!114 &13482844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +319,7 @@ PrefabInstance:
     - target: {fileID: 224162125889739670, guid: cdd5474b97f1a9d40bea678ca8dec2bb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 7.33
       objectReference: {fileID: 0}
     - target: {fileID: 224162125889739670, guid: cdd5474b97f1a9d40bea678ca8dec2bb,
         type: 3}
@@ -416,6 +415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114610123882758114, guid: cdd5474b97f1a9d40bea678ca8dec2bb,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114822459827619000, guid: cdd5474b97f1a9d40bea678ca8dec2bb,
         type: 3}
@@ -545,7 +549,7 @@ MonoBehaviour:
   ReferenceDpi: 200
   GuiLayers:
     serializedVersion: 2
-    m_Bits: 307
+    m_Bits: 513
   RecordFingers: 1
   RecordThreshold: 5
   RecordLimit: 0
@@ -566,7 +570,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &319739287
 GameObject:
@@ -656,6 +660,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f364c3678cb344b5c96039fd2d1c5ea2, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f364c3678cb344b5c96039fd2d1c5ea2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06
@@ -702,15 +710,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f364c3678cb344b5c96039fd2d1c5ea2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 550
+      value: 560
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f364c3678cb344b5c96039fd2d1c5ea2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 550
+      value: 560
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f364c3678cb344b5c96039fd2d1c5ea2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 550
+      value: 560
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f364c3678cb344b5c96039fd2d1c5ea2, type: 3}
@@ -795,7 +803,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
@@ -919,7 +927,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &657985693
 GameObject:
@@ -1172,7 +1180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &765569157
 Transform:
   m_ObjectHideFlags: 0
@@ -1187,7 +1195,7 @@ Transform:
   - {fileID: 1301780059}
   - {fileID: 1514499358}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &765569158
 LineRenderer:
@@ -1670,6 +1678,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5889874524209241031, guid: 8f88d412765914ef4958d301a226935c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1653852412489909967, guid: 8f88d412765914ef4958d301a226935c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1946,7 +1959,7 @@ Transform:
   m_LocalScale: {x: 0.3316874, y: 0.2, z: 0.3466584}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: -4.6980004, y: 1.047, z: -192.573}
 --- !u!1001 &953925094
 PrefabInstance:
@@ -2429,6 +2442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BGParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 1334551929916980, guid: 3b2be4cd9092b4524a50b40ead796f57, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4925597813278870, guid: 3b2be4cd9092b4524a50b40ead796f57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.17
@@ -2459,7 +2476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4925597813278870, guid: 3b2be4cd9092b4524a50b40ead796f57, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4925597813278870, guid: 3b2be4cd9092b4524a50b40ead796f57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2555,6 +2572,51 @@ PrefabInstance:
       objectReference: {fileID: 4300002, guid: 526c7cac0e29044f5ab8e087efd5df0e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b2be4cd9092b4524a50b40ead796f57, type: 3}
+--- !u!1 &1142412177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1142412178}
+  - component: {fileID: 1142412179}
+  m_Layer: 0
+  m_Name: PlayerContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1142412178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142412177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1142412179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142412177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 477dc2b7d50494a0b906b4ae33209333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  joystick: {fileID: 1223773141}
 --- !u!1 &1173025787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,7 +2632,6 @@ GameObject:
   - component: {fileID: 1173025794}
   - component: {fileID: 1173025795}
   - component: {fileID: 1173025789}
-  - component: {fileID: 1173025791}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2593,7 +2654,7 @@ Transform:
   - {fileID: 319739288}
   - {fileID: 534669905}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1173025789
 MonoBehaviour:
@@ -2602,7 +2663,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173025787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39d1dc161741d4b91894b67e48c78ae9, type: 3}
   m_Name: 
@@ -2621,30 +2682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febf706ad2dbb47f0b40ab694a3b2f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1173025791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173025787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e278200a08f9b9f419a13f87e9559ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IgnoreStartedOverGui: 1
-  IgnoreIsOverGui: 0
-  RequiredFingerCount: 0
-  Sensitivity: 1
-  ScreenDepth:
-    Conversion: 0
-    Camera: {fileID: 0}
-    Object: {fileID: 0}
-    Layers:
-      serializedVersion: 2
-      m_Bits: 0
-    Distance: 5
 --- !u!114 &1173025792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2658,10 +2695,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 0}
-  speed: 1
-  joystick: {fileID: 1223773141}
   room: {fileID: 684189933}
   character: {fileID: 0}
+  followObject: {fileID: 1142412178}
 --- !u!82 &1173025793
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3696,7 +3732,7 @@ Transform:
   m_LocalScale: {x: 0.4544907, y: 0.2, z: 0.40962547}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -14.037001, y: -1.2240001, z: -162.88701}
 --- !u!1 &1349040647
 GameObject:
@@ -4677,7 +4713,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1698439331
 BoxCollider:
@@ -4727,7 +4763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1782417792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4741,10 +4777,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  m_BlockingObjects: 3
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
 --- !u!114 &1782417793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5046,7 +5082,6 @@ MonoBehaviour:
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 1903167343}
   Camera: {fileID: 0}
-  room: {fileID: 684189933}
 --- !u!114 &1903167343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5125,7 +5160,7 @@ Transform:
   m_Children:
   - {fileID: 1525079823}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2054932757
 GameObject:
@@ -5205,7 +5240,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &81255695385136796
 BoxCollider:
@@ -5306,7 +5341,7 @@ GameObject:
   - component: {fileID: 2297955837897987369}
   - component: {fileID: 6354137209743712195}
   - component: {fileID: 5495131984482948370}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiltworld-3-10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5417,7 +5452,7 @@ GameObject:
   - component: {fileID: 186174345178783116}
   - component: {fileID: 5497106261948709978}
   - component: {fileID: 4176728172386134697}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiltworld-3-5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5435,7 +5470,7 @@ GameObject:
   - component: {fileID: 6319961175668195859}
   - component: {fileID: 1442181182744294409}
   - component: {fileID: 5819571421991213836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiltworld-3-14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5506,7 +5541,7 @@ GameObject:
   - component: {fileID: 5150940658907821915}
   - component: {fileID: 8460827431324696705}
   - component: {fileID: 1206720182981857149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiltworld-3-6.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5543,7 +5578,7 @@ GameObject:
   - component: {fileID: 2172471071343244137}
   - component: {fileID: 2172471071343244139}
   - component: {fileID: 2172471071343244138}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: obj1 (1)
   m_TagString: Draggable
   m_Icon: {fileID: 0}
@@ -5584,7 +5619,6 @@ MonoBehaviour:
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 2172471071343244139}
   Camera: {fileID: 0}
-  room: {fileID: 0}
 --- !u!114 &2172471071343244139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5709,7 +5743,7 @@ GameObject:
   - component: {fileID: 2926825812152706948}
   - component: {fileID: 2926825812152706950}
   - component: {fileID: 2926825812152706949}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: obj1
   m_TagString: Draggable
   m_Icon: {fileID: 0}
@@ -5751,7 +5785,6 @@ MonoBehaviour:
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 2926825812152706950}
   Camera: {fileID: 0}
-  room: {fileID: 0}
 --- !u!114 &2926825812152706950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5944,7 +5977,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4246239094022476212}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: obj3f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6050,7 +6083,7 @@ GameObject:
   - component: {fileID: 5314376929496475059}
   - component: {fileID: 5314376929496475057}
   - component: {fileID: 5314376929496475060}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WORLDBOX-2
   m_TagString: Draggable
   m_Icon: {fileID: 0}
@@ -6140,7 +6173,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5314376929496475051}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52d72cc6210cb7144a24acb7402222a6, type: 3}
   m_Name: 
@@ -6162,7 +6195,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 67.1
+  m_Radius: 96
   m_Center: {x: 0, y: 3.7, z: 8.6}
 --- !u!114 &5314376929496475059
 MonoBehaviour:
@@ -6181,7 +6214,6 @@ MonoBehaviour:
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 0}
   Camera: {fileID: 0}
-  room: {fileID: 0}
 --- !u!114 &5314376929496475060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6319,7 +6351,7 @@ GameObject:
   - component: {fileID: 450650276487876340}
   - component: {fileID: 7286193567769989513}
   - component: {fileID: 111580722648459002}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiltworld-3-15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6337,7 +6369,7 @@ GameObject:
   - component: {fileID: 1613710070587935040}
   - component: {fileID: 248868221707817404}
   - component: {fileID: 2617636041157301469}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiltworld-3-17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6420,7 +6452,7 @@ GameObject:
   - component: {fileID: 7423306966357890350}
   - component: {fileID: 6428202430075584656}
   - component: {fileID: 3497847521204570641}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiltworld-3-12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6436,7 +6468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 663560220601705766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OBJECTS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6491,7 +6523,7 @@ GameObject:
   - component: {fileID: 2041710474260629001}
   - component: {fileID: 2407499785839677772}
   - component: {fileID: 3451954191555076661}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tiltworld-3-8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6581,7 +6613,7 @@ GameObject:
   - component: {fileID: 9212578621857097765}
   - component: {fileID: 9212578621857097767}
   - component: {fileID: 9212578621857097766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: obj2
   m_TagString: Draggable
   m_Icon: {fileID: 0}
@@ -6623,7 +6655,6 @@ MonoBehaviour:
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 9212578621857097767}
   Camera: {fileID: 0}
-  room: {fileID: 0}
 --- !u!114 &9212578621857097767
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,6 @@ namespace Lean.Touch
 
 		[Tooltip("The camera the translation will be calculated using (None = MainCamera)")]
 		public Camera Camera;
-        public BoxCollider room;
 
 
 #if UNITY_EDITOR
@@ -37,7 +36,6 @@ namespace Lean.Touch
 				RequiredSelectable = GetComponent<LeanSelectable>();
 			}
 
-            room = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
 		}
 
 		protected virtual void Update()
