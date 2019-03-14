@@ -26,12 +26,14 @@ public class UIManager : MonoBehaviour
 
         textHeadline = ObjectText.GetChild(0).GetComponent<TextMeshPro>();
         textSubtitle = ObjectText.GetChild(1).GetComponent<TextMeshPro>();
+
+        target = null;
         ObjectText.gameObject.SetActive(false);
     }
 
     IEnumerator BackToNoObject()
     {
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(10f);
         target = null;
 
 

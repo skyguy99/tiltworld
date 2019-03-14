@@ -18,7 +18,7 @@ public class CharController : MonoBehaviour
     void Start()
     {
         originalPos = transform.position;
-        Input.multiTouchEnabled = false;
+
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<PlayerController>();

@@ -20,6 +20,8 @@ namespace Lean.Touch
 
 		[Tooltip("The camera the translation will be calculated using (None = MainCamera)")]
 		public Camera Camera;
+        public BoxCollider room;
+
 
 #if UNITY_EDITOR
 		protected virtual void Reset()
@@ -34,6 +36,8 @@ namespace Lean.Touch
 			{
 				RequiredSelectable = GetComponent<LeanSelectable>();
 			}
+
+            room = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
 		}
 
 		protected virtual void Update()
@@ -75,7 +79,10 @@ namespace Lean.Touch
 			}
 		}
 
-		protected virtual void Translate(Vector2 screenDelta)
+
+
+        //REAL TRANSLATE
+        protected virtual void Translate(Vector2 screenDelta)
 		{
 			// Make sure the camera exists
 			var camera = LeanTouch.GetCamera(Camera, gameObject);
@@ -88,9 +95,16 @@ namespace Lean.Touch
 				// Add the deltaPosition
 				screenPoint += (Vector3)screenDelta;
 
-				// Convert back to world space
-				transform.position = camera.ScreenToWorldPoint(screenPoint);
-			}
+                // Convert back to world space
+
+                //ACTUALLY DO IT
+                //if(room.bounds.Contains(camera.ScreenToWorldPoint(screenPoint)))
+                //{
+                //    transform.position = camera.ScreenToWorldPoint(screenPoint);
+                //}
+                transform.position = camera.ScreenToWorldPoint(screenPoint);
+
+            }
 			else
 			{
 				Debug.LogError("Failed to find camera. Either tag your cameras MainCamera, or set one in this component.", this);

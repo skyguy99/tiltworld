@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - WorldBox
   - Wall
   - PlatformBase
   - Draggable
   - ObjectText
+  - Room
   layers:
   - Default
   - TransparentFX
