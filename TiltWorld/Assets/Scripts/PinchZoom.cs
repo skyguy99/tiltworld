@@ -2,7 +2,7 @@
 
 public class PinchZoom : MonoBehaviour
 {
-    public float perspectiveZoomSpeed = 0.2f;        // The rate of change of the field of view in perspective mode.
+    public float perspectiveZoomSpeed = 0.08f;        // The rate of change of the field of view in perspective mode.
     public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
 
 
@@ -12,7 +12,7 @@ public class PinchZoom : MonoBehaviour
         if (Input.touchCount == 2)
         {
 
-            print("PINCH: "+Time.time);
+            //print("PINCH: "+Time.time);
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
