@@ -35,15 +35,15 @@ public class PlayerController : MonoBehaviour {
             ResetPosition();
         }
 
-            //Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
+            Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
 
-            //if (moveVector != Vector3.zero)
-            //{
-            //    transform.rotation = Quaternion.LookRotation(moveVector);
-            //    transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
+            if (moveVector != Vector3.zero)
+            {
+                //transform.rotation = Quaternion.LookRotation(moveVector);
+                transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
 
-            //}
-            //character.anim.SetBool("run", (moveVector != Vector3.zero));
+            }
+           
         }
 
 }

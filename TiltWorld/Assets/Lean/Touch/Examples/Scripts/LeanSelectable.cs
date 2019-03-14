@@ -395,11 +395,11 @@ namespace Lean.Touch
 
         private void Update()
         {
-            if(isSelected)
-            {
-                transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+            //if(isSelected)
+            //{
+            //    transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
 
-            }
+            //}
             if (rb != null)
             {
                 rb.isKinematic = (isSelected);
