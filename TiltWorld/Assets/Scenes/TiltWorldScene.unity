@@ -2665,7 +2665,6 @@ MonoBehaviour:
   selectedObject: {fileID: 0}
   room: {fileID: 684189933}
   character: {fileID: 0}
-  followObject: {fileID: 0}
 --- !u!82 &1173025793
 AudioSource:
   m_ObjectHideFlags: 0

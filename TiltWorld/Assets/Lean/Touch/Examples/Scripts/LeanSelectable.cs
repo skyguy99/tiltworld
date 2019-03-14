@@ -83,6 +83,7 @@ namespace Lean.Touch
         Rigidbody rb;
         bool rbHadGravity;
         PlayerController player;
+        public static bool SomethingIsSelected;
 
         /// <summary>Returns isSelected, or false if HideWithFinger is true and SelectingFinger is still set.</summary>
         public bool IsSelected
@@ -308,8 +309,8 @@ namespace Lean.Touch
 		/// <summary>This selects the current object with the specified finger.</summary>
 		public void Select(LeanFinger finger)
 		{
-
-            print("SELECT!");
+            SomethingIsSelected = true;
+            //print("SELECT!");
 			isSelected = true;
 
 			if (finger != null)
@@ -338,6 +339,9 @@ namespace Lean.Touch
 		[ContextMenu("Deselect")]
 		public void Deselect()
 		{
+            SomethingIsSelected = false;
+           //print("Deselect!");
+
 			// Make sure we don't deselect multiple times
 			if (isSelected == true)
 			{
@@ -397,11 +401,11 @@ namespace Lean.Touch
 
         private void Update()
         {
-            //if(isSelected)
-            //{
-            //    transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
-
-            //}
+            if(isSelected)
+            {
+                transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+               
+            }
             if (rb != null)
             {
                 rb.isKinematic = (isSelected);

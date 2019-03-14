@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lean.Touch;
 
 public class Mover : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Mover : MonoBehaviour
         //Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
         Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
 
-        if (moveVector != Vector3.zero)
+        if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected)
             {
                 //transform.rotation = Quaternion.LookRotation(moveVector);
                 transform.Translate(moveVector * speed * Time.deltaTime, Space.World);

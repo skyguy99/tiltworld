@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
     public BoxCollider room;
     public CharController character;
     Vector3 originPos;
-    public Transform followObject;
 
     // Use this for initialization
     void Start()
@@ -33,7 +32,6 @@ public class PlayerController : MonoBehaviour {
         {
             //ResetPosition();
         }
-        //transform.position = new Vector3(followObject.position.x, followObject.position.y+3f, followObject.position.z-3f);
            
         }
 
