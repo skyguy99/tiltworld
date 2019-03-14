@@ -23,7 +23,7 @@ RenderSettings:
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
-  m_AmbientGroundColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
+  m_AmbientGroundColor: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
   m_AmbientIntensity: 1.97
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
@@ -1166,13 +1166,13 @@ GameObject:
   m_Component:
   - component: {fileID: 765569157}
   - component: {fileID: 765569158}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ObjectText
   m_TagString: ObjectText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &765569157
 Transform:
   m_ObjectHideFlags: 0
@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 950226482}
   - component: {fileID: 950226481}
   - component: {fileID: 950226480}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2570,7 +2570,6 @@ GameObject:
   - component: {fileID: 1173025794}
   - component: {fileID: 1173025795}
   - component: {fileID: 1173025789}
-  - component: {fileID: 1173025791}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2621,30 +2620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febf706ad2dbb47f0b40ab694a3b2f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1173025791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173025787}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e278200a08f9b9f419a13f87e9559ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IgnoreStartedOverGui: 1
-  IgnoreIsOverGui: 0
-  RequiredFingerCount: 0
-  Sensitivity: 1
-  ScreenDepth:
-    Conversion: 0
-    Camera: {fileID: 534669904}
-    Object: {fileID: 0}
-    Layers:
-      serializedVersion: 2
-      m_Bits: 0
-    Distance: 5
 --- !u!114 &1173025792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3291,7 +3266,7 @@ GameObject:
   - component: {fileID: 1301780062}
   - component: {fileID: 1301780061}
   - component: {fileID: 1301780060}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TextMeshPro (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3606,7 +3581,7 @@ GameObject:
   - component: {fileID: 1326607030}
   - component: {fileID: 1326607029}
   - component: {fileID: 1326607028}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3985,7 +3960,7 @@ GameObject:
   - component: {fileID: 1514499361}
   - component: {fileID: 1514499360}
   - component: {fileID: 1514499359}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TextMeshPro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4652,7 +4627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1698439330
 Transform:
   m_ObjectHideFlags: 0
