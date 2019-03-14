@@ -35,11 +35,12 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         target = null;
-
+        ObjectText.gameObject.SetActive(false);
 
     }
     public void ShowObjectText(Transform obj, string headline, string subtext)
     {
+        ObjectText.gameObject.SetActive(true);
         target = obj;
         textHeadline.text = headline.ToUpper();
         textSubtitle.text = subtext;
@@ -50,7 +51,7 @@ public class UIManager : MonoBehaviour
    
     void Update()
     {
-        ObjectText.gameObject.SetActive(target != null);
+        //ObjectText.gameObject.SetActive(target != null);
         if (target != null)
         {
             ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3.5f, target.transform.position.z - 0.3f);

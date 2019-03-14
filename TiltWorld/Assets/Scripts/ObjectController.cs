@@ -22,9 +22,9 @@ public class ObjectController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        originalPos = Vector3.zero;
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         audio = GameObject.FindObjectOfType<AudioSource>();
-        room = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
         player = GameObject.FindObjectOfType<PlayerController>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
      
@@ -33,7 +33,8 @@ public class ObjectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!room.bounds.Contains(transform.position))
+        room = player.room;
+        if (!room.bounds.Contains(transform.position))
         {
             ResetObject();
         }

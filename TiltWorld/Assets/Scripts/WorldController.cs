@@ -13,11 +13,12 @@ public class WorldController : MonoBehaviour {
 
     public AudioClip[] audioClips;
     public List<ObjectController> myObjects;
-
+    BoxCollider room;
 
 
     // Use this for initialization
     void Start () {
+
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
         if(transform.childCount > 0)
@@ -53,6 +54,11 @@ public class WorldController : MonoBehaviour {
         //    transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
 
         //} 
+        room = player.room;
+        if (!room.bounds.Contains(transform.position))
+        {
+            iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        }
 
     }
 

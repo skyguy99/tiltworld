@@ -21,8 +21,7 @@ public class CharController : MonoBehaviour
 
     void Start()
     {
-        originalPos = transform.position;
-        room = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
+        //originalPos = transform.position;
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<PlayerController>();
@@ -48,6 +47,7 @@ public class CharController : MonoBehaviour
 
     private void Update()
     {
+        room = player.room;
         if (!room.bounds.Contains(transform.position))
         {
             rb.isKinematic = true;

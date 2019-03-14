@@ -2570,6 +2570,7 @@ GameObject:
   - component: {fileID: 1173025794}
   - component: {fileID: 1173025795}
   - component: {fileID: 1173025789}
+  - component: {fileID: 1173025791}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2620,6 +2621,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febf706ad2dbb47f0b40ab694a3b2f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1173025791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173025787}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e278200a08f9b9f419a13f87e9559ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IgnoreStartedOverGui: 1
+  IgnoreIsOverGui: 0
+  RequiredFingerCount: 0
+  Sensitivity: 1
+  ScreenDepth:
+    Conversion: 0
+    Camera: {fileID: 534669904}
+    Object: {fileID: 0}
+    Layers:
+      serializedVersion: 2
+      m_Bits: 0
+    Distance: 5
 --- !u!114 &1173025792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2635,6 +2660,7 @@ MonoBehaviour:
   selectedObject: {fileID: 0}
   speed: 1
   joystick: {fileID: 0}
+  room: {fileID: 684189933}
   character: {fileID: 0}
 --- !u!82 &1173025793
 AudioSource:
@@ -4649,7 +4675,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698439329}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.28
@@ -4782,6 +4808,7 @@ GameObject:
   - component: {fileID: 1797644991}
   - component: {fileID: 1797644990}
   - component: {fileID: 1797644992}
+  - component: {fileID: 1797644993}
   m_Layer: 0
   m_Name: -GAMECONTROLLER
   m_TagString: Untagged
@@ -4938,6 +4965,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1797644993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797644988}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b9753d9e3ba4f9591e4276db2b6519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 0, y: 0, z: 0}
+  avgSpeed: {x: 0, y: 0, z: 0}
+  rotationSpeed: 0
+  lerpSpeed: 0
+  refObject: {fileID: 0}
 --- !u!1 &1903167340
 GameObject:
   m_ObjectHideFlags: 0
@@ -6488,7 +6532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IgnoreStartedOverGui: 1
-  IgnoreIsOverGui: 0
+  IgnoreIsOverGui: 1
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 9212578621857097767}
   Camera: {fileID: 0}

@@ -9,35 +9,41 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 1f;
     public FloatingJoystick joystick;
-
+    public BoxCollider room;
     public CharController character;
     Vector3 originPos;
 
     // Use this for initialization
     void Start()
     {
+        //room = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
         character = GameObject.FindObjectOfType<CharController>();
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
-
+        originPos = transform.position;
 
     }
 
     public void ResetPosition()
     {
-        iTween.MoveTo(gameObject, iTween.Hash("position", originPos, "time", 0.45f, "easetype", iTween.EaseType.easeOutBounce));
+        iTween.MoveTo(gameObject, iTween.Hash("position", originPos, "time", 0.45f, "easetype", iTween.EaseType.easeOutExpo));
     }
 
     void Update()
     {
-        //Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
+        if (!room.bounds.Contains(transform.position))
+        {
+            ResetPosition();
+        }
 
-        //if (moveVector != Vector3.zero)
-        //{
-        //    transform.rotation = Quaternion.LookRotation(moveVector);
-        //    transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
+            //Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
 
-        //}
-        //character.anim.SetBool("run", (moveVector != Vector3.zero));
-    }
+            //if (moveVector != Vector3.zero)
+            //{
+            //    transform.rotation = Quaternion.LookRotation(moveVector);
+            //    transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
+
+            //}
+            //character.anim.SetBool("run", (moveVector != Vector3.zero));
+        }
 
 }
