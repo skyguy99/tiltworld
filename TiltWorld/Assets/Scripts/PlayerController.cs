@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
         {
             //ResetPosition();
         }
-        transform.position = new Vector3(followObject.position.x, followObject.position.y+3f, followObject.position.z-3f);
+        //transform.position = new Vector3(followObject.position.x, followObject.position.y+3f, followObject.position.z-3f);
            
         }
 
