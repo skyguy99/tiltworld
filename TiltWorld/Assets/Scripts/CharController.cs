@@ -47,6 +47,14 @@ public class CharController : MonoBehaviour
 
     private void Update()
     {
+
+        if (GetComponentInChildren<Renderer>().isVisible)
+        {
+            //print("Saw character!");
+            player.sawCharacter = true;
+
+        }
+
         room = player.room;
         if (!room.bounds.Contains(transform.position))
         {

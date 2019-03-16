@@ -29,6 +29,17 @@ public class UIManager : MonoBehaviour
 
         target = null;
         ObjectText.gameObject.SetActive(false);
+
+        if(!PlayerPrefs.HasKey("playedOnce"))
+        {
+            //play 
+        }
+       
+    }
+
+    void PlayInstructions()
+    {
+        PlayerPrefs.SetInt("playedOnce", 1);
     }
 
     IEnumerator BackToNoObject()

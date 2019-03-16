@@ -11,6 +11,8 @@ public class Mover : MonoBehaviour
     PlayerController player;
     public bool isMoving;
 
+    //time to start = 7 seconds
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,7 @@ public class Mover : MonoBehaviour
         Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
 
         isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);
-        if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected)
+        if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected && Time.time > 7f && player.sawCharacter)
             {
                 //transform.rotation = Quaternion.LookRotation(moveVector);
                 transform.Translate(moveVector * speed * Time.deltaTime, Space.World);

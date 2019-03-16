@@ -855,7 +855,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 62.5
+  field of view: 62.8
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2460,6 +2460,7 @@ GameObject:
   - component: {fileID: 1173025789}
   - component: {fileID: 1173025791}
   - component: {fileID: 1173025793}
+  - component: {fileID: 1173025796}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2545,6 +2546,7 @@ MonoBehaviour:
   audioAccents: {fileID: 1797644992}
   audioBackground: {fileID: 0}
   mover: {fileID: 0}
+  sawCharacter: 0
 --- !u!82 &1173025793
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2667,6 +2669,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.05
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1173025796
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173025787}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50b480330d6aa4e34bd3fb0363d74255, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1183773106
 PrefabInstance:
   m_ObjectHideFlags: 0

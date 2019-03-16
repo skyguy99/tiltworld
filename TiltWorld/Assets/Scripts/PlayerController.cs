@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
     public AudioSource audioBackground;
     public Mover mover;
 
+    public bool sawCharacter;
+
     // Use this for initialization
     void Start()
     {
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
+       
         if (!room.bounds.Contains(transform.position))
         {
             //ResetPosition();
