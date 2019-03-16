@@ -11,7 +11,6 @@ public class WorldController : MonoBehaviour {
     PlayerController player;
     public Vector3 originalPos;
 
-    public AudioClip[] audioClips;
     public List<ObjectController> myObjects;
     BoxCollider room;
 

@@ -55,17 +55,20 @@ public class CharController : MonoBehaviour
         }
 
 
-        currentPlayerPos = player.transform.position;
-        if(currentPlayerPos != lastPlayerPos)
-        {
-            //print("pos changed!");
-            UpdateMovement();
-        }
-        lastPlayerPos = currentPlayerPos;
+        //currentPlayerPos = player.transform.position;
+        //if(currentPlayerPos != lastPlayerPos)
+        //{
+        //    print("pos changed!");
+        //    UpdateMovement();
+        //}
+        //lastPlayerPos = currentPlayerPos;
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f);
+
 
 
         //transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
-        anim.SetBool("run", (rb.velocity.magnitude > 0.1f));
+        transform.localEulerAngles = new Vector3(transform.rotation.x, player.transform.rotation.y, transform.rotation.z);
+        anim.SetBool("run", player.mover.isMoving);
 
 
             //raycasting

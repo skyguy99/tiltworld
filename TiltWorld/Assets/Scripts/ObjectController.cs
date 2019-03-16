@@ -9,7 +9,7 @@ public class ObjectController : MonoBehaviour
 
     public bool triggerAttack;
     iOSHapticFeedback iosHaptic;
-    AudioSource audio;
+   
 
     public bool isPriority; //only priority creates combine object
     Vector3 originalPos; //resets
@@ -24,7 +24,7 @@ public class ObjectController : MonoBehaviour
     {
         originalPos = Vector3.zero;
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
-        audio = GameObject.FindObjectOfType<AudioSource>();
+     
         player = GameObject.FindObjectOfType<PlayerController>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
      
@@ -36,7 +36,7 @@ public class ObjectController : MonoBehaviour
         room = player.room;
         if (!room.bounds.Contains(transform.position))
         {
-            //ResetObject();
+            ResetObject();
         }
     }
 
@@ -49,6 +49,8 @@ public class ObjectController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
+
         if (collision.gameObject.tag == "Wall" && originalPos == Vector3.zero)
         {
             originalPos = transform.position;
@@ -64,12 +66,16 @@ public class ObjectController : MonoBehaviour
                 Transform g = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
                 g.parent = transform.parent;
                 Destroy(this);
-                //audio.PlayOneShot(myWorld.audioClips[1]); //accent
+                player.audioAccents.PlayOneShot(player.audioClips[1]); //accent
 
                 print("NEW OBJECT between " + objName + "| " + partnerName);
+                iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.Success);
                 uIManager.ShowObjectText(g, g.GetComponent<ObjectController>().objName, "Subtext here");
 
             }
+        } else if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Room")
+        { //is not player or other object
+            player.audioAccents.PlayOneShot(player.audioClips[0]); //metal hit
         }
     }
 

@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour {
     public CharController character;
     Vector3 originPos;
 
+    public AudioClip[] audioClips;
+    public AudioSource audioAccents;
+    public AudioSource audioBackground;
+    public Mover mover;
+
     // Use this for initialization
     void Start()
     {
@@ -18,7 +23,8 @@ public class PlayerController : MonoBehaviour {
         character = GameObject.FindObjectOfType<CharController>();
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         originPos = transform.position;
-
+        mover = GetComponent<Mover>();
+        audioBackground = GetComponent<AudioSource>();
     }
 
     public void ResetPosition()

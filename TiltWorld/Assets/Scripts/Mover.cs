@@ -9,6 +9,7 @@ public class Mover : MonoBehaviour
     public float speed = 3.3f;
     public FloatingJoystick joystick;
     PlayerController player;
+    public bool isMoving;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class Mover : MonoBehaviour
         //Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
         Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
 
+        isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);
         if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected)
             {
                 //transform.rotation = Quaternion.LookRotation(moveVector);
