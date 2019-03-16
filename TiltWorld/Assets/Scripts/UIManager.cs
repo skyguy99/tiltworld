@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
 
         if(!PlayerPrefs.HasKey("playedOnce"))
         {
-            //play 
+            PlayInstructions();
         }
        
     }

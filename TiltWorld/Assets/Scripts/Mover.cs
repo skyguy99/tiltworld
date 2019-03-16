@@ -8,7 +8,6 @@ public class Mover : MonoBehaviour
 
     public float speed = 3.3f;
     public FloatingJoystick joystick;
-    PlayerController player;
     public bool isMoving;
 
     //time to start = 7 seconds
@@ -28,7 +27,7 @@ public class Mover : MonoBehaviour
         Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
 
         isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);
-        if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected && Time.time > 7f && player.sawCharacter)
+        if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected && Time.time > 6f && PlayerPrefs.HasKey("playedOnce"))
             {
                 //transform.rotation = Quaternion.LookRotation(moveVector);
                 transform.Translate(moveVector * speed * Time.deltaTime, Space.World);

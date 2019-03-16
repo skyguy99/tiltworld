@@ -18,10 +18,13 @@ public class CharController : MonoBehaviour
     Vector3 currentPlayerPos;
     Vector3 lastPlayerPos;
     BoxCollider room;
+    Renderer rend;
+    bool canFollow;
 
     void Start()
     {
         //originalPos = transform.position;
+        rend = GetComponentInChildren<Renderer>();
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindObjectOfType<PlayerController>();
@@ -42,17 +45,46 @@ public class CharController : MonoBehaviour
         }
 
         currentPlayerPos = player.transform.position;
+        InvokeRepeating("RepeatIntroAnim", 0f, 4.5f);
 
+    }
+
+
+    //INTRO animate
+    void RepeatIntroAnim()
+    {
+ 
+        MoveToiTween(new Vector3(transform.position.x, 0.5f, transform.position.z), 2f);
+        anim.SetTrigger("attack");
+    }
+
+    IEnumerator introRot()
+    {
+        yield return new WaitForSeconds(2.5f);
+     
+        rb.isKinematic = true;
+        iTween.RotateBy(gameObject, iTween.Hash("y", .5, "easeType", "easeInOutBack", "loopType", iTween.LoopType.none, "delay", 0f));
+        yield return new WaitForSeconds(2f);
+        rb.isKinematic = false;
+        canFollow = true;
+    }
+
+    IEnumerator CancelIntro()
+    {
+        yield return new WaitForSeconds(2f);
+        CancelInvoke("RepeatIntroAnim");
+        StartCoroutine(introRot());
     }
 
     private void Update()
     {
 
-        if (GetComponentInChildren<Renderer>().isVisible)
+        if (rend.isVisible && !player.sawCharacter)
         {
-            //print("Saw character!");
+            print("Saw character!");
             player.sawCharacter = true;
-
+            StartCoroutine(CancelIntro());
+  
         }
 
         room = player.room;
@@ -70,12 +102,16 @@ public class CharController : MonoBehaviour
         //    UpdateMovement();
         //}
         //lastPlayerPos = currentPlayerPos;
-        transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f);
+
+        if(canFollow)
+        {
+            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f);
 
 
 
-        //transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
-        transform.localEulerAngles = new Vector3(transform.rotation.x, player.transform.rotation.y, transform.rotation.z);
+            transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
+            //transform.localEulerAngles = new Vector3(transform.rotation.x, player.transform.rotation.y, transform.rotation.z);
+        }
         anim.SetBool("run", player.mover.isMoving);
 
 
@@ -111,7 +147,11 @@ public class CharController : MonoBehaviour
         //transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z + 2f);
     }
 
-
+    void MoveToiTween(Vector3 vector, float duration)
+    {
+        rb.isKinematic = true;
+        iTween.MoveTo(gameObject, iTween.Hash("position", vector, "time", duration, "easetype", iTween.EaseType.easeInBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+    }
 
     void DisableKinematic()
     {
