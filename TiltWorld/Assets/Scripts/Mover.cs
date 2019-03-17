@@ -26,6 +26,7 @@ public class Mover : MonoBehaviour
         //Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
         Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
 
+
         isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);
         if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected && Time.time > 6f && PlayerPrefs.HasKey("playedOnce"))
             {

@@ -24,10 +24,15 @@ public class VideoPlayerRawImage : MonoBehaviour
     }
     void Update()
     {
-        index = (int)(Time.time * framesPerSecond) % frames.Length;
+        if(frames.Length > 0)
+        {
+            index = (int)(Time.time * framesPerSecond) % frames.Length;
+            image.sprite = frames[index];
+        }
+       
 
         //this.GetComponent<Renderer>().material.mainTexture = frames[index];
-        image.sprite = frames[index];
+      
 
 
         //repeat

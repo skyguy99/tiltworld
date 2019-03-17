@@ -18,19 +18,16 @@ public class UIManager : MonoBehaviour
     float deltaTime;
     Transform target;
 
-    public Image instructionsTitle;
-    public Image instructionsGesture;
+    public Image uiImage;
     bool playingInstructions;
 
-    public Frames[] instructionsTitleFrames;
-    public Frames[] instructionsGestureFrames;
+    public Frames[] uiFrames;
 
-    [System.Serializable]
+    [System.Serializable] //So I can swap in other ui later
     public class Frames
     {
         public Sprite[] frames;
     }
-    int instructionIndex;
 
 
     void Start()
@@ -87,29 +84,10 @@ public class UIManager : MonoBehaviour
 
         if(playingInstructions)
         {
+
             PlayerPrefs.SetInt("playedOnce", 1);
 
-            instructionsTitle.GetComponent<VideoPlayerRawImage>().frames = instructionsGestureFrames[instructionIndex].frames;
-            instructionsGesture.GetComponent<VideoPlayerRawImage>().frames = instructionsGestureFrames[instructionIndex].frames;
-            instructionsGesture.enabled = !instructionsTitle.enabled;
-
-            if (instructionsTitle.GetComponent<VideoPlayerRawImage>().done)
-            {
-                instructionIndex++;
-                instructionsTitle.GetComponent<VideoPlayerRawImage>().Reset();
-                instructionsTitle.enabled = false;
-            }
-            if(instructionsGesture.GetComponent<VideoPlayerRawImage>().done)
-            {
-                instructionsGesture.GetComponent<VideoPlayerRawImage>().Reset();
-                instructionsTitle.enabled = true;
-            }
-
-            if(instructionIndex == 2)
-            {
-                playingInstructions = false;
-            }
-
+            //uiImage.GetComponent<VideoPlayerRawImage>().frames = uiFrames[0].frames;
         }
 
 
