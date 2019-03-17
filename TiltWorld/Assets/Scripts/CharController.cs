@@ -73,6 +73,7 @@ public class CharController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         CancelInvoke("RepeatIntroAnim");
+        MoveToiTween(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f), 2f);
         StartCoroutine(introRot());
     }
 

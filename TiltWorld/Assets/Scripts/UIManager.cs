@@ -11,9 +11,9 @@ public class UIManager : MonoBehaviour
     PlayerController player;
     Transform ObjectText;
 
-    TextMeshPro textHeadline;
-    TextMeshPro textSubtitle;
-    public bool menuIsUp;
+    public TextMeshPro textHeadline;
+    public TextMeshPro textSubtitle;
+    public Transform circle;
 
     float deltaTime;
     Transform target;
@@ -62,12 +62,17 @@ public class UIManager : MonoBehaviour
     {
         ObjectText.gameObject.SetActive(true);
         target = obj;
-        textHeadline.text = headline.ToUpper();
+        textHeadline.text = headline;
         textSubtitle.text = subtext;
        
         StartCoroutine(BackToNoObject());
     }
 
+    void waitToEndInstructions()
+    {
+        uiImage.GetComponent<VideoPlayerRawImage>().enabled = true;
+        playingInstructions = false;
+    }
    
     void Update()
     {
@@ -78,7 +83,8 @@ public class UIManager : MonoBehaviour
 
             ObjectText.GetComponent<LineRenderer>().SetPosition(0, new Vector3(ObjectText.transform.position.x, ObjectText.transform.position.y - 0.5f, ObjectText.transform.position.z));
             ObjectText.GetComponent<LineRenderer>().SetPosition(1, target.position);
-            //make it face player?
+
+            circle.transform.position = target.transform.position;
 
         }
 
@@ -87,7 +93,12 @@ public class UIManager : MonoBehaviour
 
             PlayerPrefs.SetInt("playedOnce", 1);
 
-            //uiImage.GetComponent<VideoPlayerRawImage>().frames = uiFrames[0].frames;
+            if(uiImage.GetComponent<VideoPlayerRawImage>().index == 500)
+            {
+               uiImage.GetComponent<VideoPlayerRawImage>().enabled = false;
+                Invoke("waitToEndInstructions", 2f);
+            }
+
         }
 
 

@@ -61,7 +61,7 @@ public class ObjectController : MonoBehaviour
 
         if (collision.gameObject.GetComponent<ObjectController>() != null)
         {
-            if (collision.gameObject.GetComponent<ObjectController>().objName == partnerName && isPriority && ObjectToSpawn != null && (renderer.isVisible))
+            if (collision.gameObject.GetComponent<ObjectController>().objName == partnerName && isPriority && ObjectToSpawn != null) //&& (renderer.isVisible)
             {
 
                 Destroy(collision.gameObject.gameObject);
@@ -73,7 +73,7 @@ public class ObjectController : MonoBehaviour
 
                 print("NEW OBJECT between " + objName + "| " + partnerName);
                 iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.Success);
-                uIManager.ShowObjectText(g, g.GetComponent<ObjectController>().objName, "Subtext here");
+                uIManager.ShowObjectText(g, "COMBO ITEM", g.GetComponent<ObjectController>().objName);
 
             }
         } else if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Room")

@@ -12,6 +12,8 @@ public class VideoPlayerRawImage : MonoBehaviour
     Image image;
 
 
+
+
     private void Start()
     {
         image = GetComponent<Image>();
