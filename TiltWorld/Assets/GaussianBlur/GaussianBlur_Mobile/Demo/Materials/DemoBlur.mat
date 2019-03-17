@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DemoBlur
   m_Shader: {fileID: 4800000, guid: 354c9d8f0ecd04d3da4545c4d3f7c159, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -68,7 +68,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Lightness: 1.38
+    - _Lightness: 0.6
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

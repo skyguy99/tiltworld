@@ -9,7 +9,6 @@ public class ObjectController : MonoBehaviour
 
     public bool triggerAttack;
     iOSHapticFeedback iosHaptic;
-   
 
     public bool isPriority; //only priority creates combine object
     Vector3 originalPos; //resets
@@ -18,13 +17,15 @@ public class ObjectController : MonoBehaviour
     PlayerController player;
     public Transform ObjectToSpawn;
     UIManager uIManager;
+    public Renderer renderer;
 
     // Start is called before the first frame update
     void Start()
     {
+
         originalPos = Vector3.zero;
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
-     
+        renderer = GetComponent<Renderer>();
         player = GameObject.FindObjectOfType<PlayerController>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
      
@@ -33,6 +34,8 @@ public class ObjectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.FindObjectOfType<PlayerController>();
+
         room = player.room;
         if (!room.bounds.Contains(transform.position))
         {
@@ -58,7 +61,7 @@ public class ObjectController : MonoBehaviour
 
         if (collision.gameObject.GetComponent<ObjectController>() != null)
         {
-            if (collision.gameObject.GetComponent<ObjectController>().objName == partnerName && isPriority && ObjectToSpawn != null)
+            if (collision.gameObject.GetComponent<ObjectController>().objName == partnerName && isPriority && ObjectToSpawn != null && (renderer.isVisible))
             {
 
                 Destroy(collision.gameObject.gameObject);

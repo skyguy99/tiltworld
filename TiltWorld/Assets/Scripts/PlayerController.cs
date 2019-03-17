@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        //room = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
+        // = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
         character = GameObject.FindObjectOfType<CharController>();
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         originPos = transform.position;

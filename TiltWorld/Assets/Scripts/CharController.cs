@@ -108,8 +108,11 @@ public class CharController : MonoBehaviour
             transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f);
 
 
+            Vector3 rot = player.transform.forward;
+            rot.y = 0f;
 
-            transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
+            transform.rotation = Quaternion.LookRotation(rot);
+            //transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
             //transform.localEulerAngles = new Vector3(transform.rotation.x, player.transform.rotation.y, transform.rotation.z);
         }
         anim.SetBool("run", player.mover.isMoving);
