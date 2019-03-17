@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -17,6 +18,21 @@ public class UIManager : MonoBehaviour
     float deltaTime;
     Transform target;
 
+    public Image instructionsTitle;
+    public Image instructionsGesture;
+    bool playingInstructions;
+
+    public Frames[] instructionsTitleFrames;
+    public Frames[] instructionsGestureFrames;
+
+    [System.Serializable]
+    public class Frames
+    {
+        public Sprite[] frames;
+    }
+    int instructionIndex;
+
+
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerController>();
@@ -30,16 +46,12 @@ public class UIManager : MonoBehaviour
         target = null;
         ObjectText.gameObject.SetActive(false);
 
+        PlayerPrefs.DeleteAll(); //temp
         if(!PlayerPrefs.HasKey("playedOnce"))
         {
-            PlayInstructions();
+            playingInstructions = true;
         }
-       
-    }
 
-    void PlayInstructions()
-    {
-        PlayerPrefs.SetInt("playedOnce", 1);
     }
 
     IEnumerator BackToNoObject()
@@ -70,6 +82,33 @@ public class UIManager : MonoBehaviour
             ObjectText.GetComponent<LineRenderer>().SetPosition(0, new Vector3(ObjectText.transform.position.x, ObjectText.transform.position.y - 0.5f, ObjectText.transform.position.z));
             ObjectText.GetComponent<LineRenderer>().SetPosition(1, target.position);
             //make it face player?
+
+        }
+
+        if(playingInstructions)
+        {
+            PlayerPrefs.SetInt("playedOnce", 1);
+
+            instructionsTitle.GetComponent<VideoPlayerRawImage>().frames = instructionsGestureFrames[instructionIndex].frames;
+            instructionsGesture.GetComponent<VideoPlayerRawImage>().frames = instructionsGestureFrames[instructionIndex].frames;
+            instructionsGesture.enabled = !instructionsTitle.enabled;
+
+            if (instructionsTitle.GetComponent<VideoPlayerRawImage>().done)
+            {
+                instructionIndex++;
+                instructionsTitle.GetComponent<VideoPlayerRawImage>().Reset();
+                instructionsTitle.enabled = false;
+            }
+            if(instructionsGesture.GetComponent<VideoPlayerRawImage>().done)
+            {
+                instructionsGesture.GetComponent<VideoPlayerRawImage>().Reset();
+                instructionsTitle.enabled = true;
+            }
+
+            if(instructionIndex == 2)
+            {
+                playingInstructions = false;
+            }
 
         }
 
