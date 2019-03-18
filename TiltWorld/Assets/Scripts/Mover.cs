@@ -28,7 +28,7 @@ public class Mover : MonoBehaviour
 
         moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
 
-        //print(GameObject.FindObjectOfType<PlayerController>().room.bounds.Contains(moveVector));
+        //print(GameObject.FindObjectOfType<PlayerController>().room.bounds.Contains(camera.transform.position + moveVector));
 
 
         isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);

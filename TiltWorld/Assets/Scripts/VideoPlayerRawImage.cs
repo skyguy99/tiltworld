@@ -27,15 +27,15 @@ public class VideoPlayerRawImage : MonoBehaviour
     //}
     void Update()
     {
-        if(!pause)
+        if (!pause)
         {
             t += Time.deltaTime;
-        }
 
-        if(frames.Length > 0 && !done)
-        {
-            index = (int)(t * framesPerSecond) % frames.Length;
-            image.sprite = frames[index];
+            if (frames.Length > 0 && !done)
+            {
+                index = (int)(t * framesPerSecond) % frames.Length;
+                image.sprite = frames[index];
+            }
         }
        
 

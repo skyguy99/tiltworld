@@ -37,10 +37,6 @@ public class UIManager : MonoBehaviour
         ObjectText.GetComponent<LineRenderer>().startWidth = 0.2f;
         ObjectText.GetComponent<LineRenderer>().endWidth = 0.2f;
 
-
-        textHeadline = ObjectText.GetChild(0).GetChild(0).GetComponent<TextMeshPro>();
-        textSubtitle = ObjectText.GetChild(0).GetChild(1).GetComponent<TextMeshPro>();
-
         target = null;
         ObjectText.gameObject.SetActive(false);
 
@@ -100,7 +96,6 @@ public class UIManager : MonoBehaviour
                 uiImage.GetComponent<VideoPlayerRawImage>().pause = true;
                 if (Input.touchCount > 0 || Input.GetKey("space"))
                 {
-                    print("unpause");
                     uiImage.GetComponent<VideoPlayerRawImage>().pause = false;
                 }
 

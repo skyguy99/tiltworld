@@ -4,24 +4,50 @@ using UnityEngine;
 
 public class CenterCreation : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //NOTE for future: other combos can produce same end masterpiece 
+
+    //spray can (sprays some paint on side), robot head, robot hand = BIG ROBOT
+    //flower, robot head, signletter = STEAMPUNK GARDEN CONTRAPTION (like Austin texas hand plus https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwio-9GL8IrhAhUJuZ4KHUfQC_IQjRx6BAgBEAU&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F756393699888812097%2F&psig=AOvVaw0C1WTxdEpr2fH9_zWryB8V&ust=1552970490944711)
+    //old car, wheel from pulley (falls off), slingshot = piecemeal spaceship
 
     UIManager uIManager;
+    PlayerController player;
    
     //store object name, then object that it instantiates
     [System.Serializable]
     public class ObjectsThatCollide
     {
-
+        public string[] objectsCombo = new string[3];
+        public Transform masterpiece;
     }
 
-    public List<string> objectsThatHaveCollided; //certain 3 object combos produce different end center creations (order matters)
+    public ObjectsThatCollide[] masterpieceQueue;
 
+    public string[] objectsThatHaveCollided = new string[3]; //certain 3 object combos produce different end center creations
+    int objectsEntered;
 
 
     void Start()
     {
+        player = GameObject.FindObjectOfType<PlayerController>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
+    }
+
+    void CheckToInstantiateMasterpiece()
+    {
+        foreach(ObjectsThatCollide o in masterpieceQueue)
+        {
+            if(o.objectsCombo == objectsThatHaveCollided && o.masterpiece != null) //Compare arrays regardless of order
+            {
+                print("INSTANTIATING MASTERPIECE FOR: "+objectsThatHaveCollided);
+                Instantiate(o.masterpiece, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                objectsThatHaveCollided = new string[3]; //clear array
+                objectsEntered = 0;
+
+                //play audio
+                player.audioAccents.PlayOneShot(player.audioClips[2]); //steampunk/gears/rolling success sound
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,7 +55,8 @@ public class CenterCreation : MonoBehaviour
         if(collision.gameObject.GetComponent<ObjectController>() != null && collision.gameObject.GetComponent<ObjectController>().renderer.isVisible)
         {
             Destroy(collision.gameObject);
-
+            objectsThatHaveCollided[objectsEntered] = collision.gameObject.GetComponent<ObjectController>().objName;
+            objectsEntered++;
         }
     }
 
@@ -41,6 +68,7 @@ public class CenterCreation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
     }
 }

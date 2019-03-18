@@ -111,7 +111,6 @@ public class CharController : MonoBehaviour
 
             Vector3 rot = player.transform.forward;
             rot.y = 0f;
-            rot.z = 0f;
 
             if(!player.mover.isMoving)
             {
