@@ -37,8 +37,9 @@ public class UIManager : MonoBehaviour
         ObjectText.GetComponent<LineRenderer>().startWidth = 0.2f;
         ObjectText.GetComponent<LineRenderer>().endWidth = 0.2f;
 
-        textHeadline = ObjectText.GetChild(0).GetComponent<TextMeshPro>();
-        textSubtitle = ObjectText.GetChild(1).GetComponent<TextMeshPro>();
+
+        textHeadline = ObjectText.GetChild(0).GetChild(0).GetComponent<TextMeshPro>();
+        textSubtitle = ObjectText.GetChild(0).GetChild(1).GetComponent<TextMeshPro>();
 
         target = null;
         ObjectText.gameObject.SetActive(false);
@@ -58,28 +59,28 @@ public class UIManager : MonoBehaviour
         ObjectText.gameObject.SetActive(false);
 
     }
-    public void ShowObjectText(Transform obj, string headline, string subtext)
+    public void ShowObjectText(Transform obj, string headline, string subtext, bool showCircle)
     {
         ObjectText.gameObject.SetActive(true);
         target = obj;
         textHeadline.text = headline;
         textSubtitle.text = subtext;
-       
+
+        circle.gameObject.SetActive(showCircle);
         StartCoroutine(BackToNoObject());
+
     }
 
-    void waitToEndInstructions()
-    {
-        uiImage.GetComponent<VideoPlayerRawImage>().enabled = true;
-        playingInstructions = false;
-    }
-   
+
+
     void Update()
     {
         //ObjectText.gameObject.SetActive(target != null);
+
+       
         if (target != null)
         {
-            ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3.5f, target.transform.position.z - 0.3f);
+            ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3.8f, target.transform.position.z - 0.3f);
 
             ObjectText.GetComponent<LineRenderer>().SetPosition(0, new Vector3(ObjectText.transform.position.x, ObjectText.transform.position.y - 0.5f, ObjectText.transform.position.z));
             ObjectText.GetComponent<LineRenderer>().SetPosition(1, target.position);
@@ -93,10 +94,16 @@ public class UIManager : MonoBehaviour
 
             PlayerPrefs.SetInt("playedOnce", 1);
 
-            if(uiImage.GetComponent<VideoPlayerRawImage>().index == 500)
+            if(uiImage.GetComponent<VideoPlayerRawImage>().index == 31 || uiImage.GetComponent<VideoPlayerRawImage>().index == 234 || uiImage.GetComponent<VideoPlayerRawImage>().index == 498)
             {
-               uiImage.GetComponent<VideoPlayerRawImage>().enabled = false;
-                Invoke("waitToEndInstructions", 2f);
+
+                uiImage.GetComponent<VideoPlayerRawImage>().pause = true;
+                if (Input.touchCount > 0 || Input.GetKey("space"))
+                {
+                    print("unpause");
+                    uiImage.GetComponent<VideoPlayerRawImage>().pause = false;
+                }
+
             }
 
         }

@@ -13,8 +13,9 @@ public class PlayerController : MonoBehaviour {
 
     public AudioClip[] audioClips;
     public AudioSource audioAccents;
-    public AudioSource audioBackground;
+    public AudioSource audioBackground; //so can change with settings later
     public Mover mover;
+    Animator anim;
 
     public bool sawCharacter;
 
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         // = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
+        anim = GetComponent<Animator>();
         character = GameObject.FindObjectOfType<CharController>();
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         originPos = transform.position;
@@ -36,12 +38,15 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-       
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("none"))
+        {
+            anim.enabled = false;
+        }
         if (!room.bounds.Contains(transform.position))
         {
             //ResetPosition();
         }
            
-        }
+    }
 
 }

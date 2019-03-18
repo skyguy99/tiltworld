@@ -19,6 +19,13 @@ public class ObjectController : MonoBehaviour
     UIManager uIManager;
     public Renderer renderer;
 
+    string ToTitleCase(string stringToConvert)
+    {
+        string firstChar = stringToConvert[0].ToString();
+        return (stringToConvert.Length > 0 ? firstChar.ToUpper() + stringToConvert.Substring(1) : stringToConvert);
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +68,7 @@ public class ObjectController : MonoBehaviour
 
         if (collision.gameObject.GetComponent<ObjectController>() != null)
         {
-            if (collision.gameObject.GetComponent<ObjectController>().objName == partnerName && isPriority && ObjectToSpawn != null) //&& (renderer.isVisible)
+            if (collision.gameObject.GetComponent<ObjectController>().objName == partnerName && isPriority && ObjectToSpawn != null && (renderer.isVisible)) //&& (renderer.isVisible)
             {
 
                 Destroy(collision.gameObject.gameObject);
@@ -73,7 +80,7 @@ public class ObjectController : MonoBehaviour
 
                 print("NEW OBJECT between " + objName + "| " + partnerName);
                 iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.Success);
-                uIManager.ShowObjectText(g, "COMBO ITEM", g.GetComponent<ObjectController>().objName);
+                uIManager.ShowObjectText(g, "COMBO ITEM", ToTitleCase(g.GetComponent<ObjectController>().objName), true);
 
             }
         } else if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Room")

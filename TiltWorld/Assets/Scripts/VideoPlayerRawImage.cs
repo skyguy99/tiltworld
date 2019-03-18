@@ -8,27 +8,33 @@ public class VideoPlayerRawImage : MonoBehaviour
     public Sprite[] frames;
     public int framesPerSecond = 60;
     public int index;
-    public bool done;
+    public bool paused;
     Image image;
 
-
-
+    float t;
+    public bool pause;
+    public bool done;
 
     private void Start()
     {
         image = GetComponent<Image>();
     }
 
-    public void Reset()
-    {
-        done = false;
-        index = 0;
-    }
+    //public void Reset()
+    //{
+    //    done = false;
+    //    index = 0;
+    //}
     void Update()
     {
-        if(frames.Length > 0)
+        if(!pause)
         {
-            index = (int)(Time.time * framesPerSecond) % frames.Length;
+            t += Time.deltaTime;
+        }
+
+        if(frames.Length > 0 && !done)
+        {
+            index = (int)(t * framesPerSecond) % frames.Length;
             image.sprite = frames[index];
         }
        
@@ -40,7 +46,6 @@ public class VideoPlayerRawImage : MonoBehaviour
         //repeat
         if(index >= frames.Length-1)
         {
-            //index = 0;
             done = true;
         }
     

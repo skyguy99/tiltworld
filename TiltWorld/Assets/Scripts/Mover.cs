@@ -28,6 +28,8 @@ public class Mover : MonoBehaviour
 
         moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
 
+        //print(GameObject.FindObjectOfType<PlayerController>().room.bounds.Contains(moveVector));
+
 
         isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);
         if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected && Time.time > 6f && PlayerPrefs.HasKey("playedOnce"))
