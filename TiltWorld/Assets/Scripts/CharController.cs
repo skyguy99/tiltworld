@@ -66,6 +66,8 @@ public class CharController : MonoBehaviour
         iTween.RotateBy(gameObject, iTween.Hash("y", .5, "easeType", "easeInOutBack", "loopType", iTween.LoopType.none, "delay", 0f));
         yield return new WaitForSeconds(2f);
         rb.isKinematic = false;
+        MoveToiTween(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 3f), 2f);
+        yield return new WaitForSeconds(1f);
         canFollow = true;
     }
 
@@ -73,7 +75,6 @@ public class CharController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         CancelInvoke("RepeatIntroAnim");
-        MoveToiTween(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 3f), 2f);
         StartCoroutine(introRot());
     }
 
@@ -116,7 +117,9 @@ public class CharController : MonoBehaviour
             {
                 transform.rotation = Quaternion.LookRotation(rot); //idle
             } else {
-                transform.rotation = Quaternion.LookRotation(player.mover.moveVector);
+
+
+                transform.rotation = Quaternion.LookRotation(new Vector3(player.mover.moveVector.x, 0f, player.mover.moveVector.z));
             }
 
         }
@@ -158,7 +161,7 @@ public class CharController : MonoBehaviour
     void MoveToiTween(Vector3 vector, float duration)
     {
         rb.isKinematic = true;
-        iTween.MoveTo(gameObject, iTween.Hash("position", vector, "time", duration, "easetype", iTween.EaseType.easeInBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+        iTween.MoveTo(gameObject, iTween.Hash("position", vector, "time", duration, "easetype", iTween.EaseType.easeOutQuad, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
     }
 
     void DisableKinematic()

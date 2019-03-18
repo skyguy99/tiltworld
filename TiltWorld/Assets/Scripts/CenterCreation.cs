@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CenterCreation : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class CenterCreation : MonoBehaviour
     {
         foreach(ObjectsThatCollide o in masterpieceQueue)
         {
-            if(o.objectsCombo == objectsThatHaveCollided && o.masterpiece != null) //Compare arrays regardless of order
+            if(o.objectsCombo.Intersect(objectsThatHaveCollided).Any() && o.masterpiece != null) //Compare arrays regardless of order
             {
                 print("INSTANTIATING MASTERPIECE FOR: "+objectsThatHaveCollided);
                 Instantiate(o.masterpiece, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
