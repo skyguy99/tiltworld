@@ -9,6 +9,7 @@ public class Mover : MonoBehaviour
     public float speed = 3.3f;
     public FloatingJoystick joystick;
     public bool isMoving;
+    public Vector3 moveVector;
 
     //time to start = 7 seconds
 
@@ -24,7 +25,8 @@ public class Mover : MonoBehaviour
 
         //transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
         //Vector3 moveVector = (Vector3.right * joystick.Horizontal + Vector3.forward * joystick.Vertical);
-        Vector3 moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
+
+        moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
 
 
         isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);

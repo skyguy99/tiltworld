@@ -73,7 +73,7 @@ public class CharController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         CancelInvoke("RepeatIntroAnim");
-        MoveToiTween(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f), 2f);
+        MoveToiTween(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 3f), 2f);
         StartCoroutine(introRot());
     }
 
@@ -106,15 +106,19 @@ public class CharController : MonoBehaviour
 
         if(canFollow)
         {
-            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 2.5f);
+            transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 3f);
 
 
             Vector3 rot = player.transform.forward;
             rot.y = 0f;
 
-            transform.rotation = Quaternion.LookRotation(rot);
-            //transform.rotation = new Quaternion(transform.rotation.x, player.transform.rotation.y, transform.rotation.z, transform.rotation.w);
-            //transform.localEulerAngles = new Vector3(transform.rotation.x, player.transform.rotation.y, transform.rotation.z);
+            if(!player.mover.isMoving)
+            {
+                transform.rotation = Quaternion.LookRotation(rot); //idle
+            } else {
+                transform.rotation = Quaternion.LookRotation(player.mover.moveVector);
+            }
+
         }
         anim.SetBool("run", player.mover.isMoving);
 
