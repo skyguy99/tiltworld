@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
     public Mover mover;
     Animator anim;
 
+    public Transform explodeCubes;
+
     public bool sawCharacter;
 
     // Use this for initialization

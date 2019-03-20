@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: cbbd650bb942e4aaca5330c6e7da4e5c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Tiltworld-8-world1-1.003
+    100002: Tiltworld-8-world1-10.003
+    100004: Tiltworld-8-world1-12
+    100006: Tiltworld-8-world1-14.001
+    100008: Tiltworld-8-world1-15.001
+    100010: Tiltworld-8-world1-15.002
+    100012: Tiltworld-8-world1-15.004
+    100014: Tiltworld-8-world1-19.001
+    100016: Tiltworld-8-world1-19.002
+    100018: Tiltworld-8-world1-2.001
+    100020: Tiltworld-8-world1-22.002
+    100022: Tiltworld-8-world1-22.003
+    100024: Tiltworld-8-world1-26.001
+    100026: Tiltworld-8-world1-27.003
+    100028: Tiltworld-8-world1-27.004
+    100030: Tiltworld-8-world1-27.005
+    100032: Tiltworld-8-world1-8.002
+    100034: //RootNode
+    400000: Tiltworld-8-world1-1.003
+    400002: Tiltworld-8-world1-10.003
+    400004: Tiltworld-8-world1-12
+    400006: Tiltworld-8-world1-14.001
+    400008: Tiltworld-8-world1-15.001
+    400010: Tiltworld-8-world1-15.002
+    400012: Tiltworld-8-world1-15.004
+    400014: Tiltworld-8-world1-19.001
+    400016: Tiltworld-8-world1-19.002
+    400018: Tiltworld-8-world1-2.001
+    400020: Tiltworld-8-world1-22.002
+    400022: Tiltworld-8-world1-22.003
+    400024: Tiltworld-8-world1-26.001
+    400026: Tiltworld-8-world1-27.003
+    400028: Tiltworld-8-world1-27.004
+    400030: Tiltworld-8-world1-27.005
+    400032: Tiltworld-8-world1-8.002
+    400034: //RootNode
+    2100000: NATURE
+    2100002: water
+    2300000: Tiltworld-8-world1-1.003
+    2300002: Tiltworld-8-world1-10.003
+    2300004: Tiltworld-8-world1-12
+    2300006: Tiltworld-8-world1-14.001
+    2300008: Tiltworld-8-world1-15.001
+    2300010: Tiltworld-8-world1-15.002
+    2300012: Tiltworld-8-world1-15.004
+    2300014: Tiltworld-8-world1-19.001
+    2300016: Tiltworld-8-world1-19.002
+    2300018: Tiltworld-8-world1-2.001
+    2300020: Tiltworld-8-world1-22.002
+    2300022: Tiltworld-8-world1-22.003
+    2300024: Tiltworld-8-world1-26.001
+    2300026: Tiltworld-8-world1-27.003
+    2300028: Tiltworld-8-world1-27.004
+    2300030: Tiltworld-8-world1-27.005
+    2300032: Tiltworld-8-world1-8.002
+    3300000: Tiltworld-8-world1-1.003
+    3300002: Tiltworld-8-world1-10.003
+    3300004: Tiltworld-8-world1-12
+    3300006: Tiltworld-8-world1-14.001
+    3300008: Tiltworld-8-world1-15.001
+    3300010: Tiltworld-8-world1-15.002
+    3300012: Tiltworld-8-world1-15.004
+    3300014: Tiltworld-8-world1-19.001
+    3300016: Tiltworld-8-world1-19.002
+    3300018: Tiltworld-8-world1-2.001
+    3300020: Tiltworld-8-world1-22.002
+    3300022: Tiltworld-8-world1-22.003
+    3300024: Tiltworld-8-world1-26.001
+    3300026: Tiltworld-8-world1-27.003
+    3300028: Tiltworld-8-world1-27.004
+    3300030: Tiltworld-8-world1-27.005
+    3300032: Tiltworld-8-world1-8.002
+    4300000: Tiltworld-8-world1-12
+    4300002: Tiltworld-8-world1-15.004
+    4300004: Tiltworld-8-world1-19.002
+    4300006: Tiltworld-8-world1-15.002
+    4300008: Tiltworld-8-world1-10.003
+    4300010: Tiltworld-8-world1-2.001
+    4300012: Tiltworld-8-world1-14.001
+    4300014: Tiltworld-8-world1-15.001
+    4300016: Tiltworld-8-world1-19.001
+    4300018: Tiltworld-8-world1-22.003
+    4300020: Tiltworld-8-world1-27.005
+    4300022: Tiltworld-8-world1-27.004
+    4300024: Tiltworld-8-world1-26.001
+    4300026: Tiltworld-8-world1-27.003
+    4300028: Tiltworld-8-world1-22.002
+    4300030: Tiltworld-8-world1-8.002
+    4300032: Tiltworld-8-world1-1.003
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NATURE
+    second: {fileID: 2100000, guid: 0ba28208018f647d88553d68224489b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: water
+    second: {fileID: 2100000, guid: ec5c256b92c1c4b0e9bf131b1bdab4de, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

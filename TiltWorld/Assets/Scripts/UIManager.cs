@@ -105,8 +105,8 @@ public class UIManager : MonoBehaviour
 
 
         //TESTING
-        //deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-        //float fps = 1.0f / deltaTime;
-        //print("fps: " + fps);
+        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+        float fps = 1.0f / deltaTime;
+        print("fps: " + fps);
     }
 }

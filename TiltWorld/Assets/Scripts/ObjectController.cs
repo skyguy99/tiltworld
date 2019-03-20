@@ -74,6 +74,8 @@ public class ObjectController : MonoBehaviour
                 Destroy(collision.gameObject.gameObject);
 
                 Transform g = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
+                Instantiate(player.explodeCubes, transform.position, Quaternion.identity);
+
                 g.parent = transform.parent;
                 Destroy(this);
                 player.audioAccents.PlayOneShot(player.audioClips[1]); //accent
