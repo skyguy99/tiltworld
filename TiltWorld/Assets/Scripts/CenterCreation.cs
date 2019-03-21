@@ -27,6 +27,8 @@ public class CenterCreation : MonoBehaviour
     public string[] objectsThatHaveCollided = new string[3]; //certain 3 object combos produce different end center creations
     int objectsEntered;
 
+    Transform masterpiece;
+
 
     void Start()
     {
@@ -41,13 +43,31 @@ public class CenterCreation : MonoBehaviour
             if(o.objectsCombo.Intersect(objectsThatHaveCollided).Any() && o.masterpiece != null) //Compare arrays regardless of order
             {
                 print("INSTANTIATING MASTERPIECE FOR: "+objectsThatHaveCollided);
-                Instantiate(o.masterpiece, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+
+                if(masterpiece == null)
+                {
+                    masterpiece = Instantiate(o.masterpiece, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+
                 objectsThatHaveCollided = new string[3]; //clear array
                 objectsEntered = 0;
 
                 //play audio
                 player.audioAccents.PlayOneShot(player.audioClips[2]); //steampunk/gears/rolling success sound
+
+
+                    Invoke("killMasterpiece", 8f);
+
+
             }
+        }
+    }
+
+    void killMasterpiece()
+    {
+        if (masterpiece != null)
+        {
+            Destroy(masterpiece.gameObject);
         }
     }
 
@@ -71,6 +91,10 @@ public class CenterCreation : MonoBehaviour
     void Update()
     {
 
+        CheckToInstantiateMasterpiece();
+        int[] test = new int[] { 1, 2, 3 };
+        int[] test2 = new int[] { 2, 1, 3 };
+        //print(test.Intersect(test2).Any());
 
     }
 }
