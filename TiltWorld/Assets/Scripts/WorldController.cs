@@ -30,13 +30,13 @@ public class WorldController : MonoBehaviour {
                 }
             }
 
-            for (int i = 2; i < myObjects.Count + 1; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    myObjects[i - 2].isPriority = true; //assigns to half
-                }
-            }
+            //for (int i = 2; i < myObjects.Count + 1; i++)
+            //{
+            //    if (i % 2 == 0)
+            //    {
+            //        myObjects[i - 2].isPriority = true; //assigns to half
+            //    }
+            //}
         } 
 	}
 	
@@ -44,15 +44,7 @@ public class WorldController : MonoBehaviour {
 	void Update () {
 
         //LOCK ROTATION---------------------
-        //if (player.selectedWorld == num)
-        //{
-        //    //Snap to front of camera
-
-        //    //transform.parent = player.transform;
-        //    //transform.position = player.transform.position + player.transform.forward * 1.36f;
-        //    transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
-
-        //} 
+      
         room = player.room;
         if (!room.bounds.Contains(transform.position))
         {

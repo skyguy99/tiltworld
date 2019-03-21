@@ -31,12 +31,9 @@ namespace Lean.Touch
 
 		protected virtual void Start()
 		{
-			if (RequiredSelectable == null)
-			{
-				RequiredSelectable = GetComponent<LeanSelectable>();
-			}
+            RequiredSelectable = GetComponent<LeanSelectable>();
 
-		}
+        }
 
 		protected virtual void Update()
 		{

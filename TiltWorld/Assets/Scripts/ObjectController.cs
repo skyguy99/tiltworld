@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class ObjectController : MonoBehaviour
 {
+    //Combo guide:
+    //tire + letterstogether = TV
+    //flower + tire = box
+    //car + flower = spray can
+    //spray can + flower = tree
+    //lettersingle + tire = car
+    //bridge + flower = tv
+
+    //would add more later
+
+
+
     public string objName;
     public string partnerName;
 
@@ -53,8 +65,7 @@ public class ObjectController : MonoBehaviour
     public void ResetObject()
     {
         print("ResetObject");
-        transform.position = originalPos;
-        transform.rotation = Quaternion.identity;
+        //transform
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -71,10 +82,11 @@ public class ObjectController : MonoBehaviour
             if (collision.gameObject.GetComponent<ObjectController>().objName == partnerName && isPriority && ObjectToSpawn != null && (renderer.isVisible)) //&& (renderer.isVisible)
             {
 
+                this.gameObject.SetActive(false);
                 Destroy(collision.gameObject.gameObject);
 
-                Transform g = Instantiate(ObjectToSpawn, transform.position, Quaternion.identity);
-                Instantiate(player.explodeCubes, transform.position, Quaternion.identity);
+                Transform g = Instantiate(ObjectToSpawn, Vector3.zero, Quaternion.identity);
+                //Instantiate(player.explodeCubes, transform.position, Quaternion.identity);
 
                 g.parent = transform.parent;
                 Destroy(this);
