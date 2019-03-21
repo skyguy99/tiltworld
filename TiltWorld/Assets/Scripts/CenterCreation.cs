@@ -51,12 +51,13 @@ public class CenterCreation : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void CollidedWith(ObjectController obj)
     {
-        if(collision.gameObject.GetComponent<ObjectController>() != null && collision.gameObject.GetComponent<ObjectController>().renderer.isVisible)
+        //print("Collide!");
+        if (obj.renderer.isVisible)
         {
-            Destroy(collision.gameObject);
-            objectsThatHaveCollided[objectsEntered] = collision.gameObject.GetComponent<ObjectController>().objName;
+            //Destroy(obj.gameObject);
+            objectsThatHaveCollided[objectsEntered] = obj.gameObject.GetComponent<ObjectController>().objName;
             objectsEntered++;
         }
     }

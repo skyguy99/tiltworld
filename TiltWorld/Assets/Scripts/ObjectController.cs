@@ -68,6 +68,14 @@ public class ObjectController : MonoBehaviour
         //transform
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.GetComponent<CenterCreation>() != null)
+        {
+            other.GetComponent<CenterCreation>().CollidedWith(gameObject.GetComponent<ObjectController>());
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -83,12 +91,13 @@ public class ObjectController : MonoBehaviour
             {
 
                 this.gameObject.SetActive(false);
-                Destroy(collision.gameObject.gameObject);
+                //Destroy(collision.gameObject.gameObject);
 
-                Transform g = Instantiate(ObjectToSpawn, Vector3.zero, Quaternion.identity);
+                Transform g = Instantiate(ObjectToSpawn, new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), Quaternion.identity);
                 //Instantiate(player.explodeCubes, transform.position, Quaternion.identity);
 
                 g.parent = transform.parent;
+                g.localScale = new Vector3(100f, 100f, 100f);
                 Destroy(this);
                 player.audioAccents.PlayOneShot(player.audioClips[1]); //accent
 
