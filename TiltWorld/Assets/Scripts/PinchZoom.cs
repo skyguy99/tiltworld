@@ -32,7 +32,7 @@ public class PinchZoom : MonoBehaviour
             Camera.main.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
 
             // Clamp the field of view to make sure it's between 0 and 180.
-            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 9f, 85f);
+            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 9f, 100f);
         }
     }
 }

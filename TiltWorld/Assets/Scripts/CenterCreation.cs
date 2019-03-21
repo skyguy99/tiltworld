@@ -46,7 +46,8 @@ public class CenterCreation : MonoBehaviour
 
                 if(masterpiece == null)
                 {
-                    masterpiece = Instantiate(o.masterpiece, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                    //masterpiece = Instantiate(o.masterpiece, new Vector3(player.transform.position.x, player.transform.position.y-2f, player.transform.position.z-3f), Quaternion.identity);
+                    //masterpiece = Instantiate(o.masterpiece, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 }
 
                 objectsThatHaveCollided = new string[3]; //clear array
@@ -56,7 +57,7 @@ public class CenterCreation : MonoBehaviour
                 player.audioAccents.PlayOneShot(player.audioClips[2]); //steampunk/gears/rolling success sound
 
 
-                    Invoke("killMasterpiece", 8f);
+                   // Invoke("killMasterpiece", 8f);
 
 
             }

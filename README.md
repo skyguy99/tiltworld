@@ -14,6 +14,7 @@
 * Gaussian blur (https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/gaussianblur-69525)
 * PinchZoom script (Unity)
 * iTween (http://www.pixelplacement.com/itween/index.php)
+* Robot model - https://sketchfab.com/3d-models/robot-walk-cycle-e98dbf758ea44320a9c482493f0d275d?ref=related
 * Skybox Shaders (https://github.com/keijiro/UnitySkyboxShaders)
 * Lean Touch (https://assetstore.unity.com/packages/tools/input-management/lean-touch-30111)
 * VideoPlayerRawImage script (https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=12&cad=rja&uact=8&ved=2ahUKEwjZ-fX-sIrhAhVJr1QKHaEZCSUQFjALegQICBAB&url=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F41144054%2Fusing-new-unity-videoplayer-and-videoclip-api-to-play-video&usg=AOvVaw2jfpzkqmPbw3gakcIekwie)
