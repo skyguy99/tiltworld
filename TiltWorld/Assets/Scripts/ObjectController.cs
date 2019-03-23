@@ -30,6 +30,7 @@ public class ObjectController : MonoBehaviour
     public Transform ObjectToSpawn;
     UIManager uIManager;
     public Renderer renderer;
+    public Rigidbody rb;
 
     string ToTitleCase(string stringToConvert)
     {
@@ -47,6 +48,7 @@ public class ObjectController : MonoBehaviour
         renderer = GetComponent<Renderer>();
         player = GameObject.FindObjectOfType<PlayerController>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
+        rb = GetComponent<Rigidbody>();
      
     }
 

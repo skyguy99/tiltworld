@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class UIManager : MonoBehaviour
     bool playingInstructions;
 
     public Frames[] uiFrames;
+    VideoPlayer videoPlayer;
+    public Image menu;
+
+    float t = 0f;
+    bool menuIn;
 
     [System.Serializable] //So I can swap in other ui later
     public class Frames
@@ -46,6 +52,8 @@ public class UIManager : MonoBehaviour
             playingInstructions = true;
         }
 
+        menuIn = true;
+
     }
 
     IEnumerator BackToNoObject()
@@ -67,13 +75,23 @@ public class UIManager : MonoBehaviour
 
     }
 
-
+    void ChangeMenuIn()
+    {
+        menuIn = !menuIn;
+        t = 0f;
+    }
 
     void Update()
     {
-        //ObjectText.gameObject.SetActive(target != null);
+    
+            Color col = menu.color;
 
-       
+
+            col.a = menuIn ? Mathf.Lerp(0f, 1f, t) : Mathf.Lerp(1f, 0f, t);
+
+            menu.color = col;
+            t += 0.5f * Time.deltaTime;
+
         if (target != null)
         {
             ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3.8f, target.transform.position.z - 0.3f);
