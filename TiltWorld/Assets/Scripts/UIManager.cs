@@ -52,8 +52,6 @@ public class UIManager : MonoBehaviour
             playingInstructions = true;
         }
 
-        menuIn = true;
-
     }
 
     IEnumerator BackToNoObject()
