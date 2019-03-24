@@ -694,14 +694,16 @@ namespace Lean.Touch
 						if (Input.GetKey(MovePivotKey) == true)
 						{
 							pivot.x = mousePosition.x / Screen.width;
-							pivot.y = mousePosition.y / Screen.height;
-						}
+							//pivot.y = mousePosition.y / Screen.height;
+                            //pivot.z = mousePosition.z / Screen.height;
+                        }
 
 						if (Input.GetKey(PinchTwistKey) == true)
 						{
 							var center = new Vector2(Screen.width * pivot.x, Screen.height * pivot.y);
+                            //var center = new Vector2(Screen.width * pivot.x, Screen.height * pivot.z);
 
-							AddFinger(-2, center - (mousePosition - center), 1.0f);
+                            AddFinger(-2, center - (mousePosition - center), 1.0f);
 							//AddFinger(-2, finger0.StartScreenPosition - finger0.SwipeScreenDelta, 1.0f);
 						}
 						// Simulate multi drag?

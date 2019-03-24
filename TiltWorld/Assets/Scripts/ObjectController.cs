@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Lean.Touch;
 
 public class ObjectController : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class ObjectController : MonoBehaviour
     //would add more later
 
 
-
+    public bool isOnPlane;
     public string objName;
     public string partnerName;
 
@@ -31,6 +32,8 @@ public class ObjectController : MonoBehaviour
     UIManager uIManager;
     public Renderer renderer;
     public Rigidbody rb;
+    public LeanSelectable leanSelectable;
+
 
     string ToTitleCase(string stringToConvert)
     {
@@ -49,7 +52,8 @@ public class ObjectController : MonoBehaviour
         player = GameObject.FindObjectOfType<PlayerController>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
         rb = GetComponent<Rigidbody>();
-     
+
+        leanSelectable = GetComponent<LeanSelectable>();
     }
 
     // Update is called once per frame
@@ -66,7 +70,7 @@ public class ObjectController : MonoBehaviour
 
     public void ResetObject()
     {
-        print("ResetObject");
+        //print("ResetObject");
         //transform
     }
 
@@ -78,6 +82,20 @@ public class ObjectController : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "Wall")
+        {
+            isOnPlane = true;
+        } else if(!leanSelectable.IsSelected)
+        {
+            isOnPlane = false;
+        }
+
+
+        //print(collision.gameObject.tag == "Wall");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -86,6 +104,7 @@ public class ObjectController : MonoBehaviour
         {
             originalPos = transform.position;
         }
+
 
         if (collision.gameObject.GetComponent<ObjectController>() != null)
         {

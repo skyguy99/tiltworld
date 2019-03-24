@@ -112,38 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!84 &55351567
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &123670534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -487,6 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: letterstogether
   partnerName: tire
   triggerAttack: 0
@@ -495,6 +464,7 @@ MonoBehaviour:
     type: 3}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!114 &187760064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,6 +593,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &224187566
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &278514862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,6 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: car
   partnerName: flower
   triggerAttack: 0
@@ -731,6 +734,7 @@ MonoBehaviour:
   ObjectToSpawn: {fileID: 1586988005, guid: 1a72982c2f4144bd0aabc9f3169c3554, type: 3}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!114 &278514866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,6 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: flower
   partnerName: tire
   triggerAttack: 0
@@ -1060,6 +1065,7 @@ MonoBehaviour:
     type: 3}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!114 &295645904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1312,6 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: tire
   partnerName: flower
   triggerAttack: 0
@@ -1319,6 +1326,7 @@ MonoBehaviour:
   ObjectToSpawn: {fileID: 0}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!1 &311335380
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,7 +2093,7 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 55351567}
+  BlurTexture: {fileID: 224187566}
 --- !u!1 &569256768
 GameObject:
   m_ObjectHideFlags: 0
@@ -4064,7 +4072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &965440938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4227,6 +4235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: bridge
   partnerName: flower
   triggerAttack: 0
@@ -4235,6 +4244,7 @@ MonoBehaviour:
     type: 3}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!114 &1064552438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4727,7 +4737,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173025787}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.62, y: 1.04, z: -1.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4736,7 +4746,7 @@ Transform:
   - {fileID: 534669905}
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1173025789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7412,6 +7422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: lettersingle
   partnerName: tire
   triggerAttack: 0
@@ -7419,6 +7430,7 @@ MonoBehaviour:
   ObjectToSpawn: {fileID: 0}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!114 &1586503606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7467,6 +7479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: letterstogether
   partnerName: tire
   triggerAttack: 0
@@ -7474,6 +7487,7 @@ MonoBehaviour:
   ObjectToSpawn: {fileID: 0}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!54 &1586503608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7674,6 +7688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: spraycan1
   partnerName: flower
   triggerAttack: 0
@@ -7682,6 +7697,7 @@ MonoBehaviour:
     type: 3}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!1 &1586503629
 GameObject:
   m_ObjectHideFlags: 0
@@ -7961,6 +7977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: TV
   partnerName: 
   triggerAttack: 0
@@ -7968,6 +7985,7 @@ MonoBehaviour:
   ObjectToSpawn: {fileID: 0}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!54 &1586503651
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9306,7 +9324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1609885899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9464,6 +9482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: flower
   partnerName: tire
   triggerAttack: 0
@@ -9472,6 +9491,7 @@ MonoBehaviour:
     type: 3}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!114 &1624288778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9931,7 +9951,6 @@ GameObject:
   - component: {fileID: 1782417794}
   - component: {fileID: 1782417793}
   - component: {fileID: 1782417792}
-  - component: {fileID: 1782417796}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -10023,38 +10042,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!328 &1782417796
-VideoPlayer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782417791}
-  m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 46ea7a3f9631643a18fba89210a190fd, type: 3}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 9ed292a11b4ae4bef8473ff96dc4ad95, type: 2}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: _MainTex
-  m_RenderMode: 2
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
-  m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
-  m_Looping: 0
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
 --- !u!1 &1797644988
 GameObject:
   m_ObjectHideFlags: 0
@@ -10559,6 +10546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: tire
   partnerName: letterstogether
   triggerAttack: 0
@@ -10566,6 +10554,7 @@ MonoBehaviour:
   ObjectToSpawn: {fileID: 0}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!114 &2001101473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10962,6 +10951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: flower
   partnerName: bridge
   triggerAttack: 0
@@ -10969,6 +10959,7 @@ MonoBehaviour:
   ObjectToSpawn: {fileID: 0}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!54 &2144476884
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11678,6 +11669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f54431113e51f4cdc8dfecd89a2f05fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnPlane: 0
   objName: irongiant
   partnerName: letter
   triggerAttack: 0
@@ -11686,6 +11678,7 @@ MonoBehaviour:
     type: 3}
   renderer: {fileID: 0}
   rb: {fileID: 0}
+  leanSelectable: {fileID: 0}
 --- !u!114 &9212578621857097766
 MonoBehaviour:
   m_ObjectHideFlags: 0
