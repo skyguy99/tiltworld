@@ -78,8 +78,8 @@ public class CenterCreation : MonoBehaviour
         if (obj.renderer.isVisible)
         {
             //Destroy(obj.gameObject);
-            objectsThatHaveCollided[objectsEntered] = obj.gameObject.GetComponent<ObjectController>().objName;
-            objectsEntered++;
+            //objectsThatHaveCollided[objectsEntered] = obj.gameObject.GetComponent<ObjectController>().objName;
+            //objectsEntered++;
         }
     }
 
@@ -93,8 +93,7 @@ public class CenterCreation : MonoBehaviour
     {
 
         CheckToInstantiateMasterpiece();
-        int[] test = new int[] { 1, 2, 3 };
-        int[] test2 = new int[] { 2, 1, 3 };
+
         //print(test.Intersect(test2).Any());
 
     }

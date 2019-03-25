@@ -86,22 +86,23 @@ namespace Lean.Touch
 			{
 				// Screen position of the transform
 				var screenPoint = camera.WorldToScreenPoint(transform.position);
-
+                float yPos = transform.position.y;
                 // Add the deltaPosition
 
                 if(transform.GetComponent<ObjectController>() != null && transform.GetComponent<ObjectController>().isOnPlane)
                 {
-                   
+                    //ON PLANE
+
                     //Vector3 newDelta = new Vector3(screenDelta.x, 0, screenDelta.y*0.05f);
                     Vector3 newDelta = new Vector3(screenDelta.x, screenDelta.y, screenDelta.y * 0.02f);
                     screenPoint += newDelta;
+                    transform.position = new Vector3(camera.ScreenToWorldPoint(screenPoint).x, yPos, camera.ScreenToWorldPoint(screenPoint).z);
 
                 } else {
                     screenPoint += (Vector3)screenDelta;
+                    transform.position = camera.ScreenToWorldPoint(screenPoint);
                 }
 
-
-                transform.position = camera.ScreenToWorldPoint(screenPoint);
 
             }
 			else

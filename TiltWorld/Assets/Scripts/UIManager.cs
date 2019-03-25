@@ -40,8 +40,6 @@ public class UIManager : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerController>();
         ObjectText = GameObject.FindGameObjectWithTag("ObjectText").transform;
-        ObjectText.GetComponent<LineRenderer>().startWidth = 0.2f;
-        ObjectText.GetComponent<LineRenderer>().endWidth = 0.2f;
 
         target = null;
         ObjectText.gameObject.SetActive(false);
@@ -94,8 +92,6 @@ public class UIManager : MonoBehaviour
         {
             ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3.8f, target.transform.position.z - 0.3f);
 
-            ObjectText.GetComponent<LineRenderer>().SetPosition(0, new Vector3(ObjectText.transform.position.x, ObjectText.transform.position.y - 0.5f, ObjectText.transform.position.z));
-            ObjectText.GetComponent<LineRenderer>().SetPosition(1, target.position);
 
             circle.transform.position = target.transform.position;
 

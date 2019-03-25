@@ -68,6 +68,17 @@ public class ObjectController : MonoBehaviour
         }
     }
 
+    public void MoveToiTween(Vector3 vector, float duration)
+    {
+        rb.isKinematic = true;
+        iTween.MoveTo(gameObject, iTween.Hash("position", vector, "time", duration, "easetype", iTween.EaseType.easeOutQuad, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+    }
+
+    void DisableKinematic()
+    {
+        rb.isKinematic = false;
+    }
+
     public void ResetObject()
     {
         //print("ResetObject");
@@ -82,18 +93,33 @@ public class ObjectController : MonoBehaviour
         }
     }
 
+    void test()
+    {
+        isOnPlane = true;
+    }
+
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.tag == "Wall")
+    
+       if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Draggable")
         {
             isOnPlane = true;
-        } else if(!leanSelectable.IsSelected)
+        }
+         else if (!leanSelectable.IsSelected)
         {
             isOnPlane = false;
         }
 
 
         //print(collision.gameObject.tag == "Wall");
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Draggable")
+        {
+            isOnPlane = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

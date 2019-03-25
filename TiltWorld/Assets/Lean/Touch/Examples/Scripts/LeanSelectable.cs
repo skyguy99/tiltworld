@@ -83,6 +83,9 @@ namespace Lean.Touch
         Rigidbody rb;
         bool rbHadGravity;
         PlayerController player;
+        public float timeAtSelect;
+        public Vector3 posAtSelect;
+
         public static bool SomethingIsSelected;
 
         /// <summary>Returns isSelected, or false if HideWithFinger is true and SelectingFinger is still set.</summary>
@@ -310,6 +313,9 @@ namespace Lean.Touch
 		public void Select(LeanFinger finger)
 		{
             SomethingIsSelected = true;
+            timeAtSelect = Time.time;
+            posAtSelect = transform.position;
+
             //print("SELECT!");
 			isSelected = true;
 
@@ -409,6 +415,12 @@ namespace Lean.Touch
             if (rb != null)
             {
                 rb.isKinematic = (isSelected);
+            }
+
+            if(isSelected && Time.time - timeAtSelect >= 1.5f && transform.position == posAtSelect && GetComponent<ObjectController>() != null) 
+            {
+                transform.GetComponent<ObjectController>().MoveToiTween(new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), 0.15f);
+                transform.GetComponent<ObjectController>().isOnPlane = false;
             }
 
 
