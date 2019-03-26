@@ -116,10 +116,10 @@ public class ObjectController : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Draggable")
-        {
-            isOnPlane = false;
-        }
+        //if (collision.gameObject.tag == "Draggable")
+        //{
+        //    isOnPlane = false;
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)

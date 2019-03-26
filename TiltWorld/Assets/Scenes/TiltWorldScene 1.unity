@@ -112,6 +112,89 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!84 &86717212
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+--- !u!1 &87476144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87476145}
+  - component: {fileID: 87476146}
+  m_Layer: 0
+  m_Name: container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &87476145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87476144}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1782224088}
+  m_Father: {fileID: 1041349872}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &87476146
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87476144}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45c295bfb5b974cf1a91e116eeba6273, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &123670534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -426,6 +509,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -722,6 +807,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -1053,6 +1140,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -1465,6 +1554,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -1562,7 +1653,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &319739287
 GameObject:
@@ -1795,7 +1886,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474004935
 GameObject:
@@ -1868,6 +1959,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -2072,7 +2165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 062f78e35bea54bd689a185c4a82d165, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 062f78e35bea54bd689a185c4a82d165, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2203,7 +2296,7 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 1257353605}
+  BlurTexture: {fileID: 86717212}
 --- !u!1 &657985693
 GameObject:
   m_ObjectHideFlags: 0
@@ -3113,6 +3206,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -3664,6 +3759,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965440937}
   m_CullTransparentMesh: 1
+--- !u!1 &1041349870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1041349872}
+  - component: {fileID: 1041349871}
+  m_Layer: 0
+  m_Name: Animcontainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!95 &1041349871
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041349870}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 45c295bfb5b974cf1a91e116eeba6273, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &1041349872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041349870}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1938257, y: 0.7884258, z: -4.7381}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 87476145}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064552435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: af1c481dfd9f14f9d8f412e1cc727ec5,
@@ -3720,6 +3866,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -4646,38 +4794,6 @@ Transform:
   m_Father: {fileID: 1797644989}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1257353605
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1293326623
 GameObject:
   m_ObjectHideFlags: 0
@@ -5696,6 +5812,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -5896,6 +6014,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -5987,6 +6107,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -6178,6 +6300,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -6485,6 +6609,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -8065,6 +8191,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -8323,6 +8451,73 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 110
   m_CollisionDetection: 0
+--- !u!1001 &1782224087
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 87476145}
+    m_Modifications:
+    - target: {fileID: 1778697430269562, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_Name
+      value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778697430269562, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e77fbc2389725478482240fd7ac72502, type: 3}
+--- !u!4 &1782224088 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4581614349961700, guid: e77fbc2389725478482240fd7ac72502,
+    type: 3}
+  m_PrefabInstance: {fileID: 1782224087}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1782417791
 GameObject:
   m_ObjectHideFlags: 0
@@ -8741,6 +8936,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -8886,7 +9083,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2144476877
 PrefabInstance:
@@ -8992,6 +9189,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -9445,6 +9644,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -9815,6 +10016,8 @@ MonoBehaviour:
   DeselectOnUp: 1
   HideWithFinger: 0
   IsolateSelectingFingers: 1
+  timeAtSelect: 0
+  posAtSelect: {x: 0, y: 0, z: 0}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
