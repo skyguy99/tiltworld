@@ -29,6 +29,8 @@ public class UIManager : MonoBehaviour
     float t = 0f;
     bool menuIn;
 
+    public Transform blackQuad;
+
     [System.Serializable] //So I can swap in other ui later
     public class Frames
     {
@@ -42,6 +44,7 @@ public class UIManager : MonoBehaviour
         ObjectText = GameObject.FindGameObjectWithTag("ObjectText").transform;
 
         target = null;
+
         ObjectText.gameObject.SetActive(false);
 
         PlayerPrefs.DeleteAll(); //temp

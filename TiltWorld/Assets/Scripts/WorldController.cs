@@ -7,7 +7,6 @@ using System.Linq;
 public class WorldController : MonoBehaviour {
 
     public int num;
-    Vector3 warpPos;
     PlayerController player;
     public Vector3 originalPos;
 
