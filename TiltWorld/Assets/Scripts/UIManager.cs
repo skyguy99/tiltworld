@@ -55,6 +55,12 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void ToggleMenu()
+    {
+        print("menu");
+        ChangeMenuIn();
+    }
+
     IEnumerator BackToNoObject()
     {
         yield return new WaitForSeconds(10f);
@@ -71,6 +77,8 @@ public class UIManager : MonoBehaviour
 
         circle.gameObject.SetActive(showCircle);
         StartCoroutine(BackToNoObject());
+
+        print("add to ui menu");
 
     }
 
