@@ -8,7 +8,7 @@ using UnityEngine.Video;
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    Canvas canvas;
+    public Canvas canvas;
     PlayerController player;
     Transform ObjectText;
 
@@ -22,21 +22,15 @@ public class UIManager : MonoBehaviour
     public Image uiImage;
     bool playingInstructions;
 
-    public Frames[] uiFrames;
+
     VideoPlayer videoPlayer;
     public Image menu;
 
+    Camera mainCamera;
+    public Transform menuObject;
+
     float t = 0f;
     bool menuIn;
-
-    public Transform blackQuad;
-
-    [System.Serializable] //So I can swap in other ui later
-    public class Frames
-    {
-        public Sprite[] frames;
-    }
-
 
     void Start()
     {
@@ -53,12 +47,18 @@ public class UIManager : MonoBehaviour
             playingInstructions = true;
         }
 
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+        menuObject.gameObject.SetActive(menuIn);
+        canvas.enabled = !menuIn;
+        mainCamera.enabled = !menuIn;
+
     }
 
     public void ToggleMenu()
     {
         print("menu");
-        ChangeMenuIn();
+        StartCoroutine(ChangeMenuIn());
     }
 
     IEnumerator BackToNoObject()
@@ -82,10 +82,16 @@ public class UIManager : MonoBehaviour
 
     }
 
-    void ChangeMenuIn()
+    IEnumerator ChangeMenuIn()
     {
         menuIn = !menuIn;
         t = 0f;
+
+
+        yield return new WaitForSeconds(2f);
+        menuObject.gameObject.SetActive(menuIn);
+        mainCamera.enabled = !menuIn;
+        canvas.enabled = !menuIn;
     }
 
     void Update()
@@ -97,7 +103,7 @@ public class UIManager : MonoBehaviour
             col.a = menuIn ? Mathf.Lerp(0f, 1f, t) : Mathf.Lerp(1f, 0f, t);
 
             menu.color = col;
-            t += 0.5f * Time.deltaTime;
+            t += 6f* Time.deltaTime;
 
         if (target != null)
         {

@@ -9,6 +9,7 @@ TagManager:
   - Draggable
   - ObjectText
   - Room
+  - MainCamera2
   layers:
   - Default
   - TransparentFX
