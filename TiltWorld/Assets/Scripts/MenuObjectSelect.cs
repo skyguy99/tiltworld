@@ -9,6 +9,8 @@ public class MenuObjectSelect : MonoBehaviour
 
     public Transform pointer;
     public Transform contentBox;
+
+    bool scaledIn;
   
     /* Constants */
     const float S = 1.0f; // The maximum size you want to get when closest
@@ -34,22 +36,15 @@ public class MenuObjectSelect : MonoBehaviour
     }
 
 
-
-
-    public void SelectMenuObj(RectTransform rect)
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
-        foreach(Transform t in contentBox)
-        {
-            float size = GetIconSize(pointer.position, t.position);
-            t.localScale = new Vector3(size, size, size);
-        }
 
+            foreach (Transform t in contentBox)
+            {
+                float size = GetIconSize(pointer.position, t.position);
+                t.localScale = new Vector3(size, size, size);
+            }
 
         //float size = GetIconSize(pointer.position, omni.closestItem.position);
         //omni.closestItem.transform.localScale = new Vector2(size, size);

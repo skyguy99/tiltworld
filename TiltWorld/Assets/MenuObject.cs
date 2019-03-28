@@ -28,7 +28,7 @@ public class MenuObject : MonoBehaviour
         headline.text = objName.ToUpper();
         if(player.combineObjects.ContainsKey(objName.ToLower()))
         {
-            string text = player.combineObjects[objName.ToLower()][0].ToUpper() + " + "+ player.combineObjects[objName.ToLower()][1].ToUpper();
+            string text = "("+player.combineObjects[objName.ToLower()][0].ToUpper() + " + "+ player.combineObjects[objName.ToLower()][1].ToUpper()+")";
             subtext.text = text;
         } else {
             subtext.text = "";

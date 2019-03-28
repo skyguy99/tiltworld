@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public Canvas canvas;
+    Animator canvasAnim;
     PlayerController player;
     Transform ObjectText;
 
@@ -32,6 +33,10 @@ public class UIManager : MonoBehaviour
     float t = 0f;
     bool menuIn;
 
+
+    //public static string screenshotFilename = "screenshotName.png";
+    //string pathToImage = Application.persistentDataPath + "/" + screenshotFilename;
+
     void Start()
     {
         player = GameObject.FindObjectOfType<PlayerController>();
@@ -47,17 +52,20 @@ public class UIManager : MonoBehaviour
             playingInstructions = true;
         }
 
+        canvasAnim = canvas.GetComponent<Animator>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 
         menuObject.gameObject.SetActive(menuIn);
         canvas.enabled = !menuIn;
-        mainCamera.enabled = !menuIn;
 
     }
 
     public void ToggleMenu()
     {
         print("menu");
+
+        //Application.CaptureScreenshot(screenshotFilename);
+        canvasAnim.SetBool("buttonTouch", true);
         StartCoroutine(ChangeMenuIn());
     }
 
@@ -88,10 +96,10 @@ public class UIManager : MonoBehaviour
         t = 0f;
 
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         menuObject.gameObject.SetActive(menuIn);
-        mainCamera.enabled = !menuIn;
         canvas.enabled = !menuIn;
+        canvasAnim.SetBool("buttonTouch", false);
     }
 
     void Update()
