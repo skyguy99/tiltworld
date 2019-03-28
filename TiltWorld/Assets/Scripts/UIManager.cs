@@ -64,7 +64,8 @@ public class UIManager : MonoBehaviour
     {
         print("menu");
 
-        //Application.CaptureScreenshot(screenshotFilename);
+
+        //ScreenCapture.CaptureScreenshot(screenshotFilename);
         canvasAnim.SetBool("buttonTouch", true);
         StartCoroutine(ChangeMenuIn());
     }

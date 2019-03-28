@@ -9,10 +9,11 @@ public class MenuObject : MonoBehaviour
 	Text headline;
 	Text subtext;
     PlayerController player;
+    public Animator anim;
 
     void Start()
     {
-
+        anim = GetComponent<Animator>();
         player = GameObject.FindObjectOfType<PlayerController>();
 		foreach(Transform t in transform)
 		{
@@ -31,7 +32,7 @@ public class MenuObject : MonoBehaviour
             string text = "("+player.combineObjects[objName.ToLower()][0].ToUpper() + " + "+ player.combineObjects[objName.ToLower()][1].ToUpper()+")";
             subtext.text = text;
         } else {
-            subtext.text = "";
+            subtext.text = "OBJ 1 + OBJ 2";
         }
 
     }

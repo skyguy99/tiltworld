@@ -13,7 +13,7 @@ public class MenuObjectSelect : MonoBehaviour
     bool scaledIn;
   
     /* Constants */
-    const float S = 1.0f; // The maximum size you want to get when closest
+    const float S = 1.5f; // The maximum size you want to get when closest
     const float D = 350.0f; // The distance where you start to scale
     const float E = 2.5f; // The distance where the object will not scale more (i.e. reached the maximum)
 
@@ -44,8 +44,17 @@ public class MenuObjectSelect : MonoBehaviour
             {
                 float size = GetIconSize(pointer.position, t.position);
                 t.localScale = new Vector3(size, size, size);
+
+            if (t == omni.closestItem.transform)
+            {
+                t.GetComponent<MenuObject>().anim.SetBool("menuIn", true);
+            } else {
+                t.GetComponent<MenuObject>().anim.SetBool("menuIn", false);
             }
 
+            }
+
+       
         //float size = GetIconSize(pointer.position, omni.closestItem.position);
         //omni.closestItem.transform.localScale = new Vector2(size, size);
     }
