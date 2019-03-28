@@ -28,7 +28,7 @@ public class Mover : MonoBehaviour
 
 
         isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);
-        if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected && Time.time > 6f && PlayerPrefs.HasKey("playedOnce") && (player.room.bounds.Contains(player.transform.position + moveVector)))
+        if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected && Time.time > 6f && (player.room.bounds.Contains(player.transform.position + moveVector)))
             {
                 //transform.rotation = Quaternion.LookRotation(moveVector);
                 transform.Translate(moveVector * speed * Time.deltaTime, Space.World);

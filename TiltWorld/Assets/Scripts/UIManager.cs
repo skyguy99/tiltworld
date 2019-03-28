@@ -119,16 +119,6 @@ public class UIManager : MonoBehaviour
 
             PlayerPrefs.SetInt("playedOnce", 1);
 
-            if(uiImage.GetComponent<VideoPlayerRawImage>().index == 31 || uiImage.GetComponent<VideoPlayerRawImage>().index == 234 || uiImage.GetComponent<VideoPlayerRawImage>().index == 498)
-            {
-
-                uiImage.GetComponent<VideoPlayerRawImage>().pause = true;
-                if (Input.touchCount > 0 || Input.GetKey("space"))
-                {
-                    uiImage.GetComponent<VideoPlayerRawImage>().pause = false;
-                }
-
-            }
 
         }
 

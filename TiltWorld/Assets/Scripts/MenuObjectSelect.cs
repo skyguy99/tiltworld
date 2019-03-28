@@ -11,7 +11,7 @@ public class MenuObjectSelect : MonoBehaviour
     public Transform contentBox;
   
     /* Constants */
-    const float S = 2.0f; // The maximum size you want to get when closest
+    const float S = 1.0f; // The maximum size you want to get when closest
     const float D = 350.0f; // The distance where you start to scale
     const float E = 2.5f; // The distance where the object will not scale more (i.e. reached the maximum)
 
@@ -21,7 +21,7 @@ public class MenuObjectSelect : MonoBehaviour
         float factor = Mathf.InverseLerp(D, E, Vector2.Distance(pointer, icon));
 
         // Return the interpolated value size depending on the distance
-        return Mathf.Lerp(0.8f, S, factor);
+        return Mathf.Lerp(0.1f, S, factor);
     }
     OmniDirectionalScrollSnap omni;
 
@@ -47,7 +47,7 @@ public class MenuObjectSelect : MonoBehaviour
         foreach(Transform t in contentBox)
         {
             float size = GetIconSize(pointer.position, t.position);
-            t.localScale = new Vector2(size, size);
+            t.localScale = new Vector3(size, size, size);
         }
 
 
