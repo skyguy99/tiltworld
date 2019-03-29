@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
     public TextMeshPro textHeadline;
     public TextMeshPro textSubtitle;
-    public Transform circle;
+    public RadialProgress objCircle;
     public RadialProgress selectCircle;
 
     float deltaTime;
@@ -79,6 +79,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         target = null;
         ObjectText.gameObject.SetActive(false);
+        objCircle.ToggleSelectCircleDown();
 
     }
     public void ShowObjectText(Transform obj, string headline, string subtext, bool showCircle)
@@ -88,9 +89,8 @@ public class UIManager : MonoBehaviour
         textHeadline.text = headline;
         textSubtitle.text = subtext;
 
-        circle.gameObject.SetActive(showCircle);
         StartCoroutine(BackToNoObject());
-
+        objCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(obj.transform.position), false);
         menuObjectSelect.objectsThatWereCombined.Add(headline.ToUpper());
 
     }
@@ -123,7 +123,7 @@ public class UIManager : MonoBehaviour
             ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3.8f, target.transform.position.z - 0.3f);
 
 
-            circle.transform.position = target.transform.position;
+            objCircle.transform.position = Camera.main.WorldToScreenPoint(target.transform.position);
 
         }
 

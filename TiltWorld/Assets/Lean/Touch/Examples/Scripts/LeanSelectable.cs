@@ -436,7 +436,7 @@ namespace Lean.Touch
             else if (isSelected && transform.position == posAtSelect && GetComponent<ObjectController>() != null && Time.time - timeAtSelect >= 0.25f)
             {
           
-                uIManager.selectCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(posAtSelect));
+                uIManager.selectCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(posAtSelect), true);
 
             }
 

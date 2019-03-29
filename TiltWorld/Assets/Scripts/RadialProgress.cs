@@ -18,11 +18,11 @@ public class RadialProgress : MonoBehaviour {
 
     }
 
-    public void ToggleSelectCircle(Vector3 pos)
+    public void ToggleSelectCircle(Vector3 pos, bool unwind)
     {
         if(!circleIsUp)
         {
-            circleIsUp = true;
+            circleIsUp = unwind;
             currentValue = 100;
             GetComponentInParent<Animator>().SetBool("circleIn", true);
             transform.gameObject.transform.position = pos;
