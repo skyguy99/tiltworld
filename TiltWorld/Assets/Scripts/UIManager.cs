@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
     //public static string screenshotFilename = "screenshotName.png";
     //string pathToImage = Application.persistentDataPath + "/" + screenshotFilename;
 
-    void Start()
+    void Awake()
     {
         player = GameObject.FindObjectOfType<PlayerController>();
         ObjectText = GameObject.FindGameObjectWithTag("ObjectText").transform;

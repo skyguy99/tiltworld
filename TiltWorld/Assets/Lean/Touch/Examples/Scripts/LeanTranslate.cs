@@ -29,9 +29,12 @@ namespace Lean.Touch
 		}
 #endif
 
+
+        UIManager uIManager;
 		protected virtual void Start()
 		{
             RequiredSelectable = GetComponent<LeanSelectable>();
+            uIManager = GameObject.FindObjectOfType<UIManager>();
 
         }
 
@@ -74,8 +77,6 @@ namespace Lean.Touch
 			}
 		}
 
-
-
         //REAL TRANSLATE
         protected virtual void Translate(Vector2 screenDelta)
 		{
@@ -89,6 +90,8 @@ namespace Lean.Touch
                 float yPos = transform.position.y;
                 // Add the deltaPosition
 
+                uIManager.selectCircle.ToggleSelectCircleDown();
+                
                 if(transform.GetComponent<ObjectController>() != null && transform.GetComponent<ObjectController>().isOnPlane)
                 {
                     //ON PLANE

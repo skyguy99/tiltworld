@@ -309,6 +309,8 @@ namespace Lean.Touch
 			Select(null);
 		}
 
+
+        //OVERALL SELECT!!
 		/// <summary>This selects the current object with the specified finger.</summary>
 		public void Select(LeanFinger finger)
 		{
@@ -316,8 +318,10 @@ namespace Lean.Touch
             timeAtSelect = Time.time;
             posAtSelect = transform.position;
 
+            //uIManager.selectCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(posAtSelect));
+
             //print("SELECT!");
-			isSelected = true;
+            isSelected = true;
 
 			if (finger != null)
 			{
@@ -370,6 +374,8 @@ namespace Lean.Touch
 					OnDeselect.Invoke();
 				}
 			}
+
+            uIManager.selectCircle.ToggleSelectCircleDown();
 		}
 
 		/// <summary>This deselects all objects in the scene.</summary>
@@ -418,15 +424,22 @@ namespace Lean.Touch
                 rb.isKinematic = (isSelected);
             }
 
+
             //MOVES UP FOR Y AXIS
-            if(isSelected && Time.time - timeAtSelect >= 1.5f && transform.position == posAtSelect && GetComponent<ObjectController>() != null) 
+            if (isSelected && Time.time - timeAtSelect >= 1.5f && transform.position == posAtSelect && GetComponent<ObjectController>() != null)
             {
-                transform.GetComponent<ObjectController>().MoveToiTween(new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), 0.15f);
+                transform.GetComponent<ObjectController>().MoveToiTween(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), 0.15f);
                 transform.GetComponent<ObjectController>().isOnPlane = false;
 
-
-                uIManager.selectCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(posAtSelect));
+                uIManager.selectCircle.ToggleSelectCircleDown();
             }
+            else if (isSelected && transform.position == posAtSelect && GetComponent<ObjectController>() != null && Time.time - timeAtSelect >= 0.25f)
+            {
+          
+                uIManager.selectCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(posAtSelect));
+
+            }
+
 
 
 

@@ -9,6 +9,7 @@ public class RadialProgress : MonoBehaviour {
 	public float speed;
 
     public Transform circle2;
+    bool circleIsUp;
 
 	// Use this for initialization
 	void Start () {
@@ -19,27 +20,38 @@ public class RadialProgress : MonoBehaviour {
 
     public void ToggleSelectCircle(Vector3 pos)
     {
-        transform.gameObject.SetActive(true);
-        currentValue = 100;
-        //GetComponentInParent<Animator>().SetTrigger("circleIn");
-        transform.gameObject.transform.position = pos;
-        if (currentValue > 0)
+        if(!circleIsUp)
         {
-            currentValue -= speed * Time.deltaTime;
-
-        } else {
-            transform.gameObject.SetActive(false);
+            circleIsUp = true;
+            currentValue = 100;
+            GetComponentInParent<Animator>().SetBool("circleIn", true);
+            transform.gameObject.transform.position = pos;
         }
 
+    }
+
+    public void ToggleSelectCircleDown()
+    {
+        GetComponentInParent<Animator>().SetBool("circleIn", false);
+        circleIsUp = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        //circle2.transform.position = new Vector3(Mathf.Sin(currentValue * 6.28f), Mathf.Cos(currentValue * 6.28f), 0f) * 6;
-        //float circleAngle = currentValue * 360;
+        if(circleIsUp)
+        {
+            if (currentValue > 0)
+            {
+                currentValue -= 69f * Time.deltaTime;
 
-        //print(currentValue*0.01f*360);
+            }
+            else
+            {
+                GetComponentInParent<Animator>().SetBool("circleIn", false);
+                circleIsUp = false;
+            }
+        }
         circle2.localEulerAngles = new Vector3(0, 0, -(currentValue * 0.01f * 360));
 
 		LoadingBar.fillAmount = currentValue / 100;
