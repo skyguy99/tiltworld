@@ -515,7 +515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 256.59998, y: -473}
+  m_AnchoredPosition: {x: 256.59998, y: -479}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &83072312
@@ -820,7 +820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 253, y: -269}
+  m_AnchoredPosition: {x: 253, y: -270}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &123529970
@@ -1081,7 +1081,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 256.59998, y: -75}
+  m_AnchoredPosition: {x: 256.59998, y: -74.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &175505824
@@ -2062,38 +2062,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 110
   m_CollisionDetection: 0
---- !u!84 &284537645
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &295645901 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 9ab130bdb16a348c0b339402dd101223,
@@ -3278,8 +3246,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 133546529}
   m_HandleRect: {fileID: 133546530}
   m_Direction: 3
-  m_Value: 0.4090909
-  m_Size: 0.2016129
+  m_Value: 0.43521595
+  m_Size: 0.19946809
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3782,7 +3750,7 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 284537645}
+  BlurTexture: {fileID: 1802043274}
 --- !u!114 &534669908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3962,7 +3930,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 79, y: -544.5}
+  m_AnchoredPosition: {x: 79, y: -550.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &599774846
@@ -4293,7 +4261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 411, y: -164}
+  m_AnchoredPosition: {x: 411, y: -163.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &648472286
@@ -5237,7 +5205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 256.59998, y: -669}
+  m_AnchoredPosition: {x: 256.59998, y: -677}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &796069606
@@ -6844,7 +6812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 407.40002, y: -358}
+  m_AnchoredPosition: {x: 407.40002, y: -359}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &972426944
@@ -6956,7 +6924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 75.400024, y: -340.5}
+  m_AnchoredPosition: {x: 75.400024, y: -341.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &973350956
@@ -8483,7 +8451,7 @@ MonoBehaviour:
   m_ScrollSensitivity: 1
   m_ScrollDelay: 0.02
   m_ScrollWheelDirection: 1
-  m_ScrollFriction: 1
+  m_ScrollFriction: 0.999
   m_ScrollInterpolator: 7
   m_ScrollTension: 2
   m_AddInactiveChildrenToCalculatingFilter: 0
@@ -10538,7 +10506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 79, y: -146.5}
+  m_AnchoredPosition: {x: 79, y: -146}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1489135138
@@ -14042,7 +14010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 411, y: -562}
+  m_AnchoredPosition: {x: 411, y: -568}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1596747793
@@ -15195,6 +15163,38 @@ MonoBehaviour:
   menu: {fileID: 1609885900}
   menuObject: {fileID: 1682607826}
   objectsThatWereCombined: []
+--- !u!84 &1802043274
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1828344639
 GameObject:
   m_ObjectHideFlags: 0
@@ -15820,8 +15820,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 65.100006, y: -129}
-  m_SizeDelta: {x: 486, y: 744}
+  m_AnchoredPosition: {x: 65.100006, y: -114}
+  m_SizeDelta: {x: 486, y: 752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1987270759
 GameObject:
