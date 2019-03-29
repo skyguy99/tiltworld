@@ -30,10 +30,11 @@ public class UIManager : MonoBehaviour
 
     Camera mainCamera;
     public Transform menuObject;
-    MenuObjectSelect menuObjectSelect;
 
     float t = 0f;
     bool menuIn;
+
+    public List<string> objectsThatWereCombined = new List<string>();
 
 
     //public static string screenshotFilename = "screenshotName.png";
@@ -59,8 +60,6 @@ public class UIManager : MonoBehaviour
 
         menuObject.gameObject.SetActive(menuIn);
         canvas.enabled = !menuIn;
-
-        menuObjectSelect = GameObject.FindObjectOfType<MenuObjectSelect>();
 
     }
 
@@ -91,7 +90,7 @@ public class UIManager : MonoBehaviour
 
         StartCoroutine(BackToNoObject());
         objCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(obj.transform.position), false);
-        menuObjectSelect.objectsThatWereCombined.Add(headline.ToUpper());
+        objectsThatWereCombined.Add(headline.ToUpper());
 
     }
 

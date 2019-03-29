@@ -11,8 +11,7 @@ public class MenuObjectSelect : MonoBehaviour
     public Transform contentBox;
 
     bool scaledIn;
-
-    public List<string> objectsThatWereCombined = new List<string>();
+    UIManager uIManager;
   
     /* Constants */
     const float S = 1.5f; // The maximum size you want to get when closest
@@ -25,7 +24,7 @@ public class MenuObjectSelect : MonoBehaviour
         float factor = Mathf.InverseLerp(D, E, Vector2.Distance(pointer, icon));
 
         // Return the interpolated value size depending on the distance
-        return Mathf.Lerp(0.1f, S, factor);
+        return Mathf.Lerp(0.6f, S, factor);
     }
     OmniDirectionalScrollSnap omni;
 
@@ -34,7 +33,7 @@ public class MenuObjectSelect : MonoBehaviour
     {
         omni = GetComponent<OmniDirectionalScrollSnap>();
         pointer = GetComponent<Image>().transform;
-
+        uIManager = GameObject.FindObjectOfType<UIManager>();
     }
 
 
