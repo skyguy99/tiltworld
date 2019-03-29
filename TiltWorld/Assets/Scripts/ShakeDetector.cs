@@ -8,7 +8,7 @@ public class ShakeDetector : MonoBehaviour
 
     private float sqrShakeDetectionThreshold;
     private float timeSinceLastShake;
-    public float ShakeForceMultiplier = 1f;
+    public float ShakeForceMultiplier = 3f;
     PlayerController player;
     CharController character;
 

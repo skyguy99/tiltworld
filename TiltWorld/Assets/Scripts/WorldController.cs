@@ -10,7 +10,6 @@ public class WorldController : MonoBehaviour {
     PlayerController player;
     public Vector3 originalPos;
 
-    public List<ObjectController> myObjects;
     BoxCollider room;
 
 
@@ -19,24 +18,7 @@ public class WorldController : MonoBehaviour {
 
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
-        if(transform.childCount > 0)
-        {
-            foreach (Transform t in transform.GetChild(0))
-            {
-                if (t.GetComponent<ObjectController>() != null)
-                {
-                    myObjects.Add(t.GetComponent<ObjectController>());
-                }
-            }
 
-            //for (int i = 2; i < myObjects.Count + 1; i++)
-            //{
-            //    if (i % 2 == 0)
-            //    {
-            //        myObjects[i - 2].isPriority = true; //assigns to half
-            //    }
-            //}
-        } 
 	}
 	
 	// Update is called once per frame
@@ -63,9 +45,5 @@ public class WorldController : MonoBehaviour {
         iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.6f, "easetype", "easeOutBounce", "oncomplete", "ResetRotation", "oncompletetarget", gameObject));
 
 
-        foreach(ObjectController o in myObjects)
-        {
-            //o.Invoke("ResetObject", 0.3f);
-        }
     }
 }

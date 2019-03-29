@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
 
     public Image uiImage;
     bool playingInstructions;
-
+    public Transform circleSelector;
 
     VideoPlayer videoPlayer;
     public Image menu;

@@ -417,6 +417,7 @@ namespace Lean.Touch
                 rb.isKinematic = (isSelected);
             }
 
+            //MOVES UP FOR Y AXIS
             if(isSelected && Time.time - timeAtSelect >= 1.5f && transform.position == posAtSelect && GetComponent<ObjectController>() != null) 
             {
                 transform.GetComponent<ObjectController>().MoveToiTween(new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), 0.15f);
