@@ -11,6 +11,8 @@ public class MenuObjectSelect : MonoBehaviour
     public Transform contentBox;
 
     bool scaledIn;
+
+    public List<string> objectsThatWereCombined = new List<string>();
   
     /* Constants */
     const float S = 1.5f; // The maximum size you want to get when closest

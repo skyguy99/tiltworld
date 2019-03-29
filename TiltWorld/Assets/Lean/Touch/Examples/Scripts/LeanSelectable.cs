@@ -85,7 +85,7 @@ namespace Lean.Touch
         PlayerController player;
         public float timeAtSelect;
         public Vector3 posAtSelect;
-
+        UIManager uIManager;
         public static bool SomethingIsSelected;
 
         /// <summary>Returns isSelected, or false if HideWithFinger is true and SelectingFinger is still set.</summary>
@@ -402,6 +402,7 @@ namespace Lean.Touch
         {
             player = GameObject.FindObjectOfType<PlayerController>();
             rb = GetComponent<Rigidbody>();
+            uIManager = GameObject.FindObjectOfType<UIManager>();
 
         }
 
@@ -422,6 +423,9 @@ namespace Lean.Touch
             {
                 transform.GetComponent<ObjectController>().MoveToiTween(new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), 0.15f);
                 transform.GetComponent<ObjectController>().isOnPlane = false;
+
+
+                uIManager.selectCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(posAtSelect));
             }
 
 

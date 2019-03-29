@@ -16,6 +16,22 @@ public class RadialProgress : MonoBehaviour {
 
 
     }
+
+    public void ToggleSelectCircle(Vector3 pos)
+    {
+        transform.gameObject.SetActive(true);
+        currentValue = 100;
+        //GetComponentInParent<Animator>().SetTrigger("circleIn");
+        transform.gameObject.transform.position = pos;
+        if (currentValue > 0)
+        {
+            currentValue -= speed * Time.deltaTime;
+
+        } else {
+            transform.gameObject.SetActive(false);
+        }
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,13 +41,6 @@ public class RadialProgress : MonoBehaviour {
 
         //print(currentValue*0.01f*360);
         circle2.localEulerAngles = new Vector3(0, 0, -(currentValue * 0.01f * 360));
-
-  //      if (currentValue < 100) {
-		//	currentValue += speed * Time.deltaTime;
-		//	//ProgressIndicator.text = ((int)currentValue).ToString () + "%";
-		//	//LoadingText.SetActive (true);
-
-		//}
 
 		LoadingBar.fillAmount = currentValue / 100;
 	}

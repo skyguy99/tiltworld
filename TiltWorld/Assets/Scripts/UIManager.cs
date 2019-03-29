@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public TextMeshPro textHeadline;
     public TextMeshPro textSubtitle;
     public Transform circle;
+    public RadialProgress selectCircle;
 
     float deltaTime;
     Transform target;
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
 
     Camera mainCamera;
     public Transform menuObject;
+    MenuObjectSelect menuObjectSelect;
 
     float t = 0f;
     bool menuIn;
@@ -57,6 +59,8 @@ public class UIManager : MonoBehaviour
 
         menuObject.gameObject.SetActive(menuIn);
         canvas.enabled = !menuIn;
+
+        menuObjectSelect = GameObject.FindObjectOfType<MenuObjectSelect>();
 
     }
 
@@ -87,7 +91,7 @@ public class UIManager : MonoBehaviour
         circle.gameObject.SetActive(showCircle);
         StartCoroutine(BackToNoObject());
 
-        print("add to ui menu");
+        menuObjectSelect.objectsThatWereCombined.Add(headline.ToUpper());
 
     }
 
