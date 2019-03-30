@@ -623,6 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &83072314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,6 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &123529972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,6 +1290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &175505826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4224,6 +4227,7 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
   - component: {fileID: 534669908}
+  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4311,7 +4315,24 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 2100954727}
+  BlurTexture: {fileID: 644508578}
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc6bde01469c7b4badee5362f191d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downsample: 2
+  blurSize: 8.03
+  blurIterations: 4
+  blurType: 0
+  blurShader: {fileID: 4800000, guid: f9d5fa183cd6b45eeb1491f74863cd91, type: 3}
 --- !u!114 &534669908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4621,6 +4642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &592536643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4733,6 +4755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &599774848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4989,6 +5012,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624516287}
   m_CullTransparentMesh: 0
+--- !u!84 &644508578
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &648472284
 GameObject:
   m_ObjectHideFlags: 0
@@ -5064,6 +5119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &648472288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6102,6 +6158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &796069608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7808,6 +7865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &972426946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7920,6 +7978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &973350958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8468,6 +8527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &1063227505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10102,7 +10162,7 @@ MonoBehaviour:
   m_ScrollSensitivity: 1
   m_ScrollDelay: 0.02
   m_ScrollWheelDirection: 1
-  m_ScrollFriction: 0.999
+  m_ScrollFriction: 1
   m_ScrollInterpolator: 7
   m_ScrollTension: 2
   m_AddInactiveChildrenToCalculatingFilter: 0
@@ -10951,6 +11011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &1271415632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11622,6 +11683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &1323482593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12159,6 +12221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &1403712931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12552,6 +12615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &1435779788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13058,6 +13122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &1489135140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14038,7 +14103,7 @@ Camera:
   m_GameObject: {fileID: 1582196899}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.6901961, g: 0.6901961, b: 0.6901961, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -14056,7 +14121,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 216.7
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -16562,6 +16627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &1596747795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16715,7 +16781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1609885899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19397,6 +19463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &2015313203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19889,6 +19956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objName: TV
   anim: {fileID: 0}
+  isLocked: 1
 --- !u!114 &2081073522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19926,38 +19994,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081073518}
   m_CullTransparentMesh: 0
---- !u!84 &2100954727
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &2121329622
 PrefabInstance:
   m_ObjectHideFlags: 0
