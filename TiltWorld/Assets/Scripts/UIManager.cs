@@ -30,11 +30,12 @@ public class UIManager : MonoBehaviour
 
     Camera mainCamera;
     public Transform menuObject;
+    MenuObjectSelect menuObjectSelect;
 
     float t = 0f;
     bool menuIn;
 
-    public List<string> objectsThatWereCombined = new List<string>();
+    public List<ObjectController> objectsThatWereCombined = new List<ObjectController>();
 
 
     //public static string screenshotFilename = "screenshotName.png";
@@ -61,6 +62,7 @@ public class UIManager : MonoBehaviour
         menuObject.gameObject.SetActive(menuIn);
         canvas.enabled = !menuIn;
 
+
     }
 
     public void ToggleMenu()
@@ -70,6 +72,7 @@ public class UIManager : MonoBehaviour
 
         //ScreenCapture.CaptureScreenshot(screenshotFilename);
         canvasAnim.SetBool("buttonTouch", true);
+       
         StartCoroutine(ChangeMenuIn());
     }
 
@@ -90,7 +93,8 @@ public class UIManager : MonoBehaviour
 
         StartCoroutine(BackToNoObject());
         objCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(obj.transform.position), false);
-        objectsThatWereCombined.Add(headline.ToUpper());
+
+        objectsThatWereCombined.Add(obj.GetComponent<ObjectController>());
 
     }
 
@@ -102,8 +106,11 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         menuObject.gameObject.SetActive(menuIn);
+
         canvas.enabled = !menuIn;
         canvasAnim.SetBool("buttonTouch", false);
+
+
     }
 
     void Update()

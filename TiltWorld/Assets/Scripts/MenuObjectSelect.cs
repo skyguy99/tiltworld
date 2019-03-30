@@ -9,6 +9,7 @@ public class MenuObjectSelect : MonoBehaviour
 
     public Transform pointer;
     public Transform contentBox;
+    MenuObject[] menuObjects;
 
     bool scaledIn;
     UIManager uIManager;
@@ -34,6 +35,23 @@ public class MenuObjectSelect : MonoBehaviour
         omni = GetComponent<OmniDirectionalScrollSnap>();
         pointer = GetComponent<Image>().transform;
         uIManager = GameObject.FindObjectOfType<UIManager>();
+        menuObjects = GameObject.FindObjectsOfType<MenuObject>();
+
+        UpdateObjects();
+    }
+
+    public void UpdateObjects()
+    {
+
+        print("Update obj");
+        for (int i = 0; i < uIManager.objectsThatWereCombined.Count; i++)
+        {
+            if(i < menuObjects.Length)
+            {
+                menuObjects[i].isLocked = false;
+                menuObjects[i].SetObject(uIManager.objectsThatWereCombined[i]);
+            }
+        }
     }
 
 
@@ -55,8 +73,5 @@ public class MenuObjectSelect : MonoBehaviour
 
             }
 
-       
-        //float size = GetIconSize(pointer.position, omni.closestItem.position);
-        //omni.closestItem.transform.localScale = new Vector2(size, size);
     }
 }

@@ -10,6 +10,10 @@ public class MenuObject : MonoBehaviour
 	Text subtext;
     PlayerController player;
     public Animator anim;
+    ObjectController myObject;
+    Transform container;
+
+    public bool isLocked = true;
 
     void Start()
     {
@@ -23,18 +27,41 @@ public class MenuObject : MonoBehaviour
             } else if (t.name == "Subtitle")
             {
                 subtext = t.GetComponent<Text>();
+            } else if (t.name == "Object")
+            {
+                container = t;
             }
 		}
 
+    }
+
+    public void SetObject(ObjectController o)
+    {
+        myObject = o;
+
+        //SET object item
+        //container.GetChild(0).rotation;
+        Destroy(container.GetChild(0));
+
+        objName = o.objName;
         headline.text = objName.ToUpper();
-        if(player.combineObjects.ContainsKey(objName.ToLower()))
+        if (player.combineObjects.ContainsKey(objName.ToLower()))
         {
-            string text = "("+player.combineObjects[objName.ToLower()][0].ToUpper() + " + "+ player.combineObjects[objName.ToLower()][1].ToUpper()+")";
+            string text = "(" + player.combineObjects[objName.ToLower()][0].ToUpper() + " + " + player.combineObjects[objName.ToLower()][1].ToUpper() + ")";
             subtext.text = text;
-        } else {
+        }
+        else
+        {
             subtext.text = "OBJ 1 + OBJ 2";
         }
 
+        headline.enabled = isLocked;
+        subtext.enabled = isLocked;
+        if (isLocked)
+        {
+            //lock icon
+
+        }
     }
 
     // Update is called once per frame

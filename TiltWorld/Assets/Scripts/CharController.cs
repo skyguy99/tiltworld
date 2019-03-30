@@ -83,7 +83,7 @@ public class CharController : MonoBehaviour
 
         if (rend.isVisible && !player.sawCharacter)
         {
-            print("Saw character!");
+            //print("Saw character!");
             player.sawCharacter = true;
             StartCoroutine(CancelIntro());
   
