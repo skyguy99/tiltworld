@@ -72,7 +72,8 @@ public class UIManager : MonoBehaviour
 
         //ScreenCapture.CaptureScreenshot(screenshotFilename);
         canvasAnim.SetBool("buttonTouch", true);
-       
+        mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
+
         StartCoroutine(ChangeMenuIn());
     }
 
@@ -101,7 +102,7 @@ public class UIManager : MonoBehaviour
     IEnumerator ChangeMenuIn()
     {
         menuIn = !menuIn;
-        t = 0f;
+
 
 
         yield return new WaitForSeconds(1f);
@@ -111,18 +112,12 @@ public class UIManager : MonoBehaviour
         canvasAnim.SetBool("buttonTouch", false);
 
 
+
     }
 
     void Update()
     {
     
-            Color col = menu.color;
-
-
-            col.a = menuIn ? Mathf.Lerp(0f, 1f, t) : Mathf.Lerp(1f, 0f, t);
-
-            menu.color = col;
-            t += 6f* Time.deltaTime;
 
         if (target != null)
         {
