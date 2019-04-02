@@ -90,8 +90,11 @@ namespace Lean.Touch
                 float yPos = transform.position.y;
                 // Add the deltaPosition
 
-                uIManager.selectCircle.ToggleSelectCircleDown();
-                
+                if(uIManager != null)
+                {
+                    uIManager.selectCircle.ToggleSelectCircleDown();
+                }
+                                
                 if(transform.GetComponent<ObjectController>() != null && transform.GetComponent<ObjectController>().isOnPlane)
                 {
                     //ON PLANE

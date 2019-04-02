@@ -88,6 +88,7 @@ namespace Lean.Touch
         UIManager uIManager;
         public static bool SomethingIsSelected;
 
+
         /// <summary>Returns isSelected, or false if HideWithFinger is true and SelectingFinger is still set.</summary>
         public bool IsSelected
 		{
@@ -375,7 +376,11 @@ namespace Lean.Touch
 				}
 			}
 
-            uIManager.selectCircle.ToggleSelectCircleDown();
+            if(uIManager != null)
+            {
+                uIManager.selectCircle.ToggleSelectCircleDown();
+            }
+
 		}
 
 		/// <summary>This deselects all objects in the scene.</summary>
