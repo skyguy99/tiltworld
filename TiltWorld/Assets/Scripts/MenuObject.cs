@@ -38,6 +38,7 @@ public class MenuObject : MonoBehaviour
 
     public void SetObject(ObjectController o)
     {
+        player = GameObject.FindObjectOfType<PlayerController>();
         foreach (Transform t in transform)
         {
             if (t.name == "Title")
@@ -56,7 +57,14 @@ public class MenuObject : MonoBehaviour
         myObject = o;
 
         //SET object item
-        print(container.transform.childCount);
+        Transform c = container.GetChild(0);
+        GameObject go = Instantiate(o.gameObject, c.position, c.localRotation);
+        go.transform.parent = container;
+        go.transform.localScale = c.localScale;
+        Destroy(go.GetComponent<Rigidbody>());
+        Destroy(go.GetComponent<ObjectController>());
+
+        Destroy(c.gameObject);
 
         objName = o.objName;
         headline.text = objName.ToUpper();
@@ -67,7 +75,7 @@ public class MenuObject : MonoBehaviour
         }
         else
         {
-            subtext.text = "OBJ 1 + OBJ 2";
+            subtext.text = "null";
         }
 
         headline.enabled = isLocked;
