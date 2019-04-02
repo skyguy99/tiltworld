@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
     bool menuIn;
 
     public List<ObjectController> objectsThatWereCombined = new List<ObjectController>();
+    public ObjectController tempObj;
 
 
     //public static string screenshotFilename = "screenshotName.png";

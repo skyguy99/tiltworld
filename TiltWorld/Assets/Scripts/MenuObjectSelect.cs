@@ -44,13 +44,15 @@ public class MenuObjectSelect : MonoBehaviour
     {
 
         print("Update obj");
-        for (int i = 0; i < uIManager.objectsThatWereCombined.Count; i++)
+        for (int i = 0; i < menuObjects.Length; i++)
         {
-            if(i < menuObjects.Length)
+            if(i < uIManager.objectsThatWereCombined.Count)
             {
                 menuObjects[i].isLocked = false;
                 menuObjects[i].SetObject(uIManager.objectsThatWereCombined[i]);
-            }
+            } else {
+                menuObjects[i].SetObject(uIManager.tempObj); //temp
+             }
         }
     }
 

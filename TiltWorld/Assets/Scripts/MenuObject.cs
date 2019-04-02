@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuObject : MonoBehaviour
 {
 	public string objName;
 	Text headline;
-	Text subtext;
+    TextMeshPro subtext;
     PlayerController player;
     public Animator anim;
     ObjectController myObject;
-    Transform container;
+    public Transform container;
 
     public bool isLocked = true;
 
@@ -26,7 +27,7 @@ public class MenuObject : MonoBehaviour
                 headline = t.GetComponent<Text>();
             } else if (t.name == "Subtitle")
             {
-                subtext = t.GetComponent<Text>();
+                subtext = t.GetComponent<TextMeshPro>();
             } else if (t.name == "Object")
             {
                 container = t;
@@ -37,11 +38,25 @@ public class MenuObject : MonoBehaviour
 
     public void SetObject(ObjectController o)
     {
+        foreach (Transform t in transform)
+        {
+            if (t.name == "Title")
+            {
+                headline = t.GetComponent<Text>();
+            }
+            else if (t.name == "Subtitle")
+            {
+                subtext = t.GetComponent<TextMeshPro>();
+            }
+            else if (t.name == "Object")
+            {
+                container = t;
+            }
+        }
         myObject = o;
 
         //SET object item
-        //container.GetChild(0).rotation;
-        Destroy(container.GetChild(0));
+        print(container.transform.childCount);
 
         objName = o.objName;
         headline.text = objName.ToUpper();
