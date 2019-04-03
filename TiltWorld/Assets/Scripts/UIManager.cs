@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     float t = 0f;
     bool menuIn;
 
-    public List<ObjectController> objectsThatWereCombined = new List<ObjectController>();
+    public List<ObjectController> objectsThatWereCombined = new List<ObjectController>(); //list of unlocked objects
     public ObjectController tempObj;
 
 
@@ -86,6 +86,8 @@ public class UIManager : MonoBehaviour
         objCircle.ToggleSelectCircleDown();
 
     }
+
+    //ADDS OBJECT
     public void ShowObjectText(Transform obj, string headline, string subtext, bool showCircle)
     {
         ObjectText.gameObject.SetActive(true);
@@ -98,6 +100,9 @@ public class UIManager : MonoBehaviour
 
         objectsThatWereCombined.Add(obj.GetComponent<ObjectController>());
 
+        //check explicitly
+
+
     }
 
     IEnumerator ChangeMenuIn()
@@ -107,6 +112,7 @@ public class UIManager : MonoBehaviour
 
 
         yield return null;
+        //menuObjectSelect.UpdateObjects(); //big change
         menuObject.gameObject.SetActive(menuIn);
 
         //menuObjectSelect.UpdateObjects();

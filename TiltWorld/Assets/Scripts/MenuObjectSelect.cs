@@ -15,6 +15,9 @@ public class MenuObjectSelect : MonoBehaviour
     public Transform platform;
     bool scaledIn;
     UIManager uIManager;
+    PlayerController player;
+
+    ObjectController[] allObjects;
   
     /* Constants */
     const float S = 1.5f; // The maximum size you want to get when closest
@@ -38,23 +41,52 @@ public class MenuObjectSelect : MonoBehaviour
         pointer = GetComponent<Image>().transform;
         uIManager = GameObject.FindObjectOfType<UIManager>();
         menuObjects = GameObject.FindObjectsOfType<MenuObject>();
-
+        player = GameObject.FindObjectOfType<PlayerController>();
         UpdateObjects();
+
+
     }
 
+    private void Awake()
+    {
+        allObjects = GameObject.FindObjectsOfType<ObjectController>();
+    }
+
+
+    //HERE we set the objects to the menu places
     public void UpdateObjects()
     {
 
         print("Update obj");
         for (int i = 0; i < menuObjects.Length; i++)
         {
-            if(i < uIManager.objectsThatWereCombined.Count)
+
+
+            int j = i;
+
+            if (j >= player.objectsToBeInstantiated.Length) //cycle thru all potential objs
             {
-                menuObjects[i].isLocked = false;
-                menuObjects[i].SetObject(uIManager.objectsThatWereCombined[i]);
-            } else {
-                menuObjects[i].SetObject(uIManager.tempObj); //temp
-             }
+                j = 0;
+            }
+            menuObjects[i].SetObject(player.objectsToBeInstantiated[j]); //temp
+
+            foreach(ObjectController o in uIManager.objectsThatWereCombined)
+            {
+                if(o.objName == menuObjects[i].myObject.objName)
+                {
+                    menuObjects[i].isLocked = false;
+                }
+            }
+
+            foreach(ObjectController o in allObjects)
+            {
+                if(o.ObjectToSpawn == menuObjects[i].myObject)
+                {
+                    print("object");
+                    menuObjects[i].objectsThatProduceThis = new string[] { o.objName, o.partnerName};
+                }
+            }
+
         }
     }
 

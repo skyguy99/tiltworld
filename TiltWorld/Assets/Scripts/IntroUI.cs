@@ -39,5 +39,11 @@ public class IntroUI : MonoBehaviour
             doubleTapTimer = 0f;
             tapCount = 0;
         }
+
+        //for testing
+        if(Input.GetKey("space"))
+        {
+            SceneManager.LoadScene("TiltWorldScene");
+        }
     }
 }

@@ -11,16 +11,18 @@ public class MenuObject : MonoBehaviour
     TextMeshPro subtext;
     PlayerController player;
     public Animator anim;
-    ObjectController myObject;
+    public ObjectController myObject;
     Transform container;
     public Transform platContainer;
     UIManager uIManager;
+    public string[] objectsThatProduceThis;
 
     Vector3 rot = new Vector3(17.1f, -129f, 21f);
 
     MenuObjectSelect menuObjectSelect;
     Material originMat;
     public bool isLocked = true;
+
 
     void Awake()
     {
@@ -86,26 +88,27 @@ public class MenuObject : MonoBehaviour
         go.transform.eulerAngles = rot;
 
         objName = o.objName;
-        headline.text = isLocked ? "" : objName.ToUpper();
+        headline.text = isLocked ? "??" : objName.ToUpper();
 
-        if (!isLocked && player.combineObjects.ContainsKey(objName.ToLower()))
+        if (player.combineObjects.ContainsKey(objName.ToLower()))
         {
             string text = "(" + player.combineObjects[objName.ToLower()][0].ToUpper() + " + " + player.combineObjects[objName.ToLower()][1].ToUpper() + ")";
             subtext.text = text;
         }
-        else
+        else if(objectsThatProduceThis.Length == 2)
         {
-            subtext.text = "OBJECT+OBJECT";
+            subtext.text = "("+objectsThatProduceThis[0] + " + "+ objectsThatProduceThis[1]+ ")";
         }
 
 
         go.transform.eulerAngles = rot;
 
         //Materials
-        //go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
+
+        go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
         for (int i = 0; i < platContainer.childCount; i++)
         {
-            //platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
+            platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
         }
     }
 
@@ -114,6 +117,14 @@ public class MenuObject : MonoBehaviour
     {
 
         isLocked = uIManager.objectsThatWereCombined.Contains(myObject);
+
+        foreach(ObjectController o in uIManager.objectsThatWereCombined)
+        {
+            if(o.objName == myObject.objName)
+            {
+                isLocked = false;
+            }
+        }
         if (container.GetChild(0).eulerAngles != rot)
         {
             container.GetChild(0).eulerAngles = rot;
