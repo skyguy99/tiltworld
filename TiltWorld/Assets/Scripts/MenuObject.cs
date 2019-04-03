@@ -63,7 +63,7 @@ public class MenuObject : MonoBehaviour
         go.transform.parent = container;
 
 
-        if(originMat == null)
+        if (originMat == null)
         {
             originMat = o.gameObject.GetComponent<Renderer>().sharedMaterial;
         }
@@ -74,6 +74,7 @@ public class MenuObject : MonoBehaviour
 
         for (int i = 0; i < platContainer.childCount; i++)
         {
+            platContainer.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
             platContainer.GetChild(i).gameObject.SetActive(i == myObject.world);
         }
 
@@ -83,32 +84,25 @@ public class MenuObject : MonoBehaviour
         go.transform.eulerAngles = rot;
 
         objName = o.objName;
-        headline.text = objName.ToUpper();
-        if (player.combineObjects.ContainsKey(objName.ToLower()))
+        headline.text = isLocked ? "" : objName.ToUpper();
+
+        if (!isLocked && player.combineObjects.ContainsKey(objName.ToLower()))
         {
             string text = "(" + player.combineObjects[objName.ToLower()][0].ToUpper() + " + " + player.combineObjects[objName.ToLower()][1].ToUpper() + ")";
             subtext.text = text;
         }
         else
         {
-            //islocked
-            headline.text = "HELLO";
-            subtext.text = "null";
+            subtext.text = "(HINT: SOMETHING + SOME)";
         }
 
 
-        //HERE
-        //headline.enabled = isLocked;
-        //subtext.enabled = isLocked;
-
-        //go.GetComponent<Renderer>().sharedMaterial = isLocked ? menuObjectSelect.blackMat : originMat;
-        if (isLocked)
-        {
-            //lock icon
-
-        }
         go.transform.eulerAngles = rot;
-
+        go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
+        for (int i = 0; i < platContainer.childCount; i++)
+        {
+            platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
+        }
     }
 
     // Update is called once per frame

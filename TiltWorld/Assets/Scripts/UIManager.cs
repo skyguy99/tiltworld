@@ -58,16 +58,17 @@ public class UIManager : MonoBehaviour
         }
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
+        menuObjectSelect = GameObject.FindObjectOfType<MenuObjectSelect>();
         menuObject.gameObject.SetActive(menuIn);
         canvas.enabled = !menuIn;
 
 
     }
 
+    //UPDATE MENU HERE
     public void ToggleMenu()
     {
-        print("menu");
+
 
 
         //ScreenCapture.CaptureScreenshot(screenshotFilename);
@@ -108,6 +109,7 @@ public class UIManager : MonoBehaviour
         yield return null;
         menuObject.gameObject.SetActive(menuIn);
 
+        //menuObjectSelect.UpdateObjects();
         canvas.enabled = !menuIn;
         //canvasAnim.SetBool("buttonTouch", false);
 
