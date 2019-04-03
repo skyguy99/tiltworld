@@ -11,12 +11,14 @@ public class MenuObjectSelect : MonoBehaviour
     public Transform contentBox;
     MenuObject[] menuObjects;
 
+    public Material blackMat;
+    public Transform platform;
     bool scaledIn;
     UIManager uIManager;
   
     /* Constants */
     const float S = 1.5f; // The maximum size you want to get when closest
-    const float D = 350.0f; // The distance where you start to scale
+    const float D = 200.0f; // The distance where you start to scale
     const float E = 2.5f; // The distance where the object will not scale more (i.e. reached the maximum)
 
     float GetIconSize(Vector2 pointer, Vector2 icon)

@@ -5,16 +5,6 @@ using Lean.Touch;
 
 public class ObjectController : MonoBehaviour
 {
-    //Combo guide:
-    //tire + letterstogether = TV
-    //flower + tire = box
-    //car + flower = spray can
-    //spray can + flower = tree
-    //lettersingle + tire = car
-    //bridge + flower = tv
-
-    //would add more later
-
 
     public bool isOnPlane;
     public string objName;
@@ -33,6 +23,7 @@ public class ObjectController : MonoBehaviour
     public Renderer renderer;
     public Rigidbody rb;
     public LeanSelectable leanSelectable;
+    public int world;
 
 
     string ToTitleCase(string stringToConvert)
