@@ -4031,6 +4031,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 381171252}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &382551028
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &399128724
 GameObject:
   m_ObjectHideFlags: 0
@@ -5889,7 +5921,7 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 683349449}
+  BlurTexture: {fileID: 382551028}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7172,38 +7204,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!84 &683349449
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &684189932 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f364c3678cb344b5c96039fd2d1c5ea2,
@@ -11838,7 +11838,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173025787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: febf706ad2dbb47f0b40ab694a3b2f07, type: 3}
   m_Name: 
@@ -11882,6 +11882,10 @@ MonoBehaviour:
   audioBackground: {fileID: 0}
   mover: {fileID: 0}
   explodeCubes: {fileID: 0}
+  particleMat: {fileID: 2100000, guid: 4bec768f85a7b4ee4a65744f5d0daa37, type: 2}
+  particleColors:
+  - {r: 1, g: 0.28390285, b: 0, a: 1}
+  - {r: 0, g: 0.8893428, b: 1, a: 1}
   sawCharacter: 0
   objectsToBeInstantiated:
   - {fileID: 4384378377392470063, guid: 82e5ada0fb7e74a9ca330e2ff1d2c404, type: 3}
@@ -12276,7 +12280,7 @@ MonoBehaviour:
   m_ScrollSensitivity: 1
   m_ScrollDelay: 0.02
   m_ScrollWheelDirection: 1
-  m_ScrollFriction: 0.999
+  m_ScrollFriction: 1
   m_ScrollInterpolator: 7
   m_ScrollTension: 2
   m_AddInactiveChildrenToCalculatingFilter: 0
@@ -20846,6 +20850,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 8591754155451030546, guid: 82e5ada0fb7e74a9ca330e2ff1d2c404,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82e5ada0fb7e74a9ca330e2ff1d2c404, type: 3}
 --- !u!4 &1847090160 stripped
@@ -23810,7 +23819,6 @@ GameObject:
   - component: {fileID: 5314376929496475055}
   - component: {fileID: 5314376929496475053}
   - component: {fileID: 5314376929496475052}
-  - component: {fileID: 5314376929496475056}
   - component: {fileID: 5314376929496475058}
   - component: {fileID: 5314376929496475059}
   - component: {fileID: 5314376929496475057}
@@ -23876,25 +23884,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.758767, y: 126.98539, z: 134.76163}
   m_Center: {x: -44.920662, y: 22.44264, z: -1.5459578}
---- !u!95 &5314376929496475056
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5314376929496475051}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c2a67b79ae3c34314adcc0ee9689445d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5314376929496475057
 MonoBehaviour:
   m_ObjectHideFlags: 0

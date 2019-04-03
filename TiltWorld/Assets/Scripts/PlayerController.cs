@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
     public Mover mover;
 
     public Transform explodeCubes;
+    public Material particleMat;
+    public Color[] particleColors;
 
     public bool sawCharacter;
 
@@ -89,11 +91,12 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
 
-        if (!room.bounds.Contains(transform.position))
-        {
-            //ResetPosition();
-        }
-           
+
+        Color c = particleMat.color;
+        c = Color.Lerp(particleColors[0], particleColors[1], Mathf.PingPong(Time.time, 1));
+        particleMat.color = c;
+        particleMat.SetColor("_EmissionColor", c);
+
     }
 
 }

@@ -36,7 +36,7 @@ public class ObjectController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
         originalPos = Vector3.zero;
@@ -47,6 +47,12 @@ public class ObjectController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         leanSelectable = GetComponent<LeanSelectable>();
+
+        if(GetComponentInParent<WorldController>() != null)
+        {
+            world = GetComponentInParent<WorldController>().num;
+        }
+
     }
 
     // Update is called once per frame
