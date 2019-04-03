@@ -14,6 +14,7 @@ public class MenuObject : MonoBehaviour
     ObjectController myObject;
     Transform container;
     public Transform platContainer;
+    UIManager uIManager;
 
     Vector3 rot = new Vector3(17.1f, -129f, 21f);
 
@@ -23,6 +24,7 @@ public class MenuObject : MonoBehaviour
 
     void Awake()
     {
+        uIManager = GameObject.FindObjectOfType<UIManager>();
         menuObjectSelect = GameObject.FindObjectOfType<MenuObjectSelect>();
         anim = GetComponent<Animator>();
         player = GameObject.FindObjectOfType<PlayerController>();
@@ -93,22 +95,25 @@ public class MenuObject : MonoBehaviour
         }
         else
         {
-            subtext.text = "(HINT: SOMETHING + SOME)";
+            subtext.text = "OBJECT+OBJECT";
         }
 
 
         go.transform.eulerAngles = rot;
-        go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
+
+        //Materials
+        //go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
         for (int i = 0; i < platContainer.childCount; i++)
         {
-            platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
+            //platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+
+        isLocked = uIManager.objectsThatWereCombined.Contains(myObject);
         if (container.GetChild(0).eulerAngles != rot)
         {
             container.GetChild(0).eulerAngles = rot;
