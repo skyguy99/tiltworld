@@ -111,7 +111,7 @@ public class UIManager : MonoBehaviour
 
 
 
-        yield return null;
+        yield return new WaitForSeconds(0f);
 
         menuObject.gameObject.SetActive(menuIn);
 

@@ -22,11 +22,10 @@ public class PlayerController : MonoBehaviour {
 
     public bool sawCharacter;
 
-
     //Object management
 
     List<ObjectController> allObjects = new List<ObjectController>();
-    public Dictionary<string, string[]> combineObjects = new Dictionary<string, string[]>();
+    public Dictionary<string, string[]> combineObjects = new Dictionary<string, string[]>(); //key= produced object, values = [objName, partnername]
     public ObjectController[] objectsToBeInstantiated;
 
     bool makePriority;
@@ -46,8 +45,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        // = GameObject.FindGameObjectWithTag("Room").GetComponent<BoxCollider>();
-       
+
         character = GameObject.FindObjectOfType<CharController>();
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         originPos = transform.position;
@@ -60,6 +58,7 @@ public class PlayerController : MonoBehaviour {
         ObjectController[] theObjs = GameObject.FindObjectsOfType<ObjectController>();
         ShuffleArray(theObjs);
 
+        //Here we set up all objects -----------
         for (int i = 0; i < theObjs.Length; i++)
         {
             index++;
@@ -70,16 +69,19 @@ public class PlayerController : MonoBehaviour {
             allObjects.Add(theObjs[i]);
             theObjs[i].isPriority = makePriority;
 
-            if (i+1 < theObjs.Length)
+            if (i + 1 < theObjs.Length)
             {
                 theObjs[i].partnerName = theObjs[i + 1].objName;
-            } else {
+            }
+            else
+            {
                 theObjs[i].partnerName = theObjs[0].objName;
             }
 
             theObjs[i].ObjectToSpawn = makePriority ? objectsToBeInstantiated[index].transform : null;
 
-           
+            //add to player dictionary!
+            combineObjects[objectsToBeInstantiated[index].objName] = new string[] { theObjs[i].partnerName, theObjs[i].objName};
             makePriority = !makePriority;
         }
   

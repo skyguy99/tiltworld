@@ -94,18 +94,12 @@ public class MenuObject : MonoBehaviour
         objName = o.objName;
         headline.text = isLocked ? "??" : objName.ToUpper();
 
-        //if (player.combineObjects.ContainsKey(objName.ToLower()))
-        //{
-        //    string text = "(" + player.combineObjects[objName.ToLower()][0].ToUpper() + " + " + player.combineObjects[objName.ToLower()][1].ToUpper() + ")";
-        //    subtext.text = text;
-        //}
-        //else if(objectsThatProduceThis.Length == 2)
-        //{
-        //    subtext.text = "("+objectsThatProduceThis[0] + " + "+ objectsThatProduceThis[1]+ ")";
-        //}
-
-        subtext.text = isLocked.ToString();
-
+        if (player.combineObjects.ContainsKey(objName))
+        {
+         
+            string text = "(" + player.combineObjects[objName][0].ToUpper() + " + " + player.combineObjects[objName][1].ToUpper() + ")";
+            subtext.text = text;
+        }
 
         go.transform.eulerAngles = rot;
 
