@@ -123,8 +123,11 @@ public class MenuObject : MonoBehaviour
                 isLocked = false;
             }
         }
+      
         if(container.transform.childCount > 0)
         {
+
+            container.GetChild(0).gameObject.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
             if (container.GetChild(0).eulerAngles != rot)
             {
                 container.GetChild(0).eulerAngles = rot;
