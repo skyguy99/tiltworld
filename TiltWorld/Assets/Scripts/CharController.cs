@@ -21,6 +21,11 @@ public class CharController : MonoBehaviour
     Renderer rend;
     bool canFollow;
 
+    float impulse = 5.5f;
+
+    int tapCount;
+    float doubleTapTimer;
+
     void Start()
     {
         //originalPos = transform.position;
@@ -66,8 +71,8 @@ public class CharController : MonoBehaviour
         iTween.RotateBy(gameObject, iTween.Hash("y", .5, "easeType", "easeInOutBack", "loopType", iTween.LoopType.none, "delay", 0f));
         yield return new WaitForSeconds(2f);
         rb.isKinematic = false;
-        MoveToiTween(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 3f), 2f);
-        yield return new WaitForSeconds(1f);
+        MoveToiTween(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 3f), 1f);
+        yield return new WaitForSeconds(0f);
         canFollow = true;
     }
 
@@ -75,7 +80,12 @@ public class CharController : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         CancelInvoke("RepeatIntroAnim");
-        StartCoroutine(introRot());
+
+        if(!canFollow)
+        {
+            StartCoroutine(introRot());
+        }
+
     }
 
     private void Update()
@@ -97,16 +107,9 @@ public class CharController : MonoBehaviour
         }
 
 
-        //currentPlayerPos = player.transform.position;
-        //if(currentPlayerPos != lastPlayerPos)
-        //{
-        //    print("pos changed!");
-        //    UpdateMovement();
-        //}
-        //lastPlayerPos = currentPlayerPos;
-
         if(canFollow)
         {
+            CancelInvoke("RepeatIntroAnim");
             transform.position = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - 3f);
 
 
@@ -124,27 +127,43 @@ public class CharController : MonoBehaviour
 
         }
         anim.SetBool("run", player.mover.isMoving);
+        if(player.mover.moveVector != Vector3.zero)
+        {
+            canFollow = true;
+        }
 
 
-            //raycasting
 
-            Vector3 rotation = transform.forward;
-            RaycastHit hit;
-            Vector3 startPoint = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
-            if (Physics.Raycast(startPoint, rotation, out hit, 1f))
-            {
-                Debug.DrawRay(startPoint, rotation * hit.distance, Color.yellow);
-                //Debug.Log("Did Hit"+hit.transform.name);
-                if (hit.transform.GetComponent<Platform>() != null)
-                {
-                    Jump(hit.transform);
-                }
-                }
-            else
-            {
-                Debug.DrawRay(startPoint, rotation * 1000, Color.white);
-                //Debug.Log("Did not Hit");
-            }
+        //DOUBLE TAP
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            tapCount++;
+        }
+        if (tapCount > 0)
+        {
+            doubleTapTimer += Time.deltaTime;
+        }
+        if (tapCount >= 2)
+        {
+            //What you want to do
+            print("DOUBLE");
+            rb.velocity += Vector3.up * impulse;
+
+            doubleTapTimer = 0.0f;
+            tapCount = 0;
+        }
+        if (doubleTapTimer > 0.5f)
+        {
+            doubleTapTimer = 0f;
+            tapCount = 0;
+        }
+
+        //for testing
+        if (Input.GetKey("space"))
+        {
+            //rb.AddForce(new Vector3(0, 3, 0), ForceMode.Impulse);
+            rb.velocity += Vector3.up * impulse;
+        }
 
         sword.gameObject.SetActive(anim.GetCurrentAnimatorStateInfo(0).IsName("attack"));
         accessory.gameObject.SetActive(anim.GetCurrentAnimatorStateInfo(0).IsName("attack"));

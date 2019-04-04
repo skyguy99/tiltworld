@@ -101,6 +101,8 @@ public class MenuObject : MonoBehaviour
             subtext.text = text;
         }
 
+        subtext.transform.localPosition = new Vector3(subtext.transform.localPosition.x, subtext.transform.localPosition.y, -135f);
+
         go.transform.eulerAngles = rot;
 
         //Materials
