@@ -23,6 +23,8 @@ public class MenuObject : MonoBehaviour
     Material originMat;
     public bool isLocked = true;
 
+    bool hasSet;
+
 
     void Awake()
     {
@@ -63,18 +65,24 @@ public class MenuObject : MonoBehaviour
 
         //SET object item
         Transform c = container.GetChild(0);
-        GameObject go = Instantiate(o.gameObject, c.position, Quaternion.identity);
-        go.transform.parent = container;
 
+        GameObject go = container.GetChild(0).gameObject;
+        if (!hasSet)
+        {
+            hasSet = true;
+            go = Instantiate(o.gameObject, c.position, Quaternion.identity);
+            go.transform.parent = container;
+            go.transform.localScale = c.localScale;
+            Destroy(go.GetComponent<Rigidbody>());
+            Destroy(go.GetComponent<ObjectController>());
+            Destroy(c.gameObject);
+            go.transform.eulerAngles = rot;
+        }
 
         if (originMat == null)
         {
             originMat = o.gameObject.GetComponent<Renderer>().sharedMaterial;
         }
-
-        go.transform.localScale = c.localScale;
-        Destroy(go.GetComponent<Rigidbody>());
-        Destroy(go.GetComponent<ObjectController>());
 
         for (int i = 0; i < platContainer.childCount; i++)
         {
@@ -83,22 +91,20 @@ public class MenuObject : MonoBehaviour
         }
 
 
-
-        Destroy(c.gameObject);
-        go.transform.eulerAngles = rot;
-
         objName = o.objName;
         headline.text = isLocked ? "??" : objName.ToUpper();
 
-        if (player.combineObjects.ContainsKey(objName.ToLower()))
-        {
-            string text = "(" + player.combineObjects[objName.ToLower()][0].ToUpper() + " + " + player.combineObjects[objName.ToLower()][1].ToUpper() + ")";
-            subtext.text = text;
-        }
-        else if(objectsThatProduceThis.Length == 2)
-        {
-            subtext.text = "("+objectsThatProduceThis[0] + " + "+ objectsThatProduceThis[1]+ ")";
-        }
+        //if (player.combineObjects.ContainsKey(objName.ToLower()))
+        //{
+        //    string text = "(" + player.combineObjects[objName.ToLower()][0].ToUpper() + " + " + player.combineObjects[objName.ToLower()][1].ToUpper() + ")";
+        //    subtext.text = text;
+        //}
+        //else if(objectsThatProduceThis.Length == 2)
+        //{
+        //    subtext.text = "("+objectsThatProduceThis[0] + " + "+ objectsThatProduceThis[1]+ ")";
+        //}
+
+        subtext.text = isLocked.ToString();
 
 
         go.transform.eulerAngles = rot;
@@ -125,10 +131,13 @@ public class MenuObject : MonoBehaviour
                 isLocked = false;
             }
         }
-        if (container.GetChild(0).eulerAngles != rot)
+        if(container.transform.childCount > 0)
         {
-            container.GetChild(0).eulerAngles = rot;
+            if (container.GetChild(0).eulerAngles != rot)
+            {
+                container.GetChild(0).eulerAngles = rot;
+            }
         }
-       
+
     }
 }

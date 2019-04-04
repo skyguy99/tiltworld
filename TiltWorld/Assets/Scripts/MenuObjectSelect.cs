@@ -39,9 +39,7 @@ public class MenuObjectSelect : MonoBehaviour
     {
         omni = GetComponent<OmniDirectionalScrollSnap>();
         pointer = GetComponent<Image>().transform;
-        uIManager = GameObject.FindObjectOfType<UIManager>();
-        menuObjects = GameObject.FindObjectsOfType<MenuObject>();
-        player = GameObject.FindObjectOfType<PlayerController>();
+
         UpdateObjects();
 
 
@@ -49,6 +47,9 @@ public class MenuObjectSelect : MonoBehaviour
 
     private void Awake()
     {
+        uIManager = GameObject.FindObjectOfType<UIManager>();
+        player = GameObject.FindObjectOfType<PlayerController>();
+        menuObjects = GameObject.FindObjectsOfType<MenuObject>();
         allObjects = GameObject.FindObjectsOfType<ObjectController>();
     }
 

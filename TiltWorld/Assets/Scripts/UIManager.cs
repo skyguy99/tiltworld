@@ -112,10 +112,12 @@ public class UIManager : MonoBehaviour
 
 
         yield return null;
-        //menuObjectSelect.UpdateObjects(); //big change
+
         menuObject.gameObject.SetActive(menuIn);
 
-        //menuObjectSelect.UpdateObjects();
+        menuObjectSelect.UpdateObjects();
+
+
         canvas.enabled = !menuIn;
         //canvasAnim.SetBool("buttonTouch", false);
 

@@ -62,6 +62,11 @@ public class PlayerController : MonoBehaviour {
 
         for (int i = 0; i < theObjs.Length; i++)
         {
+            index++;
+            if (index >= objectsToBeInstantiated.Length)
+            {
+                index = 0;
+            }
             allObjects.Add(theObjs[i]);
             theObjs[i].isPriority = makePriority;
 
@@ -74,10 +79,7 @@ public class PlayerController : MonoBehaviour {
 
             theObjs[i].ObjectToSpawn = makePriority ? objectsToBeInstantiated[index].transform : null;
 
-            if (index >= objectsToBeInstantiated.Length)
-            {
-                index = 0;
-            }
+           
             makePriority = !makePriority;
         }
   
