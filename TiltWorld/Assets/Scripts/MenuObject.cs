@@ -122,8 +122,6 @@ public class MenuObject : MonoBehaviour
     void Update()
     {
 
-        isLocked = uIManager.objectsThatWereCombined.Contains(myObject);
-
         foreach(ObjectController o in uIManager.objectsThatWereCombined)
         {
             if(o.objName == myObject.objName)
