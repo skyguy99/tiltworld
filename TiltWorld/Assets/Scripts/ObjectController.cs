@@ -66,10 +66,6 @@ public class ObjectController : MonoBehaviour
             ResetObject();
         }
 
-        //if(Input.GetKey("space"))
-        //{
-        //    ResetObject();
-        //}
     }
 
     public void MoveToiTween(Vector3 vector, float duration)

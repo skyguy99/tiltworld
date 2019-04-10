@@ -1,19 +1,14 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class SaveData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string name;
+    public int armour;
+    public List<string> items;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Vector3 position;
+    public Quaternion rotation;
 }

@@ -76,6 +76,11 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void TriggerSaveScene()
+    {
+        canvasAnim.SetTrigger("triggerSave");
+    }
+
     public void ToggleResetScene()
     {
         print("Resetting this scene");
