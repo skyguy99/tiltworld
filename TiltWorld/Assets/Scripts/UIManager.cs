@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -65,17 +66,43 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void TriggerAskForReset()
+    {
+        canvasAnim.SetBool("triggerReset", !menuIn);
+        mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
+
+        menuIn = !menuIn;
+        //canvas.enabled = !menuIn;  
+
+    }
+
+    public void ToggleResetScene()
+    {
+        SceneManager.LoadScene("TiltWorldScene");
+    }
+
     //UPDATE MENU HERE
     public void ToggleMenu()
     {
 
+        if(!canvasAnim.GetCurrentAnimatorStateInfo(0).IsName("ResetObjectTriggerIn"))
+        {
+            //FOR object menu canvas
 
+            canvasAnim.SetBool("buttonTouch", !menuIn);
+            mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
 
-        //ScreenCapture.CaptureScreenshot(screenshotFilename);
-        canvasAnim.SetBool("buttonTouch", !menuIn);
-        mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
+            StartCoroutine(ChangeMenuIn());
 
-        StartCoroutine(ChangeMenuIn());
+        } else {
+            //for reset world canvas
+
+            canvasAnim.SetBool("triggerReset", !menuIn);
+            mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
+
+            menuIn = !menuIn;
+        }
+
     }
 
     IEnumerator BackToNoObject()
@@ -141,7 +168,11 @@ public class UIManager : MonoBehaviour
 
             PlayerPrefs.SetInt("playedOnce", 1);
 
+        }
 
+        if(Input.GetKey(KeyCode.Return) && !menuIn)
+        {
+            TriggerAskForReset();
         }
 
 

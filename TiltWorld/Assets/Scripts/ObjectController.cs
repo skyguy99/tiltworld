@@ -65,6 +65,11 @@ public class ObjectController : MonoBehaviour
         {
             ResetObject();
         }
+
+        //if(Input.GetKey("space"))
+        //{
+        //    ResetObject();
+        //}
     }
 
     public void MoveToiTween(Vector3 vector, float duration)
@@ -80,8 +85,7 @@ public class ObjectController : MonoBehaviour
 
     public void ResetObject()
     {
-        //print("ResetObject");
-        //transform
+        transform.position = originalPos;
     }
 
     private void OnTriggerEnter(Collider other)

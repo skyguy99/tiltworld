@@ -62,9 +62,8 @@ public class MenuObject : MonoBehaviour
     {
 
         myObject = o;
-
+        Transform c = c = container.GetChild(0);
         //SET object item
-        Transform c = container.GetChild(0);
 
         GameObject go = container.GetChild(0).gameObject;
         if (!hasSet)

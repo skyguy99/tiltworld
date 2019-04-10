@@ -238,7 +238,7 @@ MonoBehaviour:
   IgnoreIsOverGui: 0
   RequiredFingerCount: 0
   RequiredSelectable: {fileID: 0}
-  WheelSensitivity: -0.1
+  WheelSensitivity: 0.1
   Relative: 0
   Zoom: 30
   ZoomClamp: 1

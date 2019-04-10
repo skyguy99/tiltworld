@@ -32,11 +32,18 @@ public class WorldController : MonoBehaviour {
             iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
         }
 
+        //if(Input.GetKey("space"))
+        //{
+        //    HardReset();
+
+        //}
+
     }
 
-    void ResetRotation()
+    public void HardReset()
     {
-        iTween.RotateTo(gameObject, iTween.Hash("rotation", Quaternion.identity, iTween.EaseType.easeOutBounce, "time", 0.5f));
+        transform.position = originalPos;
+        transform.rotation = Quaternion.identity;
     }
 
     public void ResetWorld()

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShakeDetector : MonoBehaviour
 {
@@ -11,8 +12,9 @@ public class ShakeDetector : MonoBehaviour
     public float ShakeForceMultiplier = 3f;
     PlayerController player;
     CharController character;
+    UIManager uIManager;
 
-    void Start()
+    void Awake()
     {
         sqrShakeDetectionThreshold = Mathf.Pow(ShakeDetectionThreshold, 2);
         player = GameObject.FindObjectOfType<PlayerController>();
@@ -34,8 +36,8 @@ public class ShakeDetector : MonoBehaviour
         if (Input.acceleration.sqrMagnitude >= sqrShakeDetectionThreshold
                    && Time.unscaledTime >= timeSinceLastShake + MinShakeInterval)
         {
-            ShakeRigidbodies(Input.acceleration);
-            player.ResetPosition();
+            //ShakeRigidbodies(Input.acceleration);
+            uIManager.TriggerAskForReset();
             print("SHAKE!");
             timeSinceLastShake = Time.unscaledTime;
         }
