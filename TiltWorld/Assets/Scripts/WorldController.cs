@@ -24,8 +24,7 @@ public class WorldController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //LOCK ROTATION---------------------
-      
+        player = GameObject.FindObjectOfType<PlayerController>();
         room = player.room;
         if (!room.bounds.Contains(transform.position))
         {
@@ -48,7 +47,7 @@ public class WorldController : MonoBehaviour {
 
     public void ResetWorld()
     {
-        print("RESETTING WORLD " + num);
+       
         iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.6f, "easetype", "easeOutBounce", "oncomplete", "ResetRotation", "oncompletetarget", gameObject));
 
 

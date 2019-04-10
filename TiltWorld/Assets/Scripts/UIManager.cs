@@ -78,7 +78,12 @@ public class UIManager : MonoBehaviour
 
     public void ToggleResetScene()
     {
-        SceneManager.LoadScene("TiltWorldScene");
+        print("Resetting this scene");
+        foreach(GameObject g in GameObject.FindObjectsOfType<GameObject>())
+        {
+            Destroy(g);
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     //UPDATE MENU HERE
@@ -88,7 +93,7 @@ public class UIManager : MonoBehaviour
         if(!canvasAnim.GetCurrentAnimatorStateInfo(0).IsName("ResetObjectTriggerIn"))
         {
             //FOR object menu canvas
-
+            print("this");
             canvasAnim.SetBool("buttonTouch", !menuIn);
             mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
 
@@ -98,6 +103,7 @@ public class UIManager : MonoBehaviour
             //for reset world canvas
 
             canvasAnim.SetBool("triggerReset", !menuIn);
+         
             mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
 
             menuIn = !menuIn;
@@ -170,7 +176,7 @@ public class UIManager : MonoBehaviour
 
         }
 
-        if(Input.GetKey(KeyCode.Return) && !menuIn)
+        if(Input.GetKey(KeyCode.A) && !menuIn)
         {
             TriggerAskForReset();
         }
