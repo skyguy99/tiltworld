@@ -11,7 +11,7 @@ public class WorldController : MonoBehaviour {
     public Vector3 originalPos;
 
     BoxCollider room;
-
+    public int serializeId;
 
     // Use this for initialization
     void Start () {

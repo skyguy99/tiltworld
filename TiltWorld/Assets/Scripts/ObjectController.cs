@@ -25,6 +25,7 @@ public class ObjectController : MonoBehaviour
     public LeanSelectable leanSelectable;
     public int world;
 
+    public int serializeId;
 
     string ToTitleCase(string stringToConvert)
     {
@@ -142,6 +143,7 @@ public class ObjectController : MonoBehaviour
                 Transform g = Instantiate(ObjectToSpawn, new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), Quaternion.identity);
                 //Instantiate(player.explodeCubes, transform.position, Quaternion.identity);
 
+                player.AssignNewObjectId(g.GetComponent<ObjectController>());
                 g.parent = transform.parent;
                 g.localScale = new Vector3(100f, 100f, 100f);
                 Destroy(this);

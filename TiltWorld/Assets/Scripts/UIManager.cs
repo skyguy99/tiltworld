@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public Animator canvasAnim;
     PlayerController player;
     Transform ObjectText;
+    Serializer serializer;
 
     public TextMeshPro textHeadline;
     public TextMeshPro textSubtitle;
@@ -47,7 +48,7 @@ public class UIManager : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerController>();
         ObjectText = GameObject.FindGameObjectWithTag("ObjectText").transform;
-
+        serializer = GameObject.FindObjectOfType<Serializer>();
         target = null;
 
         ObjectText.gameObject.SetActive(false);
@@ -79,6 +80,7 @@ public class UIManager : MonoBehaviour
     public void TriggerSaveScene()
     {
         canvasAnim.SetTrigger("triggerSave");
+        serializer.SavePositions();
     }
 
     public void ToggleResetScene()

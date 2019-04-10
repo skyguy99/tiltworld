@@ -19,6 +19,7 @@ public class ShakeDetector : MonoBehaviour
         sqrShakeDetectionThreshold = Mathf.Pow(ShakeDetectionThreshold, 2);
         player = GameObject.FindObjectOfType<PlayerController>();
         character = GameObject.FindObjectOfType<CharController>();
+        uIManager = GameObject.FindObjectOfType<UIManager>();
     }
 
     public void ShakeRigidbodies(Vector3 deviceAcceleration)

@@ -26,6 +26,8 @@ public class CharController : MonoBehaviour
     int tapCount;
     float doubleTapTimer;
 
+    public int serializeId;
+
     void Start()
     {
         //originalPos = transform.position;

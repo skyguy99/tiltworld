@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour {
     public Transform selectedObject;
 
     public BoxCollider room;
-    public CharController character;
     Vector3 originPos;
 
     public AudioClip[] audioClips;
@@ -21,6 +20,15 @@ public class PlayerController : MonoBehaviour {
     public Color[] particleColors;
 
     public bool sawCharacter;
+
+
+    //For serialization
+    public ObjectController[] objects;
+    public WorldController[] worlds;
+    public CharController character;
+
+    public int serializeId;
+    public int lastIdAssigned;
 
     //Object management
 
@@ -43,9 +51,10 @@ public class PlayerController : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-
+        objects = GameObject.FindObjectsOfType<ObjectController>();
+        worlds = GameObject.FindObjectsOfType<WorldController>();
         character = GameObject.FindObjectOfType<CharController>();
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         originPos = transform.position;
@@ -84,7 +93,34 @@ public class PlayerController : MonoBehaviour {
             combineObjects[objectsToBeInstantiated[index].objName] = new string[] { theObjs[i].partnerName, theObjs[i].objName};
             makePriority = !makePriority;
         }
+
+        SetAllIds();
   
+    }
+
+    void SetAllIds()
+    {
+        //set all world objects for serialize
+        if(serializeId < 1)
+        {
+            serializeId = 1;
+            character.serializeId = 2;
+            lastIdAssigned = character.serializeId;
+            foreach (WorldController w in worlds)
+            {
+                w.serializeId = lastIdAssigned++;
+            }
+            foreach (ObjectController o in objects)
+            {
+                o.serializeId = lastIdAssigned++;
+            }
+        }
+
+    }
+
+    public void AssignNewObjectId(ObjectController o)
+    {
+        o.serializeId = lastIdAssigned++;
     }
 
     public void ResetPosition()
