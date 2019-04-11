@@ -94,12 +94,15 @@ public class PlayerController : MonoBehaviour {
             makePriority = !makePriority;
         }
 
-        SetAllIds();
-  
+        //if(!PlayerPrefs.HasKey("GameData"))
+        //{
+            SetAllIds();
+        //}
     }
 
     void SetAllIds()
     {
+
         //set all world objects for serialize
         if(serializeId < 1)
         {

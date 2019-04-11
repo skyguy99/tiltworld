@@ -5,11 +5,12 @@ using System.Collections.Generic;
 
 public class Serializer : MonoBehaviour
 {
-    static readonly string SAVE_FILE = "player2.json";
+    static readonly string SAVE_FILE = "player.json";
 
     //public GameObject player;
     string filename;
     string dataSavedToPrefs;
+    SaveData saveData;
 
     public ObjectController[] objects;
     public WorldController[] worlds;
@@ -22,8 +23,8 @@ public class Serializer : MonoBehaviour
         worlds = GameObject.FindObjectsOfType<WorldController>();
         character = GameObject.FindObjectOfType<CharController>();
         player = GameObject.FindObjectOfType<PlayerController>();
-        dataSavedToPrefs = PlayerPrefs.GetString("GameData");
 
+     
         //SaveData data = new SaveData()
         //{
         //    name = "Sloan",
@@ -66,9 +67,21 @@ public class Serializer : MonoBehaviour
     {
      
     }
-    public void SavePositions()
+
+    public void LoadPositions()
     {
 
+        dataSavedToPrefs = PlayerPrefs.GetString("GameData");
+        saveData = JsonUtility.FromJson<SaveData>(dataSavedToPrefs);
+
+        //SaveData copy = JsonUtility.FromJson<SaveData>(jsonFromFile);
+        print("Got data: " + saveData.ToString());
+
+        //player.transform.position = copy.position;
+        //player.transform.rotation = copy.rotation;
+    }
+    public void SavePositions()
+    {
         objects = GameObject.FindObjectsOfType<ObjectController>();
 
         List<SaveData> datas = new List<SaveData>();
@@ -109,27 +122,25 @@ public class Serializer : MonoBehaviour
         }
 
         //Add it all here
-        foreach(SaveData d in datas)
-        {
-            string json = JsonUtility.ToJson(d);
-            //print("SERIALIZING: " +d.ToString());
-        }
+        //foreach(SaveData d in datas)
+        //{
+        //    string json = JsonUtility.ToJson(d);
+        //    PlayerPrefs.SetString("GameData", json);
+
+        //}
+        string json = JsonUtility.ToJson(datas[0]);
+        PlayerPrefs.SetString("GameData", json);
 
         filename = Path.Combine(Application.persistentDataPath, SAVE_FILE);
+
+
+        if (File.Exists(filename))
+        {
+            File.Delete(filename);
+        }
+
+        File.WriteAllText(filename, json);
         Debug.Log("Data saved to " + filename);
-    }
-
-    public void LoadPositions()
-    {
-
-
-        string jsonFromFile = File.ReadAllText(filename);
-
-        SaveData copy = JsonUtility.FromJson<SaveData>(jsonFromFile);
-        Debug.Log("READ: " + copy.ToString());
-
-        player.transform.position = copy.position;
-        player.transform.rotation = copy.rotation;
     }
 
 
