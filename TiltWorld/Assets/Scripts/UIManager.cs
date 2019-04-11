@@ -166,6 +166,10 @@ public class UIManager : MonoBehaviour
     void Update()
     {
     
+        if(menuIn)
+        {
+            objCircle.ToggleSelectCircleDown();
+        }
 
         if (target != null)
         {

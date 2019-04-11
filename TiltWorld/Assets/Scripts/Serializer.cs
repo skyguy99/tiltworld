@@ -122,15 +122,15 @@ public class Serializer : MonoBehaviour
         }
 
         //Add it all here
-        //foreach(SaveData d in datas)
-        //{
-        //    string json = JsonUtility.ToJson(d);
-        //    PlayerPrefs.SetString("GameData", json);
+        List<string> jsons = new List<string>();
+        foreach(SaveData d in datas)
+        {
+            string json = JsonUtility.ToJson(d);
+            jsons.Add(json);
+        }
+        //string json = JsonUtility.ToJson(datas[0]);
 
-        //}
-        string json = JsonUtility.ToJson(datas[0]);
-        PlayerPrefs.SetString("GameData", json);
-
+        //PlayerPrefs.SetString("GameData", json);
         filename = Path.Combine(Application.persistentDataPath, SAVE_FILE);
 
 
@@ -139,7 +139,12 @@ public class Serializer : MonoBehaviour
             File.Delete(filename);
         }
 
-        File.WriteAllText(filename, json);
+        foreach(string j in jsons)
+        {
+            File.WriteAllText(filename, j);
+            //File.AppendText(filename, j);
+        }
+      
         Debug.Log("Data saved to " + filename);
     }
 
