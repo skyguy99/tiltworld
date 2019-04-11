@@ -128,7 +128,9 @@ public class CharController : MonoBehaviour
             }
 
         }
-        anim.SetBool("run", player.mover.isMoving);
+
+        anim.SetBool("run", player.mover.moveVector != Vector3.zero);
+        //anim.SetBool("run", player.mover.isMoving);
         if(player.mover.moveVector != Vector3.zero)
         {
             canFollow = true;

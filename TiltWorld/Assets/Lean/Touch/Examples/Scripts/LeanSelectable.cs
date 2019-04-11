@@ -88,6 +88,8 @@ namespace Lean.Touch
         UIManager uIManager;
         public static bool SomethingIsSelected;
 
+        GyroController gyro;
+
 
         /// <summary>Returns isSelected, or false if HideWithFinger is true and SelectingFinger is still set.</summary>
         public bool IsSelected
@@ -222,8 +224,13 @@ namespace Lean.Touch
 			}
 		}
 
-		/// <summary>If the specified finger selected an object, this will return the first one.</summary>
-		public static LeanSelectable FindSelectable(LeanFinger finger)
+        private void Awake()
+        {
+            gyro = GameObject.FindObjectOfType<GyroController>();
+        }
+
+        /// <summary>If the specified finger selected an object, this will return the first one.</summary>
+        public static LeanSelectable FindSelectable(LeanFinger finger)
 		{
 			for (var i = Instances.Count - 1; i >= 0; i--)
 			{
@@ -419,10 +426,12 @@ namespace Lean.Touch
 
         private void Update()
         {
+
             if(isSelected)
             {
-                transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
-               
+                transform.rotation = new Quaternion(gyro.transform.rotation.x, gyro.transform.rotation.y, gyro.transform.rotation.z, gyro.transform.rotation.w);
+                //transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, player.transform.rotation.z, player.transform.rotation.w);
+
             }
             if (rb != null)
             {

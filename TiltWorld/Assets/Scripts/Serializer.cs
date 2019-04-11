@@ -9,7 +9,7 @@ public class Serializer : MonoBehaviour
 
     //public GameObject player;
     string filename;
-
+    string dataSavedToPrefs;
 
     public ObjectController[] objects;
     public WorldController[] worlds;
@@ -22,7 +22,7 @@ public class Serializer : MonoBehaviour
         worlds = GameObject.FindObjectsOfType<WorldController>();
         character = GameObject.FindObjectOfType<CharController>();
         player = GameObject.FindObjectOfType<PlayerController>();
-
+        dataSavedToPrefs = PlayerPrefs.GetString("GameData");
 
         //SaveData data = new SaveData()
         //{

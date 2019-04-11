@@ -10,6 +10,7 @@ public class GenericBounceObject : MonoBehaviour
 
     public bool isTitle;
     IntroUI introUI;
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,7 @@ public class GenericBounceObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isTitle && transform.position.y >= 3.5f)
+        if(isTitle && transform.position.y >= 3.5f && !introUI.showingSavedWorldUI)
         {
             introUI.MoveInSavedWorlds(gameObject);
         }
