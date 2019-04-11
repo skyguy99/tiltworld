@@ -132,8 +132,8 @@ public class UIManager : MonoBehaviour
     {
         ObjectText.gameObject.SetActive(true);
         target = obj;
-        textHeadline.text = headline;
-        textSubtitle.text = subtext;
+        //textHeadline.text = headline;
+        //textSubtitle.text = subtext;
 
         StartCoroutine(BackToNoObject());
         objCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(obj.transform.position), false);
@@ -141,7 +141,6 @@ public class UIManager : MonoBehaviour
         objectsThatWereCombined.Add(obj.GetComponent<ObjectController>());
 
         //check explicitly
-
 
     }
 
@@ -173,7 +172,7 @@ public class UIManager : MonoBehaviour
 
         if (target != null)
         {
-            ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+3.8f, target.transform.position.z - 0.3f);
+            ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+1.9f, target.transform.position.z - 0.3f);
 
 
             objCircle.transform.position = Camera.main.WorldToScreenPoint(target.transform.position);

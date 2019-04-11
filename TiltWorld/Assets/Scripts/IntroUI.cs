@@ -32,6 +32,7 @@ public class IntroUI : MonoBehaviour
         print("show saved worlds");
         showingSavedWorldUI = true;
         canvas.enabled = true;
+        canvas.GetComponent<Animator>().SetBool("triggerReset", true);
         //characterSelector.gameObject.SetActive(true);
         //Camera.main.enabled = false;
         //otherCam.enabled = true;
@@ -43,6 +44,7 @@ public class IntroUI : MonoBehaviour
 
     public void LoadScene()
     {
+        canvas.GetComponent<Animator>().SetBool("triggerReset", false);
         SceneManager.LoadScene("TiltWorldScene");
     }
 
