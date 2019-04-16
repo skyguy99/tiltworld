@@ -197,7 +197,7 @@ public class CharController : MonoBehaviour
         if(jumpTimer > 1.5f)
         {
             rb.velocity += Vector3.up * impulse;
-            player.audioAccents.PlayOneShot(player.audioClips[3]);
+            player.audioAccents.PlayOneShot(player.audioClips[4]);
             jumpTimer = 0f;
         }
     }

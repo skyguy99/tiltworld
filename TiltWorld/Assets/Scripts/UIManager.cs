@@ -134,24 +134,23 @@ public class UIManager : MonoBehaviour
     //ADDS OBJECT
     public void ShowObjectText(Transform obj, string headline, string subtext, bool showCircle)
     {
+        BackToNoObjectImmediate();
         target = obj;
-
         StartCoroutine(BackToNoObject());
 
         objCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(obj.transform.position), false);
 
         objectsThatWereCombined.Add(obj.GetComponent<ObjectController>());
-
-        //check explicitly
-
     }
 
     public void TriggerIncompatible(Transform obj)
     {
-
-        target = obj;
-        objCircle.ToggleIncompatibleCircle(Camera.main.WorldToScreenPoint(obj.transform.position));
-       
+        //print("TRIGGER INCOMPAT --" + target);
+        if(target == null) //dont interrupt new obj indicator
+        {
+            target = obj;
+            objCircle.ToggleIncompatibleCircle(Camera.main.WorldToScreenPoint(obj.transform.position));
+        }
     }
 
     IEnumerator ChangeMenuIn()
