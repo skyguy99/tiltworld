@@ -6036,7 +6036,7 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 2061100216}
+  BlurTexture: {fileID: 1369351927}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11973,9 +11973,9 @@ MonoBehaviour:
   room: {fileID: 684189933}
   audioClips:
   - {fileID: 8300000, guid: 0091f14d4785a445db8e8a191a201ae7, type: 3}
-  - {fileID: 8300000, guid: 33a7a8902837b465d9168a57d76dfbdc, type: 3}
+  - {fileID: 8300000, guid: 0d1a06293bc044232907cf7481b5664f, type: 3}
   - {fileID: 8300000, guid: 52179d0488f6a49288bd13ad21b0841e, type: 3}
-  - {fileID: 8300000, guid: f3e1885449a2a4d50b18f0c093114c6d, type: 3}
+  - {fileID: 8300000, guid: 588781aff386d45ae889b7ea5e60dab8, type: 3}
   - {fileID: 8300000, guid: 588781aff386d45ae889b7ea5e60dab8, type: 3}
   audioAccents: {fileID: 1797644992}
   audioBackground: {fileID: 0}
@@ -12010,10 +12010,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.12
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -12387,7 +12387,7 @@ MonoBehaviour:
   m_ScrollSensitivity: 1
   m_ScrollDelay: 0.02
   m_ScrollWheelDirection: 1
-  m_ScrollFriction: 0.999
+  m_ScrollFriction: 1
   m_ScrollInterpolator: 7
   m_ScrollTension: 2
   m_AddInactiveChildrenToCalculatingFilter: 0
@@ -14207,6 +14207,38 @@ MonoBehaviour:
   currentValue: 0
   speed: 2
   circle2: {fileID: 1670705258}
+--- !u!84 &1369351927
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1381514782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21120,6 +21152,7 @@ MonoBehaviour:
   textSubtitle: {fileID: 1514499359}
   objCircle: {fileID: 2003195284}
   selectCircle: {fileID: 1362152164}
+  target: {fileID: 0}
   uiImage: {fileID: 0}
   circleSelector: {fileID: 0}
   menu: {fileID: 1609885900}
@@ -23223,38 +23256,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &2061100216
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &2073577019
 PrefabInstance:
   m_ObjectHideFlags: 0

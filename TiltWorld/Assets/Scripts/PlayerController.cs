@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour {
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
         originPos = transform.position;
         mover = GetComponent<Mover>();
-        audioBackground = GetComponent<AudioSource>();
+        audioAccents = GetComponent<AudioSource>();
 
 
         int index = 0;

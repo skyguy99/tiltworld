@@ -155,7 +155,7 @@ public class ObjectController : MonoBehaviour
 
             } else if (collision.gameObject.GetComponent<ObjectController>().objName != partnerName && leanSelectable.IsSelected)
             {
-                print("incomppatible");
+                //print("incomppatible");
                 iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.Failure);
                 player.audioAccents.PlayOneShot(player.audioClips[3]);
                 uIManager.TriggerIncompatible(transform);
