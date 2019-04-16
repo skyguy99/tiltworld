@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using Lean.Touch;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class UIManager : MonoBehaviour
     public Canvas canvas;
     public Animator canvasAnim;
     PlayerController player;
-    Transform ObjectText;
+    public Transform ObjectText;
     Serializer serializer;
 
     public TextMeshPro textHeadline;
@@ -21,7 +22,7 @@ public class UIManager : MonoBehaviour
     public RadialProgress selectCircle;
 
     float deltaTime;
-    Transform target;
+    public Transform target;
 
     public Image uiImage;
     bool playingInstructions;
@@ -100,7 +101,7 @@ public class UIManager : MonoBehaviour
         if(!canvasAnim.GetCurrentAnimatorStateInfo(0).IsName("ResetObjectTriggerIn"))
         {
             //FOR object menu canvas
-            print("this");
+
             canvasAnim.SetBool("buttonTouch", !menuIn);
             mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
 
@@ -120,28 +121,45 @@ public class UIManager : MonoBehaviour
 
     IEnumerator BackToNoObject()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(9f);
         target = null;
         ObjectText.gameObject.SetActive(false);
         objCircle.ToggleSelectCircleDown();
 
     }
+    public void BackToNoObjectImmediate()
+    {
+        target = null;
+        ObjectText.gameObject.SetActive(false);
+        objCircle.ToggleSelectCircleDown();
+    }
 
     //ADDS OBJECT
     public void ShowObjectText(Transform obj, string headline, string subtext, bool showCircle)
     {
+
         ObjectText.gameObject.SetActive(true);
         target = obj;
+
         //textHeadline.text = headline;
         //textSubtitle.text = subtext;
 
         StartCoroutine(BackToNoObject());
+
         objCircle.ToggleSelectCircle(Camera.main.WorldToScreenPoint(obj.transform.position), false);
 
         objectsThatWereCombined.Add(obj.GetComponent<ObjectController>());
 
         //check explicitly
 
+    }
+
+    public void TriggerIncompatible(Transform obj)
+    {
+
+        target = obj;
+        objCircle.ToggleIncompatibleCircle(Camera.main.WorldToScreenPoint(obj.transform.position));
+       
     }
 
     IEnumerator ChangeMenuIn()
@@ -169,7 +187,7 @@ public class UIManager : MonoBehaviour
         {
             objCircle.ToggleSelectCircleDown();
         }
-
+       
         if (target != null)
         {
             ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+1.9f, target.transform.position.z - 0.3f);

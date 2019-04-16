@@ -153,6 +153,13 @@ public class ObjectController : MonoBehaviour
                 iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.Success);
                 uIManager.ShowObjectText(g, "COMBO ITEM", ToTitleCase(g.GetComponent<ObjectController>().objName), true);
 
+            } else if (collision.gameObject.GetComponent<ObjectController>().objName != partnerName && leanSelectable.IsSelected)
+            {
+                print("incomppatible");
+                iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.Failure);
+                player.audioAccents.PlayOneShot(player.audioClips[3]);
+                uIManager.TriggerIncompatible(transform);
+
             }
         } else if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Room")
         { //is not player or other object

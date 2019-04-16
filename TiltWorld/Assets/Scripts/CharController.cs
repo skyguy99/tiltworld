@@ -22,6 +22,7 @@ public class CharController : MonoBehaviour
     bool canFollow;
 
     float impulse = 5.5f;
+    float jumpTimer;
 
     int tapCount;
     float doubleTapTimer;
@@ -92,7 +93,7 @@ public class CharController : MonoBehaviour
 
     private void Update()
     {
-
+        jumpTimer += Time.deltaTime;
         if (rend.isVisible && !player.sawCharacter)
         {
             //print("Saw character!");
@@ -149,9 +150,8 @@ public class CharController : MonoBehaviour
         }
         if (tapCount >= 2)
         {
-            //What you want to do
-            print("DOUBLE");
-            rb.velocity += Vector3.up * impulse;
+            //JUMP here
+            JumpImpulse();
 
             doubleTapTimer = 0.0f;
             tapCount = 0;
@@ -165,8 +165,7 @@ public class CharController : MonoBehaviour
         //for testing
         if (Input.GetKey("space"))
         {
-            //rb.AddForce(new Vector3(0, 3, 0), ForceMode.Impulse);
-            rb.velocity += Vector3.up * impulse;
+            JumpImpulse();
         }
 
         sword.gameObject.SetActive(anim.GetCurrentAnimatorStateInfo(0).IsName("attack"));
@@ -190,6 +189,17 @@ public class CharController : MonoBehaviour
     void DisableKinematic()
     {
         rb.isKinematic = false;
+    }
+
+    //real jump
+    void JumpImpulse()
+    {
+        if(jumpTimer > 1.5f)
+        {
+            rb.velocity += Vector3.up * impulse;
+            player.audioAccents.PlayOneShot(player.audioClips[4]);
+            jumpTimer = 0f;
+        }
     }
 
     void Jump(Transform other)

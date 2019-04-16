@@ -358,6 +358,8 @@ namespace Lean.Touch
 		public void Deselect()
 		{
             SomethingIsSelected = false;
+
+
            //print("Deselect!");
 
 			// Make sure we don't deselect multiple times
@@ -386,7 +388,12 @@ namespace Lean.Touch
             if(uIManager != null)
             {
                 uIManager.selectCircle.ToggleSelectCircleDown();
+                if(transform == uIManager.target)
+                {
+                    uIManager.BackToNoObjectImmediate();
+                }
             }
+           
 
 		}
 

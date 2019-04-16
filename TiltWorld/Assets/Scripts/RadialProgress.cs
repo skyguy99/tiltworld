@@ -27,12 +27,20 @@ public class RadialProgress : MonoBehaviour {
             GetComponentInParent<Animator>().SetBool("circleIn", true);
             transform.gameObject.transform.position = pos;
         }
+        GetComponentInParent<Animator>().SetBool("circleIn", true);
 
+    }
+
+    public void ToggleIncompatibleCircle(Vector3 pos)
+    {
+        GetComponentInParent<Animator>().SetBool("xIn", true);
+        transform.gameObject.transform.position = pos;
     }
 
     public void ToggleSelectCircleDown()
     {
         GetComponentInParent<Animator>().SetBool("circleIn", false);
+        GetComponentInParent<Animator>().SetBool("xIn", false);
         circleIsUp = false;
     }
 	
