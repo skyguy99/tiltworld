@@ -48,11 +48,8 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindObjectOfType<PlayerController>();
-        ObjectText = GameObject.FindGameObjectWithTag("ObjectText").transform;
         serializer = GameObject.FindObjectOfType<Serializer>();
         target = null;
-
-        ObjectText.gameObject.SetActive(false);
 
         PlayerPrefs.DeleteAll(); //temp
         if(!PlayerPrefs.HasKey("playedOnce"))
@@ -123,26 +120,21 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(9f);
         target = null;
-        ObjectText.gameObject.SetActive(false);
+       
         objCircle.ToggleSelectCircleDown();
 
     }
     public void BackToNoObjectImmediate()
     {
         target = null;
-        ObjectText.gameObject.SetActive(false);
+      
         objCircle.ToggleSelectCircleDown();
     }
 
     //ADDS OBJECT
     public void ShowObjectText(Transform obj, string headline, string subtext, bool showCircle)
     {
-
-        ObjectText.gameObject.SetActive(true);
         target = obj;
-
-        //textHeadline.text = headline;
-        //textSubtitle.text = subtext;
 
         StartCoroutine(BackToNoObject());
 
@@ -190,7 +182,7 @@ public class UIManager : MonoBehaviour
        
         if (target != null)
         {
-            ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+1.9f, target.transform.position.z - 0.3f);
+            //ObjectText.transform.position = new Vector3(target.transform.position.x, target.transform.position.y+1.9f, target.transform.position.z - 0.3f);
 
 
             objCircle.transform.position = Camera.main.WorldToScreenPoint(target.transform.position);

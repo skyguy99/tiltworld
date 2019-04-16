@@ -8,6 +8,8 @@ public class RadialProgress : MonoBehaviour {
 	public float currentValue;
 	public float speed;
 
+
+    public bool isNewObjCircle;
     public Transform circle2;
     bool circleIsUp;
 
@@ -47,21 +49,24 @@ public class RadialProgress : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(circleIsUp)
+        if(!isNewObjCircle)
         {
-            if (currentValue > 0)
+            if (circleIsUp)
             {
-                currentValue -= 69f * Time.deltaTime;
+                if (currentValue > 0)
+                {
+                    currentValue -= 69f * Time.deltaTime;
 
+                }
+                else
+                {
+                    GetComponentInParent<Animator>().SetBool("circleIn", false);
+                    circleIsUp = false;
+                }
             }
-            else
-            {
-                GetComponentInParent<Animator>().SetBool("circleIn", false);
-                circleIsUp = false;
-            }
+            circle2.localEulerAngles = new Vector3(0, 0, -(currentValue * 0.01f * 360));
+
+            LoadingBar.fillAmount = currentValue / 100;
         }
-        circle2.localEulerAngles = new Vector3(0, 0, -(currentValue * 0.01f * 360));
-
-		LoadingBar.fillAmount = currentValue / 100;
 	}
 }
