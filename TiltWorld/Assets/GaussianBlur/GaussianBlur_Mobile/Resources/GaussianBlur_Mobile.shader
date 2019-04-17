@@ -123,7 +123,7 @@ Shader "Custom/GaussianBlur_Mobile"
                 blurColor = tex2D(_MobileBlur,buv);
                 //blurColor = tex2D(_MobileBlur,buv);
 
-                blurColor.a *= m.a;
+                blurColor.a = 1;
                             
 				float4 finalColor = blurColor * i.color;
 				finalColor.a = i.color.a * m.a * blurColor.a;
