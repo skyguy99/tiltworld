@@ -77,6 +77,7 @@ public class UIManager : MonoBehaviour
 
     public void TriggerSaveScene()
     {
+        canvasAnim.SetBool("touchedSaved", true);
         canvasAnim.SetTrigger("triggerSave");
         serializer.SavePositions();
     }
