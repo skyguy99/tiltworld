@@ -11,7 +11,11 @@ public class IntroUI : MonoBehaviour
     public bool showingSavedWorldUI;
     public Animator cameraAnim;
     Canvas canvas;
-    public Transform characterSelector;
+
+    public Transform exampleChild;
+    public Transform ScrollItemPrefab;
+    public Transform scrollContainer;
+    List<ScrollItem> scrollItems = new List<ScrollItem>();
 
     // Start is called before the first frame update
     void Awake()
@@ -19,6 +23,29 @@ public class IntroUI : MonoBehaviour
         canvas = GameObject.FindObjectOfType<Canvas>();
         canvas.enabled = false;
     
+    }
+
+    private void Start()
+    {
+        SetupScrollContent();
+        exampleChild.gameObject.SetActive(false);
+    }
+
+    void SetupScrollContent()
+    {
+        print(scrollContainer.transform.position.x);
+        //scrollContainer.transform.localPosition = new Vector3(100f, scrollContainer.localPosition.y, scrollContainer.localPosition.z);
+        for(int i = 0; i<4;i++)
+        {
+            Transform s = Instantiate(ScrollItemPrefab);
+            scrollItems.Add(s.GetComponent<ScrollItem>());
+            s.GetComponent<ScrollItem>().worldNum = i;
+            s.parent = scrollContainer;
+            s.localScale = new Vector3(1, 1, 1);
+            s.localRotation = exampleChild.localRotation;
+            s.rotation = exampleChild.rotation;
+            s.localPosition = new Vector3();
+        }
     }
 
 
@@ -44,6 +71,7 @@ public class IntroUI : MonoBehaviour
 
     public void LoadScene()
     {
+        PlayerPrefs.SetInt("loadedWorld", 0);
         canvas.GetComponent<Animator>().SetBool("triggerReset", false);
         SceneManager.LoadScene("TiltWorldScene");
     }
@@ -51,6 +79,7 @@ public class IntroUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             tapCount++;
