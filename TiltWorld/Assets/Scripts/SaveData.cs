@@ -1,19 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
-public class SaveData
+public struct SaveData
 {
-    //public string name;
-    //public int armour;
-    //public List<string> items;
+    public int test;
 
-    //public Vector3 position;
-    //public Quaternion rotation;
+	public List<MagicCubeData> magicCubes;
+}
 
-    public int objId;
-
-    public Vector3 position;
-    public Quaternion rotation;
+[Serializable]
+public struct MagicCubeData
+{
+	public string id;
+    public string date;
+	public bool isRed;
 }
