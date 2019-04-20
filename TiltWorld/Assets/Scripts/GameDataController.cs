@@ -32,27 +32,59 @@ public class GameDataController : MonoBehaviour
 
 	private void OnDisable()
 	{
-		SaveGame();
+		//SaveGame();
 	}
 
-	public static bool GetState(MagicCube magicCube)
-	{
-		if (saveData.magicCubes == null)
-			return false;
+    public static int GetState(int id)
+    {
+        if (saveData.fullWorlds == null)
+            return -1;
 
-		if (saveData.magicCubes.Any(t => t.id == magicCube.name))
-			return saveData.magicCubes.FirstOrDefault(t => t.id == magicCube.name).isRed;
+        if (saveData.fullWorlds.Any(t => t.id == id))
+            return saveData.fullWorlds.FirstOrDefault(t => t.id == id).objects.Count;
 
-		return false;
-	}
+        return -1;
+    }
 
-	public static void SetState(MagicCube magicCube, bool isRed)
-	{
-		if (saveData.magicCubes == null)
-			saveData.magicCubes = new List<MagicCubeData>();
+    public static void SetState(string date, ObjectController[] allObjects)
+    {
 
-		var magicCubeData = new MagicCubeData() { id = magicCube.name, isRed = isRed };
-		saveData.magicCubes.RemoveAll(t => t.id == magicCubeData.id);
-		saveData.magicCubes.Add(magicCubeData);
-	}
+        //Vector3 position, Quaternion rotation
+
+        if (saveData.fullWorlds == null)
+            saveData.fullWorlds = new List<World>(); //append to list
+
+        List<ObjectControllerData> objectsData = new List<ObjectControllerData>();
+        foreach (ObjectController o in allObjects)
+        {
+            var objData = new ObjectControllerData() { id = o.serializeId, position = o.transform.position, rotation = o.transform.rotation };
+            objectsData.Add(objData);
+        }
+
+        var worldData = new World() { id = 0, date = date, objects = objectsData }; //get last id++
+        saveData.fullWorlds.RemoveAll(t => t.id == worldData.id); //THIS
+        saveData.fullWorlds.Add(worldData);
+    }
+    
+
+    //public static bool GetState(MagicCube magicCube)
+    //{
+    //	if (saveData.magicCubes == null)
+    //		return false;
+
+    //	if (saveData.magicCubes.Any(t => t.id == magicCube.name))
+    //		return saveData.magicCubes.FirstOrDefault(t => t.id == magicCube.name).isRed;
+
+    //	return false;
+    //}
+
+    //public static void SetState(MagicCube magicCube, bool isRed)
+    //{
+    //	if (saveData.magicCubes == null)
+    //		saveData.magicCubes = new List<MagicCubeData>();
+
+    //	var magicCubeData = new MagicCubeData() { id = magicCube.name, isRed = isRed };
+    //	saveData.magicCubes.RemoveAll(t => t.id == magicCubeData.id);
+    //	saveData.magicCubes.Add(magicCubeData);
+    //}
 }

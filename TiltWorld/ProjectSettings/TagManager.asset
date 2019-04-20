@@ -10,6 +10,7 @@ TagManager:
   - ObjectText
   - Room
   - MainCamera2
+  - DirectionalScroll
   layers:
   - Default
   - TransparentFX

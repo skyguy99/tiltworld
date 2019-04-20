@@ -67,6 +67,8 @@ public class ObjectController : MonoBehaviour
             ResetObject();
         }
 
+       
+
     }
 
     public void MoveToiTween(Vector3 vector, float duration)

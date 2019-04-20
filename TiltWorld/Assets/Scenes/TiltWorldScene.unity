@@ -5954,7 +5954,7 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 1445791856}
+  BlurTexture: {fileID: 1594979689}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12118,7 +12118,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173025787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: febf706ad2dbb47f0b40ab694a3b2f07, type: 3}
   m_Name: 
@@ -12581,7 +12581,7 @@ MonoBehaviour:
   m_ScrollSensitivity: 1
   m_ScrollDelay: 0.02
   m_ScrollWheelDirection: 1
-  m_ScrollFriction: 0.999
+  m_ScrollFriction: 1
   m_ScrollInterpolator: 7
   m_ScrollTension: 2
   m_AddInactiveChildrenToCalculatingFilter: 0
@@ -14576,6 +14576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2890db9e274774be2bf1971917eac358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsRed: 0
 --- !u!1 &1403712927
 GameObject:
   m_ObjectHideFlags: 0
@@ -15203,38 +15204,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435779784}
   m_CullTransparentMesh: 0
---- !u!84 &1445791856
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1446089926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16045,6 +16014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2890db9e274774be2bf1971917eac358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsRed: 0
 --- !u!65 &1508897426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18957,6 +18927,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1589778064}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &1594979689
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1596747791
 GameObject:
   m_ObjectHideFlags: 0
@@ -20718,6 +20720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2890db9e274774be2bf1971917eac358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsRed: 0
 --- !u!1 &1782417791
 GameObject:
   m_ObjectHideFlags: 0

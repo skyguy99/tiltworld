@@ -6,7 +6,7 @@ public class MagicCube : MonoBehaviour
 
 	private void Start()
 	{
-		IsRed = GameDataController.GetState(this);
+		//IsRed = GameDataController.GetState(this);
 		UpdateColor();
 	}
 
@@ -20,7 +20,7 @@ public class MagicCube : MonoBehaviour
 			{
 				IsRed = !IsRed;
 				UpdateColor();
-				GameDataController.SetState(this, IsRed);
+				//GameDataController.SetState(this, IsRed);
 			}
 		}
 	}

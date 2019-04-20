@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
     VideoPlayer videoPlayer;
     public Image menu;
-
+    GameDataController gameDataController;
     Camera mainCamera;
     public Transform menuObject;
     MenuObjectSelect menuObjectSelect;
@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
         menuObjectSelect = GameObject.FindObjectOfType<MenuObjectSelect>();
         menuObject.gameObject.SetActive(menuIn);
         canvas.enabled = !menuIn;
-
+        gameDataController = GameObject.FindObjectOfType<GameDataController>();
 
     }
 
@@ -73,10 +73,12 @@ public class UIManager : MonoBehaviour
 
     }
 
+    //SAVE SCENE JSON!!!
     public void TriggerSaveScene()
     {
         canvasAnim.SetBool("touchedSaved", true);
         canvasAnim.SetTrigger("triggerSave");
+        gameDataController.SaveGame();
     }
 
     public void ToggleResetScene()

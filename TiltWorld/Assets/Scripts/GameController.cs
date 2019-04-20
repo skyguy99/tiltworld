@@ -7,13 +7,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    PlayerController playerController;
+
 	// Use this for initialization
 	void Start () {
-        //GvrViewer.Instance.VRModeEnabled
+        playerController = GameObject.FindObjectOfType<PlayerController>();
 
-        //StartCoroutine(LoadDevice("None"));VRSettings.enabled = false;
-
-
+        print(GameDataController.GetState(0));
     }
 	
 	// Update is called once per frame
@@ -21,13 +21,10 @@ public class GameController : MonoBehaviour {
 		
 	}
 
-
-
-    IEnumerator LoadDevice(string newDevice)
+    public void SaveWholeWorld()
     {
-
-        UnityEngine.XR.XRSettings.LoadDeviceByName(newDevice);
-        yield return null;
-        UnityEngine.XR.XRSettings.enabled = true;
+        print("saving whole world");
+        GameDataController.SetState("DATE", playerController.objects);
     }
+
 }
