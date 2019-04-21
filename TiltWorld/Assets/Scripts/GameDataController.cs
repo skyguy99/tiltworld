@@ -22,9 +22,13 @@ public class GameDataController : MonoBehaviour
 	[ContextMenu("Load Data")]
 	public void LoadData()
 	{
-		var data = PlayerPrefs.GetString("GameData");
+        string data = "";
+        if(PlayerPrefs.HasKey("GameData"))
+           {
+            data = PlayerPrefs.GetString("GameData");
+        }
 
-        print(data);
+        print("DATA"+data);
 		saveData = JsonUtility.FromJson<SaveData>(data);
 
         print("loading: "+saveData);
@@ -35,18 +39,27 @@ public class GameDataController : MonoBehaviour
 		//SaveGame();
 	}
 
-    public static int GetState(int id)
+    //public static int GetState(int id)
+    //{
+    //    if (saveData.fullWorlds == null)
+    //        return -1;
+
+    //    if (saveData.fullWorlds.Any(t => t.id == id))
+    //        return saveData.fullWorlds.FirstOrDefault(t => t.id == id).objects.Count;
+
+    //    return -1;
+    //}
+    public static PlayerController GetPlayerControllerState(int id)
     {
         if (saveData.fullWorlds == null)
-            return -1;
+            return null;
 
         if (saveData.fullWorlds.Any(t => t.id == id))
-            return saveData.fullWorlds.FirstOrDefault(t => t.id == id).objects.Count;
+            return saveData.fullWorlds.FirstOrDefault(t => t.id == id).player;
 
-        return -1;
+        return null;
     }
-
-    public static void SetState(string date, ObjectController[] allObjects)
+    public static void SetState(string date, PlayerController player)
     {
 
         //Vector3 position, Quaternion rotation
@@ -54,18 +67,38 @@ public class GameDataController : MonoBehaviour
         if (saveData.fullWorlds == null)
             saveData.fullWorlds = new List<World>(); //append to list
 
-        List<ObjectControllerData> objectsData = new List<ObjectControllerData>();
-        foreach (ObjectController o in allObjects)
-        {
-            var objData = new ObjectControllerData() { id = o.serializeId, position = o.transform.position, rotation = o.transform.rotation };
-            objectsData.Add(objData);
-        }
+        //List<ObjectControllerData> objectsData = new List<ObjectControllerData>();
+        //foreach (ObjectController o in allObjects)
+        //{
+        //    var objData = new ObjectControllerData() { id = o.serializeId, position = o.transform.position, rotation = o.transform.rotation };
+        //    objectsData.Add(objData);
+        //}
+        var playerData = new PlayerControllerData {position = player.transform.position, rotation = player.transform.rotation };
 
-        var worldData = new World() { id = 0, date = date, objects = objectsData }; //get last id++
+        var worldData = new World() { id = 0, date = date, player = player}; //get last id++
         saveData.fullWorlds.RemoveAll(t => t.id == worldData.id); //THIS
         saveData.fullWorlds.Add(worldData);
     }
-    
+    //public static void SetState(string date, ObjectController[] allObjects)
+    //{
+
+    //    //Vector3 position, Quaternion rotation
+
+    //    if (saveData.fullWorlds == null)
+    //        saveData.fullWorlds = new List<World>(); //append to list
+
+    //    List<ObjectControllerData> objectsData = new List<ObjectControllerData>();
+    //    foreach (ObjectController o in allObjects)
+    //    {
+    //        var objData = new ObjectControllerData() { id = o.serializeId, position = o.transform.position, rotation = o.transform.rotation };
+    //        objectsData.Add(objData);
+    //    }
+
+    //    var worldData = new World() { id = 0, date = date, objects = objectsData }; //get last id++
+    //    saveData.fullWorlds.RemoveAll(t => t.id == worldData.id); //THIS
+    //    saveData.fullWorlds.Add(worldData);
+    //}
+
 
     //public static bool GetState(MagicCube magicCube)
     //{

@@ -100,6 +100,11 @@ public class PlayerController : MonoBehaviour {
         //}
     }
 
+    public void UpdateObjectsArrays()
+    {
+        objects = GameObject.FindObjectsOfType<ObjectController>();
+    }
+
     void SetAllIds()
     {
 

@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
 
     VideoPlayer videoPlayer;
     public Image menu;
+    GameController gc;
     GameDataController gameDataController;
     Camera mainCamera;
     public Transform menuObject;
@@ -48,7 +49,7 @@ public class UIManager : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerController>();
         target = null;
-
+        gc = GameObject.FindObjectOfType<GameController>();
         PlayerPrefs.DeleteAll(); //temp
         if(!PlayerPrefs.HasKey("playedOnce"))
         {
@@ -78,6 +79,9 @@ public class UIManager : MonoBehaviour
     {
         canvasAnim.SetBool("touchedSaved", true);
         canvasAnim.SetTrigger("triggerSave");
+        gc = GameObject.FindObjectOfType<GameController>();
+
+        gc.SaveWholeWorld();
         gameDataController.SaveGame();
     }
 

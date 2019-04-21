@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
         playerController = GameObject.FindObjectOfType<PlayerController>();
 
-        print(GameDataController.GetState(0));
+        print(GameDataController.GetPlayerControllerState(0));
     }
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour {
     public void SaveWholeWorld()
     {
         print("saving whole world");
-        GameDataController.SetState("DATE", playerController.objects);
+        GameDataController.SetState("DATE", playerController);
     }
 
 }
