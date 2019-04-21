@@ -24,7 +24,7 @@ public class MenuObject : MonoBehaviour
     public bool isLocked = true;
 
     bool hasSet;
-
+    Dictionary<string, Vector3> customRots = new Dictionary<string, Vector3>();
 
     void Awake()
     {
@@ -56,6 +56,10 @@ public class MenuObject : MonoBehaviour
             }
 
         }
+
+
+        //Custom rots
+        customRots["TV"] = new Vector3(0f, 0f, -90f);
     }
 
     public void SetObject(ObjectController o)
@@ -102,7 +106,7 @@ public class MenuObject : MonoBehaviour
 
         subtext.transform.localPosition = new Vector3(subtext.transform.localPosition.x, subtext.transform.localPosition.y, -135f);
 
-        go.transform.eulerAngles = rot;
+        go.transform.eulerAngles = new Vector3(rot.x * CheckForCustomRotation(objName).x, rot.y * CheckForCustomRotation(objName).y, rot.z * CheckForCustomRotation(objName).z);
 
         //Materials
 
@@ -111,6 +115,15 @@ public class MenuObject : MonoBehaviour
         {
             platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
         }
+    }
+
+     Vector3 CheckForCustomRotation(string id)
+    {
+        if(customRots.ContainsKey(id))
+        {
+            return customRots[id];
+        }
+        return Vector3.zero;
     }
 
     // Update is called once per frame
@@ -127,7 +140,7 @@ public class MenuObject : MonoBehaviour
       
         if(container.transform.childCount > 0)
         {
-
+            
             container.GetChild(0).gameObject.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
             if (container.GetChild(0).eulerAngles != rot)
             {

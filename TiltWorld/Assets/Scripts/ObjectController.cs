@@ -42,7 +42,16 @@ public class ObjectController : MonoBehaviour
 
         originalPos = Vector3.zero;
         iosHaptic = GameObject.FindObjectOfType<iOSHapticFeedback>();
-        renderer = GetComponent<Renderer>();
+
+        if(GetComponent<Renderer>() != null)
+        {
+            renderer = GetComponent<Renderer>();
+
+        } else
+        {
+            renderer = GetComponentInChildren<Renderer>();
+        }
+       
         player = GameObject.FindObjectOfType<PlayerController>();
         uIManager = GameObject.FindObjectOfType<UIManager>();
         rb = GetComponent<Rigidbody>();

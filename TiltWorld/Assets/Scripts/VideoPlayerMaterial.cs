@@ -8,17 +8,17 @@ public class VideoPlayerMaterial : MonoBehaviour
 {
     public Texture[] frames;
     public int framesPerSecond = 60;
-
+    public Material mat;
     public bool isEmissive = false;
 
     void Update()
     {
         int index = (int)(Time.time * framesPerSecond) % frames.Length;
                 
-        this.GetComponent<Renderer>().material.mainTexture = frames[index];
+        mat.mainTexture = frames[index];
         if(isEmissive)
         {
-            this.GetComponent<Renderer>().material.SetTexture("_EmissionMap", frames[index]);
+            mat.SetTexture("_EmissionMap", frames[index]);
         }
 
         if(index >= frames.Length-1)
