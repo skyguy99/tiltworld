@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: fdc9f2a388c40452ab298bbd0491450f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: bb2.002
+    100002: BezierCurve
+    100004: Tiltworld-12-world1-34
+    100006: Tiltworld-12-world1-34.001
+    100008: Tiltworld-12-world1-34.003
+    100010: Tiltworld-12-world1-36
+    100012: Tiltworld-12-world1-36.001
+    100014: Tiltworld-12-world1-36.002
+    100016: Tiltworld-12-world1-36.003
+    100018: Tiltworld-12-world1-36.004
+    100020: Tiltworld-12-world1-36.005
+    100022: Tiltworld-12-world1-36.006
+    100024: Tiltworld-12-world1-36.007
+    100026: Tiltworld-12-world1-36.008
+    100028: Tiltworld-12-world1-36.009
+    100030: Tiltworld-12-world1-36.010
+    100032: Tiltworld-12-world1-36.011
+    100034: Tiltworld-12-world1-36.012
+    100036: Tiltworld-12-world1-38
+    100038: //RootNode
+    400000: bb2.002
+    400002: BezierCurve
+    400004: Tiltworld-12-world1-34
+    400006: Tiltworld-12-world1-34.001
+    400008: Tiltworld-12-world1-34.003
+    400010: Tiltworld-12-world1-36
+    400012: Tiltworld-12-world1-36.001
+    400014: Tiltworld-12-world1-36.002
+    400016: Tiltworld-12-world1-36.003
+    400018: Tiltworld-12-world1-36.004
+    400020: Tiltworld-12-world1-36.005
+    400022: Tiltworld-12-world1-36.006
+    400024: Tiltworld-12-world1-36.007
+    400026: Tiltworld-12-world1-36.008
+    400028: Tiltworld-12-world1-36.009
+    400030: Tiltworld-12-world1-36.010
+    400032: Tiltworld-12-world1-36.011
+    400034: Tiltworld-12-world1-36.012
+    400036: Tiltworld-12-world1-38
+    400038: //RootNode
+    2100000: bb2
+    2100002: NEWNATURE
+    2300000: bb2.002
+    2300002: BezierCurve
+    2300004: Tiltworld-12-world1-34
+    2300006: Tiltworld-12-world1-34.001
+    2300008: Tiltworld-12-world1-34.003
+    2300010: Tiltworld-12-world1-36
+    2300012: Tiltworld-12-world1-36.001
+    2300014: Tiltworld-12-world1-36.002
+    2300016: Tiltworld-12-world1-36.003
+    2300018: Tiltworld-12-world1-36.004
+    2300020: Tiltworld-12-world1-36.005
+    2300022: Tiltworld-12-world1-36.006
+    2300024: Tiltworld-12-world1-36.007
+    2300026: Tiltworld-12-world1-36.008
+    2300028: Tiltworld-12-world1-36.009
+    2300030: Tiltworld-12-world1-36.010
+    2300032: Tiltworld-12-world1-36.011
+    2300034: Tiltworld-12-world1-36.012
+    2300036: Tiltworld-12-world1-38
+    3300000: bb2.002
+    3300002: BezierCurve
+    3300004: Tiltworld-12-world1-34
+    3300006: Tiltworld-12-world1-34.001
+    3300008: Tiltworld-12-world1-34.003
+    3300010: Tiltworld-12-world1-36
+    3300012: Tiltworld-12-world1-36.001
+    3300014: Tiltworld-12-world1-36.002
+    3300016: Tiltworld-12-world1-36.003
+    3300018: Tiltworld-12-world1-36.004
+    3300020: Tiltworld-12-world1-36.005
+    3300022: Tiltworld-12-world1-36.006
+    3300024: Tiltworld-12-world1-36.007
+    3300026: Tiltworld-12-world1-36.008
+    3300028: Tiltworld-12-world1-36.009
+    3300030: Tiltworld-12-world1-36.010
+    3300032: Tiltworld-12-world1-36.011
+    3300034: Tiltworld-12-world1-36.012
+    3300036: Tiltworld-12-world1-38
+    4300000: bb2.002
+    4300002: Tiltworld-12-world1-38
+    4300004: Tiltworld-12-world1-34.003
+    4300006: Tiltworld-12-world1-36.012
+    4300008: Tiltworld-12-world1-36.010
+    4300010: Tiltworld-12-world1-36.009
+    4300012: Tiltworld-12-world1-36.008
+    4300014: Tiltworld-12-world1-36.007
+    4300016: Tiltworld-12-world1-36.006
+    4300018: Tiltworld-12-world1-36.005
+    4300020: BezierCurve
+    4300022: Tiltworld-12-world1-36.011
+    4300024: Tiltworld-12-world1-36.004
+    4300026: Tiltworld-12-world1-36.003
+    4300028: Tiltworld-12-world1-36.002
+    4300030: Tiltworld-12-world1-36.001
+    4300032: Tiltworld-12-world1-34.001
+    4300034: Tiltworld-12-world1-36
+    4300036: Tiltworld-12-world1-34
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NEWNATURE
+    second: {fileID: 2100000, guid: 0ba28208018f647d88553d68224489b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bb2
+    second: {fileID: 2100000, guid: 3d0a0f4ec8a644f919da86ef25658f01, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

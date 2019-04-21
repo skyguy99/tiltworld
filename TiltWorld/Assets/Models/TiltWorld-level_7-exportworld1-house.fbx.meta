@@ -1,0 +1,267 @@
+fileFormatVersion: 2
+guid: 45304b221479449229fcae88db5a3d39
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: bb2.000
+    100002: bb2.001
+    100004: bb2.004
+    100006: bb2.005
+    100008: bb2.006
+    100010: bb2.007
+    100012: bb2.008
+    100014: bb2.009
+    100016: bb2.010
+    100018: Plane
+    100020: Tilt-billboard.002
+    100022: Tiltworld-12-world1-1
+    100024: Tiltworld-12-world1-10
+    100026: Tiltworld-12-world1-11.001
+    100028: Tiltworld-12-world1-12
+    100030: Tiltworld-12-world1-13
+    100032: Tiltworld-12-world1-15
+    100034: Tiltworld-12-world1-16
+    100036: Tiltworld-12-world1-16.002
+    100038: Tiltworld-12-world1-16.003
+    100040: Tiltworld-12-world1-17
+    100042: Tiltworld-12-world1-18
+    100044: Tiltworld-12-world1-19
+    100046: Tiltworld-12-world1-25
+    100048: Tiltworld-12-world1-25.001
+    100050: Tiltworld-12-world1-26
+    100052: Tiltworld-12-world1-33
+    100054: Tiltworld-12-world1-8
+    100056: Tiltworld-8-world1-1.007
+    100058: Tiltworld-8-world1-26.000
+    100060: //RootNode
+    400000: bb2.000
+    400002: bb2.001
+    400004: bb2.004
+    400006: bb2.005
+    400008: bb2.006
+    400010: bb2.007
+    400012: bb2.008
+    400014: bb2.009
+    400016: bb2.010
+    400018: Plane
+    400020: Tilt-billboard.002
+    400022: Tiltworld-12-world1-1
+    400024: Tiltworld-12-world1-10
+    400026: Tiltworld-12-world1-11.001
+    400028: Tiltworld-12-world1-12
+    400030: Tiltworld-12-world1-13
+    400032: Tiltworld-12-world1-15
+    400034: Tiltworld-12-world1-16
+    400036: Tiltworld-12-world1-16.002
+    400038: Tiltworld-12-world1-16.003
+    400040: Tiltworld-12-world1-17
+    400042: Tiltworld-12-world1-18
+    400044: Tiltworld-12-world1-19
+    400046: Tiltworld-12-world1-25
+    400048: Tiltworld-12-world1-25.001
+    400050: Tiltworld-12-world1-26
+    400052: Tiltworld-12-world1-33
+    400054: Tiltworld-12-world1-8
+    400056: Tiltworld-8-world1-1.007
+    400058: Tiltworld-8-world1-26.000
+    400060: //RootNode
+    2100000: Tilt-billboard
+    2100002: bb2
+    2100004: NEWNATURE
+    2100006: water
+    2300000: bb2.000
+    2300002: bb2.001
+    2300004: bb2.004
+    2300006: bb2.005
+    2300008: bb2.006
+    2300010: bb2.007
+    2300012: bb2.008
+    2300014: bb2.009
+    2300016: bb2.010
+    2300018: Plane
+    2300020: Tilt-billboard.002
+    2300022: Tiltworld-12-world1-1
+    2300024: Tiltworld-12-world1-10
+    2300026: Tiltworld-12-world1-11.001
+    2300028: Tiltworld-12-world1-12
+    2300030: Tiltworld-12-world1-13
+    2300032: Tiltworld-12-world1-15
+    2300034: Tiltworld-12-world1-16
+    2300036: Tiltworld-12-world1-16.002
+    2300038: Tiltworld-12-world1-16.003
+    2300040: Tiltworld-12-world1-17
+    2300042: Tiltworld-12-world1-18
+    2300044: Tiltworld-12-world1-19
+    2300046: Tiltworld-12-world1-25
+    2300048: Tiltworld-12-world1-25.001
+    2300050: Tiltworld-12-world1-26
+    2300052: Tiltworld-12-world1-33
+    2300054: Tiltworld-12-world1-8
+    2300056: Tiltworld-8-world1-1.007
+    2300058: Tiltworld-8-world1-26.000
+    3300000: bb2.000
+    3300002: bb2.001
+    3300004: bb2.004
+    3300006: bb2.005
+    3300008: bb2.006
+    3300010: bb2.007
+    3300012: bb2.008
+    3300014: bb2.009
+    3300016: bb2.010
+    3300018: Plane
+    3300020: Tilt-billboard.002
+    3300022: Tiltworld-12-world1-1
+    3300024: Tiltworld-12-world1-10
+    3300026: Tiltworld-12-world1-11.001
+    3300028: Tiltworld-12-world1-12
+    3300030: Tiltworld-12-world1-13
+    3300032: Tiltworld-12-world1-15
+    3300034: Tiltworld-12-world1-16
+    3300036: Tiltworld-12-world1-16.002
+    3300038: Tiltworld-12-world1-16.003
+    3300040: Tiltworld-12-world1-17
+    3300042: Tiltworld-12-world1-18
+    3300044: Tiltworld-12-world1-19
+    3300046: Tiltworld-12-world1-25
+    3300048: Tiltworld-12-world1-25.001
+    3300050: Tiltworld-12-world1-26
+    3300052: Tiltworld-12-world1-33
+    3300054: Tiltworld-12-world1-8
+    3300056: Tiltworld-8-world1-1.007
+    3300058: Tiltworld-8-world1-26.000
+    4300000: Tilt-billboard.002
+    4300002: bb2.010
+    4300004: bb2.000
+    4300006: bb2.009
+    4300008: bb2.008
+    4300010: bb2.007
+    4300012: bb2.006
+    4300014: bb2.005
+    4300016: bb2.004
+    4300018: bb2.001
+    4300020: Tiltworld-12-world1-16.003
+    4300022: Tiltworld-12-world1-16.002
+    4300024: Tiltworld-12-world1-25.001
+    4300026: Plane
+    4300028: Tiltworld-8-world1-1.007
+    4300030: Tiltworld-12-world1-33
+    4300032: Tiltworld-12-world1-26
+    4300034: Tiltworld-12-world1-25
+    4300036: Tiltworld-12-world1-19
+    4300038: Tiltworld-12-world1-18
+    4300040: Tiltworld-12-world1-17
+    4300042: Tiltworld-12-world1-16
+    4300044: Tiltworld-12-world1-15
+    4300046: Tiltworld-12-world1-13
+    4300048: Tiltworld-12-world1-12
+    4300050: Tiltworld-12-world1-11.001
+    4300052: Tiltworld-12-world1-10
+    4300054: Tiltworld-12-world1-8
+    4300056: Tiltworld-12-world1-1
+    4300058: Tiltworld-8-world1-26.000
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NEWNATURE
+    second: {fileID: 2100000, guid: 0ba28208018f647d88553d68224489b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tilt-billboard
+    second: {fileID: 2100000, guid: 4b6fd7eb9146b40b8bda902217c9ead5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bb2
+    second: {fileID: 2100000, guid: 3d0a0f4ec8a644f919da86ef25658f01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: water
+    second: {fileID: 2100000, guid: ec5c256b92c1c4b0e9bf131b1bdab4de, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
