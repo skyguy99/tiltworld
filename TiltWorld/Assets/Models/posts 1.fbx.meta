@@ -1,17 +1,32 @@
 fileFormatVersion: 2
-guid: 488c1e28426b94d209180f4e4e8faeee
+guid: 120ec84664fcc4a02abde14634ba70e7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: palette.032
+    2100000: palette.003
     2100002: glass-REAL
-    2100004: TV
+    2100004: emissiveblue
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Tiltworld-10-world2-8
-  externalObjects: {}
+    4300000: Tiltworld-13-world2-24
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: emissiveblue
+    second: {fileID: 2100000, guid: 504f78840063f4e319d9a99ec54e0cf1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass-REAL
+    second: {fileID: 2100000, guid: bba7d86b3430c4eff9e2de0fc20d6fc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: palette.003
+    second: {fileID: 2100000, guid: c86836b88f5c44d90a4cfe05cf4a02db, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
