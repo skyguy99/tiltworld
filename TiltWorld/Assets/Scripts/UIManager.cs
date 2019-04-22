@@ -213,11 +213,10 @@ public class UIManager : MonoBehaviour
             //TriggerWinEnd();
         }
 
-        //if(menuObjectSelect.AllObjectsUnlocked)
-        //{
-        //    TriggerWinEnd();
-        //}
-        //canvasAnim.SetBool("triggerWin", menuObjectSelect.AllObjectsUnlocked);
+        if(menuObjectSelect.AllObjectsUnlocked)
+        {
+            TriggerWinEnd();
+        }
 
 
         //TESTING
