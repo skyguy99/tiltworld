@@ -8,7 +8,7 @@ public class GameDataController : MonoBehaviour
 
 	private void Awake()
 	{
-		LoadData();
+		//LoadData();
 	}
 
 	[ContextMenu("Save Data")]

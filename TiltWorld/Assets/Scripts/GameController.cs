@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
         playerController = GameObject.FindObjectOfType<PlayerController>();
 
-        print(GameDataController.GetPlayerControllerState(0));
+        //print(GameDataController.GetPlayerControllerState(0));
     }
 	
 	// Update is called once per frame

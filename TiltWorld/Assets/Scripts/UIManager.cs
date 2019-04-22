@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
         mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
 
         menuIn = !menuIn;
-        //canvas.enabled = !menuIn;  
+        canvas.enabled = true;
 
     }
 
@@ -175,6 +175,14 @@ public class UIManager : MonoBehaviour
 
     }
 
+    void TriggerWinEnd()
+    {
+
+        mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
+        canvasAnim.SetBool("triggerWin", true);
+        menuIn = !menuIn;
+    }
+
     void Update()
     {
     
@@ -202,7 +210,14 @@ public class UIManager : MonoBehaviour
         if(Input.GetKey(KeyCode.A) && !menuIn)
         {
             TriggerAskForReset();
+            //TriggerWinEnd();
         }
+
+        //if(menuObjectSelect.AllObjectsUnlocked)
+        //{
+        //    TriggerWinEnd();
+        //}
+        //canvasAnim.SetBool("triggerWin", menuObjectSelect.AllObjectsUnlocked);
 
 
         //TESTING

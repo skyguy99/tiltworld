@@ -15,6 +15,7 @@ public class MenuObject : MonoBehaviour
     Transform container;
     public Transform platContainer;
     UIManager uIManager;
+    public Material[] platMats;
     public string[] objectsThatProduceThis;
 
     Vector3 rot = new Vector3(17.1f, -129f, 21f);
@@ -24,6 +25,8 @@ public class MenuObject : MonoBehaviour
     public bool isLocked = true;
 
     bool hasSet;
+
+
     Dictionary<string, Vector3> customRots = new Dictionary<string, Vector3>();
 
     void Awake()
@@ -77,6 +80,10 @@ public class MenuObject : MonoBehaviour
             go.transform.parent = container;
             go.transform.localScale = c.localScale;
             Destroy(go.GetComponent<Rigidbody>());
+            if(go.GetComponent<VideoPlayerMaterial>() != null)
+            {
+                Destroy(go.GetComponent<VideoPlayerMaterial>());
+            }
             Destroy(go.GetComponent<ObjectController>());
             Destroy(c.gameObject);
             go.transform.eulerAngles = rot;
@@ -110,7 +117,11 @@ public class MenuObject : MonoBehaviour
 
         //Materials
 
-        go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
+        for(int i = 0; i< go.transform.GetComponent<Renderer>().materials.Length; i++ )
+        {
+            go.transform.GetComponent<Renderer>().materials[i] = isLocked ? menuObjectSelect.blackMat : go.transform.GetComponent<Renderer>().materials[i];
+        }
+       // go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
         for (int i = 0; i < platContainer.childCount; i++)
         {
             platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
@@ -137,8 +148,16 @@ public class MenuObject : MonoBehaviour
                 isLocked = false;
             }
         }
-      
-        if(container.transform.childCount > 0)
+
+        for (int i = 0; i < platContainer.childCount; i++)
+        {
+            platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
+        }
+
+        //headline.text = isLocked ? "??" : objName.ToUpper();
+        headline.text = myObject.world.ToString();
+
+        if (container.transform.childCount > 0)
         {
             
             container.GetChild(0).gameObject.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;

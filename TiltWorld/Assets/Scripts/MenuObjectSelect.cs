@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI.ScrollSnaps;
 using UnityEngine.UI;
+using System.Linq;
 
 public class MenuObjectSelect : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MenuObjectSelect : MonoBehaviour
     public Transform pointer;
     public Transform contentBox;
     MenuObject[] menuObjects;
+    public bool AllObjectsUnlocked;
 
     public Material blackMat;
     public Transform platform;
@@ -109,6 +111,11 @@ public class MenuObjectSelect : MonoBehaviour
             }
 
             }
+
+
+        MenuObject[] m = menuObjects.Where(c => c.isLocked).ToArray();
+        AllObjectsUnlocked = (m.ToList().Count == 0);
+        //print(m);
 
     }
 }
