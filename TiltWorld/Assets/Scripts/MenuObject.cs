@@ -21,7 +21,7 @@ public class MenuObject : MonoBehaviour
     Vector3 rot = new Vector3(17.1f, -129f, 21f);
 
     MenuObjectSelect menuObjectSelect;
-    Material originMat;
+    public Material[] originMats;
     public bool isLocked = true;
 
     bool hasSet;
@@ -91,11 +91,6 @@ public class MenuObject : MonoBehaviour
             go.transform.eulerAngles = rot;
         }
 
-        if (originMat == null)
-        {
-            originMat = o.gameObject.GetComponent<Renderer>().sharedMaterial;
-        }
-
         for (int i = 0; i < platContainer.childCount; i++)
         {
             platContainer.GetChild(i).GetComponent<MeshRenderer>().enabled = true;
@@ -124,11 +119,10 @@ public class MenuObject : MonoBehaviour
 
         //Materials --------------
 
-        for(int i = 0; i< go.transform.GetComponent<Renderer>().materials.Length; i++ )
+        if(originMats.Length == 0)
         {
-            go.transform.GetComponent<Renderer>().materials[i] = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platMats[myObject.world];
+            originMats = go.transform.GetComponent<Renderer>().materials;
         }
-       // go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
         for (int i = 0; i < platContainer.childCount; i++)
         {
             platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
@@ -165,11 +159,20 @@ public class MenuObject : MonoBehaviour
 
         if (container.transform.childCount > 0)
         {
-            for (int i = 0; i < container.GetChild(0).gameObject.GetComponent<Renderer>().materials.Length; i++)
+            Material[] allMats = container.GetChild(0).gameObject.GetComponent<Renderer>().materials;
+            for (int i = 0; i < allMats.Length; i++)
             {
-                container.GetChild(0).gameObject.GetComponent<Renderer>().materials[i] = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platMats[myObject.world];
+               if(originMats.Length == 0)
+                {
+                    allMats[i] = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platMats[myObject.world];
+                } else
+                {
+                    allMats[i] = isLocked ? menuObjectSelect.blackMat : originMats[i];
+                }
+                //allMats[i] = originMats[i];
             }
-            //container.GetChild(0).gameObject.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
+            container.GetChild(0).gameObject.GetComponent<Renderer>().materials = allMats;
+       
             if (container.GetChild(0).eulerAngles != rot)
             {
                 container.GetChild(0).eulerAngles = rot;

@@ -59,8 +59,6 @@ public class MenuObjectSelect : MonoBehaviour
     //HERE we set the objects to the menu places
     public void UpdateObjects()
     {
-
-        print("Update obj");
         for (int i = 0; i < menuObjects.Length; i++)
         {
 
