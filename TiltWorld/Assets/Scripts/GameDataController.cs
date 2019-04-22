@@ -43,7 +43,7 @@ public class GameDataController : MonoBehaviour
 
 	private void OnDisable()
 	{
-		SaveGame();
+		//SaveGame();
 	}
 
     //public static int GetState(int id)
@@ -56,6 +56,19 @@ public class GameDataController : MonoBehaviour
 
     //    return -1;
     //}
+
+    public static CharacterData GetCharacterState(int id)
+    {
+        if (saveData.fullWorlds == null)
+            return new CharacterData { };
+
+        if (saveData.fullWorlds.Any(t => t.id == id))
+        {
+            return saveData.fullWorlds.FirstOrDefault(t => t.id == id).character;
+        }
+
+        return new CharacterData { };
+    }
     public static PlayerControllerData GetPlayerControllerState(int id)
     {
         if (saveData.fullWorlds == null)
@@ -63,8 +76,7 @@ public class GameDataController : MonoBehaviour
 
         if (saveData.fullWorlds.Any(t => t.id == id))
         {
-            PlayerController player = saveData.fullWorlds.FirstOrDefault(t => t.id == id).player;
-            return new PlayerControllerData { position = player.transform.position, rotation = player.transform.rotation };
+            return saveData.fullWorlds.FirstOrDefault(t => t.id == id).player;
         }
 
         return new PlayerControllerData { };
@@ -80,7 +92,7 @@ public class GameDataController : MonoBehaviour
         var playerData = new PlayerControllerData {position = player.transform.position, rotation = player.transform.rotation };
         var characterData = new CharacterData {position = character.transform.position, rotation = character.transform.rotation}; 
 
-        var worldData = new World() { id = 0, date = date, player = player, character = characterData}; //get last id++
+        var worldData = new World() { id = 0, date = date, player = playerData, character = characterData}; //get last id++
         saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
         saveData.fullWorlds.Add(worldData);
     }

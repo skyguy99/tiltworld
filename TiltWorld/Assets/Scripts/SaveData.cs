@@ -27,7 +27,7 @@ public struct World
     public List<ObjectControllerData> objects;
     public List<WorldContainerData> worlds;
     public CharacterData character;
-    public PlayerController player;
+    public PlayerControllerData player;
 }
 
 //Inside the world

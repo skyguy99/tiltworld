@@ -211,7 +211,7 @@ public class UIManager : MonoBehaviour
         if(Input.GetKey(KeyCode.A) && !menuIn)
         {
             TriggerAskForReset();
-            //TriggerWinEnd();
+            //TriggerWinEnd(); 
         }
 
         if(menuObjectSelect.AllObjectsUnlocked)

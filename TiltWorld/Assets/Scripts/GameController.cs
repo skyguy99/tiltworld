@@ -10,18 +10,35 @@ public class GameController : MonoBehaviour {
     PlayerController playerController;
     CharController character;
 
+
 	// Use this for initialization
 	void Awake () {
         playerController = GameObject.FindObjectOfType<PlayerController>();
         character = playerController.character;
 
     }
+          
+    void SetStates(int worldNum)
+    {
+        print("Player data:" + GameDataController.GetPlayerControllerState(worldNum).position);
+        print("Character: " + GameDataController.GetCharacterState(worldNum).position);
+
+        character.transform.position = GameDataController.GetCharacterState(worldNum).position;
+        character.transform.rotation = GameDataController.GetCharacterState(worldNum).rotation;
+
+        playerController.transform.position = GameDataController.GetPlayerControllerState(worldNum).position;
+        playerController.transform.rotation = GameDataController.GetPlayerControllerState(worldNum).rotation;
+    }  
 
     private void Start()
     {
+        //set world state 
 
         //GameObject.FindObjectOfType<GameDataController>().LoadData();
-        print("Player data:"+GameDataController.GetPlayerControllerState(0).position + "|"+ GameDataController.GetPlayerControllerState(0).rotation);
+
+        SetStates(0);
+        //print("Player data:" + GameDataController.GetPlayerControllerState(worldNum).position);
+        //print("Character: " + GameDataController.GetCharacterState(worldNum).position);
     }
 
     // Update is called once per frame
