@@ -42,7 +42,7 @@ public struct PlayerControllerData
 [Serializable]
 public struct ObjectControllerData
 {
-    public int id;
+    public string name;
     public Vector3 position;
     public Quaternion rotation;
     public bool isInWorld;

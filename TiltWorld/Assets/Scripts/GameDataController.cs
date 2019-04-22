@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameDataController : MonoBehaviour
 {
 	public static SaveData saveData;
+    public int NumberOfWorlds;
 
 	private void Awake()
 	{
@@ -46,16 +47,14 @@ public class GameDataController : MonoBehaviour
 		//SaveGame();
 	}
 
-    //public static int GetState(int id)
-    //{
-    //    if (saveData.fullWorlds == null)
-    //        return -1;
-
-    //    if (saveData.fullWorlds.Any(t => t.id == id))
-    //        return saveData.fullWorlds.FirstOrDefault(t => t.id == id).objects.Count;
-
-    //    return -1;
-    //}
+    private void Update()
+    {
+        if(saveData.fullWorlds != null)
+        {
+            NumberOfWorlds = saveData.fullWorlds.Count;
+        }
+       
+    }
 
     public static CharacterData GetCharacterState(int id)
     {
@@ -81,18 +80,58 @@ public class GameDataController : MonoBehaviour
 
         return new PlayerControllerData { };
     }
-    public static void SetState(string date, PlayerController player, CharController character)
+    public static List<ObjectControllerData> GetObjectControllerStates(int id)
+    {
+        if (saveData.fullWorlds == null)
+            return null;
+
+        if (saveData.fullWorlds.Any(t => t.id == id))
+        {
+            return saveData.fullWorlds.FirstOrDefault(t => t.id == id).objects;
+        }
+
+        return null;
+    }
+    public static List<WorldContainerData> GetWorldControllerStates(int id)
+    {
+        if (saveData.fullWorlds == null)
+            return null;
+
+        if (saveData.fullWorlds.Any(t => t.id == id))
+        {
+            return saveData.fullWorlds.FirstOrDefault(t => t.id == id).worlds;
+        }
+
+        return null;
+    }
+
+
+    public static void SetState(string date, PlayerController player, CharController character, ObjectController[] objects, WorldController[] worlds)
     {
 
         if (saveData.fullWorlds == null)
             saveData.fullWorlds = new List<World>(); //append to list
 
-
+       
         print("current: "+player.transform.position + "|"+ player.transform.rotation);
         var playerData = new PlayerControllerData {position = player.transform.position, rotation = player.transform.rotation };
-        var characterData = new CharacterData {position = character.transform.position, rotation = character.transform.rotation}; 
+        var characterData = new CharacterData {position = character.transform.position, rotation = character.transform.rotation};
 
-        var worldData = new World() { id = 0, date = date, player = playerData, character = characterData}; //get last id++
+        List<ObjectControllerData> objectControllerDatas = new List<ObjectControllerData>();
+        List<WorldContainerData> worldContainerDatas = new List<WorldContainerData>();
+
+        foreach(ObjectController o in objects)
+        {
+            var objData = new ObjectControllerData {position = o.transform.position, rotation = o.transform.rotation, isInWorld = o.gameObject.active, name = o.name};
+            objectControllerDatas.Add(objData);
+        }
+        foreach(WorldController w in worlds)
+        {
+            var worldContainerData = new WorldContainerData {position = w.transform.position, rotation = w.transform.rotation, worldNum = w.num };
+            worldContainerDatas.Add(worldContainerData);
+        }
+
+        var worldData = new World() { id = 0, date = date, player = playerData, character = characterData, objects = objectControllerDatas, worlds = worldContainerDatas}; //get last id++
         saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
         saveData.fullWorlds.Add(worldData);
     }
