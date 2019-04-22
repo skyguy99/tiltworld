@@ -15,7 +15,7 @@ public class MenuObject : MonoBehaviour
     Transform container;
     public Transform platContainer;
     UIManager uIManager;
-    public Material[] platMats;
+   
     public string[] objectsThatProduceThis;
 
     Vector3 rot = new Vector3(17.1f, -129f, 21f);
@@ -27,7 +27,7 @@ public class MenuObject : MonoBehaviour
     bool hasSet;
 
 
-    Dictionary<string, Vector3> customRots = new Dictionary<string, Vector3>();
+    Dictionary<string, Vector3> customSizes = new Dictionary<string, Vector3>();
 
     void Awake()
     {
@@ -62,7 +62,7 @@ public class MenuObject : MonoBehaviour
 
 
         //Custom rots
-        customRots["TV"] = new Vector3(0f, 0f, -90f);
+        customSizes["arrow"] = new Vector3(41929.72f, 41929.72f, 41929.72f);
     }
 
     public void SetObject(ObjectController o)
@@ -78,7 +78,9 @@ public class MenuObject : MonoBehaviour
             hasSet = true;
             go = Instantiate(o.gameObject, c.position, Quaternion.identity);
             go.transform.parent = container;
+            go.SetActive(true);
             go.transform.localScale = c.localScale;
+
             Destroy(go.GetComponent<Rigidbody>());
             if(go.GetComponent<VideoPlayerMaterial>() != null)
             {
@@ -104,6 +106,11 @@ public class MenuObject : MonoBehaviour
         objName = o.objName;
         headline.text = isLocked ? "??" : objName.ToUpper();
 
+        if (CheckForCustomSize(objName) != Vector3.zero)
+        {
+            go.transform.localScale = CheckForCustomSize(objName);
+        }
+
         if (player.combineObjects.ContainsKey(objName))
         {
          
@@ -113,13 +120,13 @@ public class MenuObject : MonoBehaviour
 
         subtext.transform.localPosition = new Vector3(subtext.transform.localPosition.x, subtext.transform.localPosition.y, -135f);
 
-        go.transform.eulerAngles = new Vector3(rot.x * CheckForCustomRotation(objName).x, rot.y * CheckForCustomRotation(objName).y, rot.z * CheckForCustomRotation(objName).z);
+        go.transform.eulerAngles = rot;
 
-        //Materials
+        //Materials --------------
 
         for(int i = 0; i< go.transform.GetComponent<Renderer>().materials.Length; i++ )
         {
-            go.transform.GetComponent<Renderer>().materials[i] = isLocked ? menuObjectSelect.blackMat : go.transform.GetComponent<Renderer>().materials[i];
+            go.transform.GetComponent<Renderer>().materials[i] = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platMats[myObject.world];
         }
        // go.transform.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
         for (int i = 0; i < platContainer.childCount; i++)
@@ -128,11 +135,11 @@ public class MenuObject : MonoBehaviour
         }
     }
 
-     Vector3 CheckForCustomRotation(string id)
+     Vector3 CheckForCustomSize(string id)
     {
-        if(customRots.ContainsKey(id))
+        if(customSizes.ContainsKey(id))
         {
-            return customRots[id];
+            return customSizes[id];
         }
         return Vector3.zero;
     }
@@ -150,17 +157,19 @@ public class MenuObject : MonoBehaviour
         }
 
         for (int i = 0; i < platContainer.childCount; i++)
-        {
-            platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platform.GetChild(i).GetComponent<Renderer>().material;
+        { 
+            platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platMats[myObject.world];
         }
 
-        //headline.text = isLocked ? "??" : objName.ToUpper();
-        headline.text = myObject.world.ToString();
+        headline.text = isLocked ? "??" : objName.ToUpper();
 
         if (container.transform.childCount > 0)
         {
-            
-            container.GetChild(0).gameObject.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
+            for (int i = 0; i < container.GetChild(0).gameObject.GetComponent<Renderer>().materials.Length; i++)
+            {
+                container.GetChild(0).gameObject.GetComponent<Renderer>().materials[i] = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platMats[myObject.world];
+            }
+            //container.GetChild(0).gameObject.GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : originMat;
             if (container.GetChild(0).eulerAngles != rot)
             {
                 container.GetChild(0).eulerAngles = rot;

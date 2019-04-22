@@ -61,7 +61,7 @@ public class ObjectController : MonoBehaviour
 
         if(GetComponentInParent<WorldController>() != null)
         {
-            world = GetComponentInParent<WorldController>().num;
+            world = GetComponentInParent<WorldController>().num-1;
         }
 
     }
@@ -152,18 +152,19 @@ public class ObjectController : MonoBehaviour
                 this.gameObject.SetActive(false);
                 //Destroy(collision.gameObject.gameObject);
 
-                Transform g = Instantiate(ObjectToSpawn, new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), Quaternion.identity);
-                //Instantiate(player.explodeCubes, transform.position, Quaternion.identity);
+                ObjectToSpawn.gameObject.SetActive(true);
+                ObjectToSpawn.position = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+                //Transform g = Instantiate(ObjectToSpawn, new Vector3(transform.position.x, transform.position.y+1f, transform.position.z), Quaternion.identity);
 
-                player.AssignNewObjectId(g.GetComponent<ObjectController>());
-                g.parent = transform.parent;
-                g.localScale = new Vector3(100f, 100f, 100f);
+                player.AssignNewObjectId(ObjectToSpawn.GetComponent<ObjectController>());
+                ObjectToSpawn.parent = transform.parent;
+                ObjectToSpawn.localScale = new Vector3(100f, 100f, 100f);
                 Destroy(this);
                 player.audioAccents.PlayOneShot(player.audioClips[1]); //accent
 
                 print("NEW OBJECT between " + objName + "| " + partnerName);
                 iosHaptic.Trigger(iOSHapticFeedback.iOSFeedbackType.Success);
-                uIManager.ShowObjectText(g, "COMBO ITEM", ToTitleCase(g.GetComponent<ObjectController>().objName), true);
+                uIManager.ShowObjectText(ObjectToSpawn, "COMBO ITEM", ToTitleCase(ObjectToSpawn.GetComponent<ObjectController>().objName), true);
 
             } else if (collision.gameObject.GetComponent<ObjectController>().objName != partnerName && leanSelectable.IsSelected)
             {

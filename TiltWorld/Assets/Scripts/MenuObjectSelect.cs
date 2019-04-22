@@ -18,7 +18,7 @@ public class MenuObjectSelect : MonoBehaviour
     bool scaledIn;
     UIManager uIManager;
     PlayerController player;
-
+    public Material[] platMats;
     ObjectController[] allObjects;
   
     /* Constants */
