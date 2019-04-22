@@ -79,6 +79,7 @@ public class UIManager : MonoBehaviour
     {
         canvasAnim.SetBool("touchedSaved", true);
         canvasAnim.SetTrigger("triggerSave");
+
         gc = GameObject.FindObjectOfType<GameController>();
 
         gc.SaveWholeWorld();

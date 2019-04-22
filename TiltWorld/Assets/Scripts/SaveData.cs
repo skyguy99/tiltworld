@@ -25,8 +25,8 @@ public struct World
     public string date;
     public int id;
     public List<ObjectControllerData> objects;
-    public List<WorldContainer> worlds;
-    public Character character;
+    public List<WorldContainerData> worlds;
+    public CharacterData character;
     public PlayerController player;
 }
 
@@ -45,10 +45,11 @@ public struct ObjectControllerData
     public int id;
     public Vector3 position;
     public Quaternion rotation;
+    public bool isInWorld;
 }
 
 [Serializable]
-public struct WorldContainer
+public struct WorldContainerData
 {
     public int worldNum;
     public Vector3 position;
@@ -56,7 +57,7 @@ public struct WorldContainer
 }
 
 [Serializable]
-public struct Character
+public struct CharacterData
 {
     public Vector3 position;
     public Quaternion rotation;

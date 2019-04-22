@@ -8,7 +8,7 @@ public class GameDataController : MonoBehaviour
 
 	private void Awake()
 	{
-		//LoadData();
+		LoadData();
 	}
 
 	[ContextMenu("Save Data")]
@@ -29,14 +29,21 @@ public class GameDataController : MonoBehaviour
         }
 
         print("DATA"+data);
-		saveData = JsonUtility.FromJson<SaveData>(data);
 
-        print("loading: "+saveData);
+        if(data != "")
+        {
+            saveData = JsonUtility.FromJson<SaveData>(data);
+
+            //print("loading: " + saveData);
+        } else
+        {
+            print("data is null");
+        }
     }
 
 	private void OnDisable()
 	{
-		//SaveGame();
+		SaveGame();
 	}
 
     //public static int GetState(int id)
@@ -49,36 +56,42 @@ public class GameDataController : MonoBehaviour
 
     //    return -1;
     //}
-    public static PlayerController GetPlayerControllerState(int id)
+    public static PlayerControllerData GetPlayerControllerState(int id)
     {
         if (saveData.fullWorlds == null)
-            return null;
+            return new PlayerControllerData { };
 
         if (saveData.fullWorlds.Any(t => t.id == id))
-            return saveData.fullWorlds.FirstOrDefault(t => t.id == id).player;
+        {
+            PlayerController player = saveData.fullWorlds.FirstOrDefault(t => t.id == id).player;
+            return new PlayerControllerData { position = player.transform.position, rotation = player.transform.rotation };
+        }
 
-        return null;
+        return new PlayerControllerData { };
     }
-    public static void SetState(string date, PlayerController player)
+    public static void SetState(string date, PlayerController player, CharController character)
     {
-
-        //Vector3 position, Quaternion rotation
 
         if (saveData.fullWorlds == null)
             saveData.fullWorlds = new List<World>(); //append to list
 
-        //List<ObjectControllerData> objectsData = new List<ObjectControllerData>();
-        //foreach (ObjectController o in allObjects)
-        //{
-        //    var objData = new ObjectControllerData() { id = o.serializeId, position = o.transform.position, rotation = o.transform.rotation };
-        //    objectsData.Add(objData);
-        //}
-        var playerData = new PlayerControllerData {position = player.transform.position, rotation = player.transform.rotation };
 
-        var worldData = new World() { id = 0, date = date, player = player}; //get last id++
-        saveData.fullWorlds.RemoveAll(t => t.id == worldData.id); //THIS
+        print("current: "+player.transform.position + "|"+ player.transform.rotation);
+        var playerData = new PlayerControllerData {position = player.transform.position, rotation = player.transform.rotation };
+        var characterData = new CharacterData {position = character.transform.position, rotation = character.transform.rotation}; 
+
+        var worldData = new World() { id = 0, date = date, player = player, character = characterData}; //get last id++
+        saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
         saveData.fullWorlds.Add(worldData);
     }
+
+
+    //List<ObjectControllerData> objectsData = new List<ObjectControllerData>();
+    //foreach (ObjectController o in allObjects)
+    //{
+    //    var objData = new ObjectControllerData() { id = o.serializeId, position = o.transform.position, rotation = o.transform.rotation };
+    //    objectsData.Add(objData);
+    //}
     //public static void SetState(string date, ObjectController[] allObjects)
     //{
 
@@ -109,15 +122,5 @@ public class GameDataController : MonoBehaviour
     //		return saveData.magicCubes.FirstOrDefault(t => t.id == magicCube.name).isRed;
 
     //	return false;
-    //}
-
-    //public static void SetState(MagicCube magicCube, bool isRed)
-    //{
-    //	if (saveData.magicCubes == null)
-    //		saveData.magicCubes = new List<MagicCubeData>();
-
-    //	var magicCubeData = new MagicCubeData() { id = magicCube.name, isRed = isRed };
-    //	saveData.magicCubes.RemoveAll(t => t.id == magicCubeData.id);
-    //	saveData.magicCubes.Add(magicCubeData);
     //}
 }
