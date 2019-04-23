@@ -33,7 +33,7 @@ public class IntroUI : MonoBehaviour
     private void Start()
     {
         SetupScrollContent();
-        exampleChild.gameObject.SetActive(false);
+
     }
 
     void SetupScrollContent()
@@ -50,11 +50,11 @@ public class IntroUI : MonoBehaviour
             s.GetComponent<ScrollItem>().savedDate = GameDataController.GetFullWorldState(i).date;
             s.GetComponent<ScrollItem>().selectedWorld = GameDataController.GetFullWorldState(i);
 
-            s.parent = scrollContainer;
-            s.localScale = new Vector3(1, 1, 1);
-            s.localRotation = exampleChild.localRotation;
-            s.rotation = exampleChild.rotation;
-            s.localPosition = exampleChild.localPosition;
+            //s.parent = scrollContainer;
+            //s.localScale = new Vector3(1, 1, 1);
+            //s.localRotation = exampleChild.localRotation;
+            //s.rotation = exampleChild.rotation;
+            //s.localPosition = exampleChild.localPosition;
         }
     }
 

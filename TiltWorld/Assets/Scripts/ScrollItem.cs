@@ -50,6 +50,9 @@ public class ScrollItem : MonoBehaviour
         float size = GetIconSize(pointer.position, transform.position);
         transform.localScale = new Vector3(size, size, size);
 
-        dateText.text = savedDate;
+        if (dateText != null)
+        {
+            dateText.text = savedDate;
+        }
     }
 }
