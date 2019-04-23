@@ -6850,7 +6850,7 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 795454215}
+  BlurTexture: {fileID: 1605719958}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8787,38 +8787,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765571058}
   m_Mesh: {fileID: 4300000, guid: 1cad99742a3514f13852e39fbfa36b10, type: 3}
---- !u!84 &795454215
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &796069604
 GameObject:
   m_ObjectHideFlags: 0
@@ -13491,7 +13459,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173025787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: febf706ad2dbb47f0b40ab694a3b2f07, type: 3}
   m_Name: 
@@ -13662,6 +13630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f025245df2a4b0dad671f0c935fd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NumberOfWorlds: 0
+  worldIndex: 0
 --- !u!135 &1173025795
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13742,7 +13712,7 @@ MonoBehaviour:
   m_ScrollSensitivity: 1
   m_ScrollDelay: 0.02
   m_ScrollWheelDirection: 1
-  m_ScrollFriction: 0.999
+  m_ScrollFriction: 1
   m_ScrollInterpolator: 7
   m_ScrollTension: 2
   m_AddInactiveChildrenToCalculatingFilter: 0
@@ -17778,6 +17748,7 @@ GameObject:
   - component: {fileID: 1586503586}
   - component: {fileID: 1586503590}
   - component: {fileID: 1586503588}
+  - component: {fileID: 1586503597}
   m_Layer: 0
   m_Name: sidebox
   m_TagString: Untagged
@@ -18025,6 +17996,21 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isSelected: 0
+--- !u!114 &1586503597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586503585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810f499eac2a4b35b37f66d48b3faae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  num: 8
+  originalPos: {x: 0, y: 0, z: 0}
+  serializeId: 0
 --- !u!1 &1586503599
 GameObject:
   m_ObjectHideFlags: 0
@@ -20291,6 +20277,38 @@ Transform:
   m_Father: {fileID: 42770794}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10.2, y: -129, z: -75.6}
+--- !u!84 &1605719958
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1609885898
 GameObject:
   m_ObjectHideFlags: 0
@@ -26090,6 +26108,7 @@ GameObject:
   - component: {fileID: 1192365592}
   - component: {fileID: 2589760761573258724}
   - component: {fileID: 2589760761573258722}
+  - component: {fileID: 2589760761573258726}
   m_Layer: 9
   m_Name: TiltWorld-level_7-exportworld5
   m_TagString: Draggable
@@ -26188,6 +26207,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2589760761573258726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589760761573258721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3810f499eac2a4b35b37f66d48b3faae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  num: 4
+  originalPos: {x: 0, y: 0, z: 0}
+  serializeId: 0
 --- !u!1 &2589760761573258727
 GameObject:
   m_ObjectHideFlags: 0

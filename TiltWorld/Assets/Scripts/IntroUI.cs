@@ -11,18 +11,23 @@ public class IntroUI : MonoBehaviour
     public bool showingSavedWorldUI;
     public Animator cameraAnim;
     Canvas canvas;
+    public Animator canvasAnim;
 
     public Transform exampleChild;
     public Transform ScrollItemPrefab;
     public Transform scrollContainer;
     List<ScrollItem> scrollItems = new List<ScrollItem>();
+    GameDataController gameDataController;
+
+    public ScrollItem selectedItem;
 
     // Start is called before the first frame update
     void Awake()
     {
         canvas = GameObject.FindObjectOfType<Canvas>();
         canvas.enabled = false;
-    
+
+        gameDataController = GameObject.FindObjectOfType<GameDataController>();
     }
 
     private void Start()
@@ -33,53 +38,46 @@ public class IntroUI : MonoBehaviour
 
     void SetupScrollContent()
     {
-        print(scrollContainer.transform.position.x);
+        //print(gameDataController.NumberOfWorlds);
         //scrollContainer.transform.localPosition = new Vector3(100f, scrollContainer.localPosition.y, scrollContainer.localPosition.z);
-        for(int i = 0; i<4;i++)
+        for(int i = 0; i<gameDataController.NumberOfWorlds;i++)
         {
+            print("doing this");
             Transform s = Instantiate(ScrollItemPrefab);
             scrollItems.Add(s.GetComponent<ScrollItem>());
+
             s.GetComponent<ScrollItem>().worldNum = i;
+            s.GetComponent<ScrollItem>().savedDate = GameDataController.GetFullWorldState(i).date;
+            s.GetComponent<ScrollItem>().selectedWorld = GameDataController.GetFullWorldState(i);
+
             s.parent = scrollContainer;
             s.localScale = new Vector3(1, 1, 1);
             s.localRotation = exampleChild.localRotation;
             s.rotation = exampleChild.rotation;
-            s.localPosition = new Vector3();
+            s.localPosition = exampleChild.localPosition;
         }
     }
 
-
-    void MoveOutSavedWorlds()
-    {
-
-    }
     public void MoveInSavedWorlds(GameObject g)
     {
-
-        print("show saved worlds");
+    
         showingSavedWorldUI = true;
         canvas.enabled = true;
-        canvas.GetComponent<Animator>().SetBool("triggerReset", true);
+      
         //characterSelector.gameObject.SetActive(true);
         //Camera.main.enabled = false;
         //otherCam.enabled = true;
-       
+
         cameraAnim.SetBool("toBlur", true);
         iTween.MoveTo(g, iTween.Hash("position", new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z), "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
 
     }
 
-    public void LoadScene()
-    {
-        PlayerPrefs.SetInt("loadedWorld", 0);
-        canvas.GetComponent<Animator>().SetBool("triggerReset", false);
-        SceneManager.LoadScene("TiltWorldScene");
-    }
 
     // Update is called once per frame
     void Update()
     {
-
+    
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             tapCount++;

@@ -875,6 +875,11 @@ namespace UnityEngine.UI.ScrollSnaps
             }
         }
 
+        void Update()
+        {
+
+        }
+
         private void GetValidChildren()
         {
             m_AvailableForCalculating.Clear();

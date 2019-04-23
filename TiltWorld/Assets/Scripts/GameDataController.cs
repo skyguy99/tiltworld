@@ -1,16 +1,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 public class GameDataController : MonoBehaviour
 {
 	public static SaveData saveData;
     public int NumberOfWorlds;
+    public int worldIndex;
 
 	private void Awake()
 	{
 		LoadData();
-	}
+        if (saveData.fullWorlds != null)
+        {
+            NumberOfWorlds = saveData.fullWorlds.Count;
+        }
+    }
 
 	[ContextMenu("Save Data")]
 	public void SaveGame()
@@ -54,6 +60,19 @@ public class GameDataController : MonoBehaviour
             NumberOfWorlds = saveData.fullWorlds.Count;
         }
        
+    }
+
+    public static World GetFullWorldState(int id)
+    {
+        if (saveData.fullWorlds == null)
+            return new World { };
+
+        if (saveData.fullWorlds.Any(t => t.id == id))
+        {
+            return saveData.fullWorlds.FirstOrDefault(t => t.id == id);
+        }
+
+        return new World { };
     }
 
     public static CharacterData GetCharacterState(int id)
@@ -131,47 +150,19 @@ public class GameDataController : MonoBehaviour
             worldContainerDatas.Add(worldContainerData);
         }
 
+
         var worldData = new World() { id = 0, date = date, player = playerData, character = characterData, objects = objectControllerDatas, worlds = worldContainerDatas}; //get last id++
         saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
         saveData.fullWorlds.Add(worldData);
     }
 
+    public void AddNewWorld()
+    {
+        worldIndex++;
+        var worldData = new World() { id = worldIndex, date = DateTime.Now.ToString("MM-dd-yyyy") + "@" + DateTime.Now.Hour + ":" + DateTime.Now.Minute };
 
-    //List<ObjectControllerData> objectsData = new List<ObjectControllerData>();
-    //foreach (ObjectController o in allObjects)
-    //{
-    //    var objData = new ObjectControllerData() { id = o.serializeId, position = o.transform.position, rotation = o.transform.rotation };
-    //    objectsData.Add(objData);
-    //}
-    //public static void SetState(string date, ObjectController[] allObjects)
-    //{
+        saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
+        saveData.fullWorlds.Add(worldData);
+    }
 
-    //    //Vector3 position, Quaternion rotation
-
-    //    if (saveData.fullWorlds == null)
-    //        saveData.fullWorlds = new List<World>(); //append to list
-
-    //    List<ObjectControllerData> objectsData = new List<ObjectControllerData>();
-    //    foreach (ObjectController o in allObjects)
-    //    {
-    //        var objData = new ObjectControllerData() { id = o.serializeId, position = o.transform.position, rotation = o.transform.rotation };
-    //        objectsData.Add(objData);
-    //    }
-
-    //    var worldData = new World() { id = 0, date = date, objects = objectsData }; //get last id++
-    //    saveData.fullWorlds.RemoveAll(t => t.id == worldData.id); //THIS
-    //    saveData.fullWorlds.Add(worldData);
-    //}
-
-
-    //public static bool GetState(MagicCube magicCube)
-    //{
-    //	if (saveData.magicCubes == null)
-    //		return false;
-
-    //	if (saveData.magicCubes.Any(t => t.id == magicCube.name))
-    //		return saveData.magicCubes.FirstOrDefault(t => t.id == magicCube.name).isRed;
-
-    //	return false;
-    //}
 }

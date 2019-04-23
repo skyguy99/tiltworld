@@ -9,8 +9,11 @@ public class ScrollItem : MonoBehaviour
 
     public int worldNum;
     public string savedDate;
+    public Text dateText;
+
     Animator anim;
     public Transform pointer;
+    public World selectedWorld;
 
     const float S = 1f; // The maximum size you want to get when closest
     const float D = 250.0f; // The distance where you start to scale
@@ -34,21 +37,19 @@ public class ScrollItem : MonoBehaviour
 
     public void EnterWorld()
     {
-        PlayerPrefs.SetInt("loadedWorld", 0);
-        //canvas.GetComponent<Animator>().SetBool("triggerReset", false);
+        print("LOADING: " + selectedWorld.id);
+        PlayerPrefs.SetInt("loadedWorld", selectedWorld.id);
+      
         SceneManager.LoadScene("TiltWorldScene");
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
 
         float size = GetIconSize(pointer.position, transform.position);
         transform.localScale = new Vector3(size, size, size);
 
-        if (Input.GetKey("space"))
-        {
-            //anim.SetBool("scrollIn", true);
-        }
+        dateText.text = savedDate;
     }
 }

@@ -66,10 +66,13 @@ public class GameController : MonoBehaviour {
     private void Start()
     {
 
+        //Set game state from serialization:
         SetStates(0);
-
-        //print("Player data:" + GameDataController.GetPlayerControllerState(worldNum).position);
-        //print("Character: " + GameDataController.GetCharacterState(worldNum).position);
+        if (PlayerPrefs.HasKey("loadedWorld"))  
+        {
+            print("Loading world "+ PlayerPrefs.GetInt("loadedWorld"));
+            SetStates(PlayerPrefs.GetInt("loadedWorld"));
+        }
     }
 
     // Update is called once per frame

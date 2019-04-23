@@ -40,6 +40,11 @@ public class GenericBounceObject : MonoBehaviour
             transform.rotation = new Quaternion(gyro.transform.rotation.x, gyro.transform.rotation.y, gyro.transform.rotation.z, gyro.transform.rotation.w);
         }
 
+        if(Input.GetKey("space"))
+        {
+            Invoke("TriggerIntroSavedWorlds", 0.29f);
+        }
+
         if (!room.bounds.Contains(transform.position) && Time.time > 2f && !introUI.showingSavedWorldUI)
         {
             iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
