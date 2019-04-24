@@ -28,33 +28,33 @@ public class IntroUI : MonoBehaviour
         canvas.enabled = false;
 
         gameDataController = GameObject.FindObjectOfType<GameDataController>();
+        SetupScrollContent();
     }
 
     private void Start()
     {
-        SetupScrollContent();
+      
 
     }
 
     void SetupScrollContent()
     {
-        //print(gameDataController.NumberOfWorlds);
-        //scrollContainer.transform.localPosition = new Vector3(100f, scrollContainer.localPosition.y, scrollContainer.localPosition.z);
-        for(int i = 0; i<gameDataController.NumberOfWorlds;i++)
+
+        for(int i =0; i<scrollContainer.childCount; i++)
         {
-            print("doing this");
-            Transform s = Instantiate(ScrollItemPrefab);
-            scrollItems.Add(s.GetComponent<ScrollItem>());
 
-            s.GetComponent<ScrollItem>().worldNum = i;
-            s.GetComponent<ScrollItem>().savedDate = GameDataController.GetFullWorldState(i).date;
-            s.GetComponent<ScrollItem>().selectedWorld = GameDataController.GetFullWorldState(i);
+            if(i >= 4 && !scrollContainer.GetChild(i).GetComponent<ScrollItem>().isTheAddWorld)
+            {
+                scrollContainer.GetChild(i).gameObject.SetActive(false);
+            } else
+            {
+                scrollContainer.GetChild(i).gameObject.SetActive(true);
+            }
 
-            //s.parent = scrollContainer;
-            //s.localScale = new Vector3(1, 1, 1);
-            //s.localRotation = exampleChild.localRotation;
-            //s.rotation = exampleChild.rotation;
-            //s.localPosition = exampleChild.localPosition;
+            scrollContainer.GetChild(i).GetComponent<ScrollItem>().worldNum = i;
+            scrollContainer.GetChild(i).GetComponent<ScrollItem>().savedDate = GameDataController.GetFullWorldState(i).date;
+            scrollContainer.GetChild(i).GetComponent<ScrollItem>().selectedWorld = GameDataController.GetFullWorldState(i);
+
         }
     }
 

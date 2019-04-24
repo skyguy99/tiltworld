@@ -14,6 +14,7 @@ public class ScrollItem : MonoBehaviour
     Animator anim;
     public Transform pointer;
     public World selectedWorld;
+    public bool isTheAddWorld;
 
     const float S = 1f; // The maximum size you want to get when closest
     const float D = 250.0f; // The distance where you start to scale

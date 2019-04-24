@@ -6,7 +6,7 @@ using System;
 public class GameDataController : MonoBehaviour
 {
 	public static SaveData saveData;
-    public int NumberOfWorlds;
+    public static int NumberOfWorlds;
     public int worldIndex;
 
 	private void Awake()
@@ -59,7 +59,8 @@ public class GameDataController : MonoBehaviour
         {
             NumberOfWorlds = saveData.fullWorlds.Count;
         }
-       
+     
+
     }
 
     public static World GetFullWorldState(int id)
@@ -125,7 +126,7 @@ public class GameDataController : MonoBehaviour
     }
 
 
-    public static void SetState(string date, PlayerController player, CharController character, ObjectController[] objects, WorldController[] worlds)
+    public static void SetState(string date, int id, PlayerController player, CharController character, ObjectController[] objects, WorldController[] worlds)
     {
 
         if (saveData.fullWorlds == null)
@@ -150,16 +151,18 @@ public class GameDataController : MonoBehaviour
             worldContainerDatas.Add(worldContainerData);
         }
 
-
-        var worldData = new World() { id = 0, date = date, player = playerData, character = characterData, objects = objectControllerDatas, worlds = worldContainerDatas}; //get last id++
+        //set id with var
+        var worldData = new World() { id = id, date = date, player = playerData, character = characterData, objects = objectControllerDatas, worlds = worldContainerDatas}; //get last id++
         saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
         saveData.fullWorlds.Add(worldData);
     }
 
     public void AddNewWorld()
     {
-        worldIndex++;
+        print("Adding world");
+    
         var worldData = new World() { id = worldIndex, date = DateTime.Now.ToString("MM-dd-yyyy") + "@" + DateTime.Now.Hour + ":" + DateTime.Now.Minute };
+        worldIndex++;
 
         saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
         saveData.fullWorlds.Add(worldData);
