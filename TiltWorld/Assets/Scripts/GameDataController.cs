@@ -42,7 +42,7 @@ public class GameDataController : MonoBehaviour
         {
             saveData = JsonUtility.FromJson<SaveData>(data);
 
-            //print("loading: " + saveData);
+
         } else
         {
             print("data is null");

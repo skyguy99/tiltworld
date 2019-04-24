@@ -56,14 +56,21 @@ public class ScrollItem : MonoBehaviour
             //NEW WORLD
             print("LOADING NEW: " + GameDataController.NumberOfWorlds); //1 more than last
             PlayerPrefs.SetInt("loadedWorld", GameDataController.NumberOfWorlds); //defaults to zero
+            PlayerPrefs.Save();
 
         }
         else
         {
             print("LOADING: " + selectedWorld.id);
             PlayerPrefs.SetInt("loadedWorld", selectedWorld.id); //defaults to zero
+            PlayerPrefs.Save();
         }
-           
+
+        LoadSceneNext();
+    }
+
+    void LoadSceneNext()
+    {
         SceneManager.LoadScene("TiltWorldScene");
     }
 

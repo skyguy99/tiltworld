@@ -65,12 +65,15 @@ public class GameController : MonoBehaviour {
 
     private void Start()
     {
-
-
+        print("HAS KEY: " + (PlayerPrefs.HasKey("loadedWorld")));
         if (PlayerPrefs.HasKey("loadedWorld"))  
         {
             print("Loading world "+ PlayerPrefs.GetInt("loadedWorld"));
             SetStates(PlayerPrefs.GetInt("loadedWorld"));
+        } else
+        {
+            print("fallback");
+            SetStates(0);
         }
     }
 
