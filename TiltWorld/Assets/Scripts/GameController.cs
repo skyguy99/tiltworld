@@ -66,8 +66,7 @@ public class GameController : MonoBehaviour {
     private void Start()
     {
 
-        //Set game state from serialization:
-        print("Hllo: " + PlayerPrefs.GetInt("loadedWorld"));
+
         if (PlayerPrefs.HasKey("loadedWorld"))  
         {
             print("Loading world "+ PlayerPrefs.GetInt("loadedWorld"));

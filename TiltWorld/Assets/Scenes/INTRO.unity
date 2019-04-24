@@ -1504,6 +1504,7 @@ MonoBehaviour:
   dateText: {fileID: 980211581}
   worldNumText: {fileID: 859643022}
   btn: {fileID: 2049271802}
+  outline: {fileID: 0}
   pointer: {fileID: 0}
   selectedWorld:
     date: 
@@ -1736,6 +1737,7 @@ MonoBehaviour:
   dateText: {fileID: 1923082449}
   worldNumText: {fileID: 1568137224}
   btn: {fileID: 921539069}
+  outline: {fileID: 0}
   pointer: {fileID: 0}
   selectedWorld:
     date: 
@@ -3079,7 +3081,7 @@ MonoBehaviour:
   DownRes: 3
   UpdateBlur: 1
   UpdateRate: 0.05
-  BlurTexture: {fileID: 2081462640}
+  BlurTexture: {fileID: 584595274}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3140,6 +3142,38 @@ MonoBehaviour:
   blurIterations: 2
   blurType: 0
   blurShader: {fileID: 4800000, guid: f9d5fa183cd6b45eeb1491f74863cd91, type: 3}
+--- !u!84 &584595274
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 256
+  m_Height: 256
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &589818264
 GameObject:
   m_ObjectHideFlags: 0
@@ -4200,6 +4234,7 @@ MonoBehaviour:
   dateText: {fileID: 1619945127}
   worldNumText: {fileID: 1974547629}
   btn: {fileID: 296072190}
+  outline: {fileID: 0}
   pointer: {fileID: 0}
   selectedWorld:
     date: 
@@ -5764,6 +5799,7 @@ MonoBehaviour:
   dateText: {fileID: 280859751}
   worldNumText: {fileID: 794971685}
   btn: {fileID: 1599110658}
+  outline: {fileID: 0}
   pointer: {fileID: 0}
   selectedWorld:
     date: 
@@ -7416,38 +7452,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071694646}
   m_CullTransparentMesh: 0
---- !u!84 &2081462640
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_Width: 256
-  m_Height: 256
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!224 &2087384339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8214,7 +8218,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2085705293176650092}
   m_HandleRect: {fileID: 2085705293176650091}
   m_Direction: 0
-  m_Value: 0.5920527
+  m_Value: 0.5920526
   m_Size: 0.13698626
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -8336,7 +8340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -15.986389, y: -100.00009}
+  m_AnchoredPosition: {x: -15.986328, y: -100.00009}
   m_SizeDelta: {x: 1460, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2085705293398436630

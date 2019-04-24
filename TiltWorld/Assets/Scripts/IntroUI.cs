@@ -52,14 +52,8 @@ public class IntroUI : MonoBehaviour
             //    scrollContainer.GetChild(i).gameObject.SetActive(true);
             //}
 
-            scrollContainer.GetChild(i).GetComponent<ScrollItem>().worldNum = i;
-            if(GameDataController.GetFullWorldState(i).date != "")
-            {
-                scrollContainer.GetChild(i).GetComponent<ScrollItem>().savedDate = GameDataController.GetFullWorldState(i).date;
-            } else
-            {
-                scrollContainer.GetChild(i).GetComponent<ScrollItem>().savedDate = "null";
-            }
+            scrollContainer.GetChild(i).GetComponent<ScrollItem>().worldNum = GameDataController.GetFullWorldState(i).id;
+            scrollContainer.GetChild(i).GetComponent<ScrollItem>().savedDate = GameDataController.GetFullWorldState(i).date;
 
             //set world
             print("Number of worlds: "+GameDataController.NumberOfWorlds+"setting world " + GameDataController.GetFullWorldState(i).player.position);

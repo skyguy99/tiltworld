@@ -12,6 +12,7 @@ public class ScrollItem : MonoBehaviour
     public Text dateText;
     public Text worldNumText;
     public Button btn;
+    public Transform outline;
 
     Animator anim;
     public Transform pointer;
@@ -35,15 +36,34 @@ public class ScrollItem : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        //PlayerPrefs.DeleteAll();
+
         anim = GetComponent<Animator>();
         pointer = GameObject.FindGameObjectWithTag("DirectionalScroll").GetComponent<Image>().transform;
+        foreach(Transform t in transform.GetChild(0))
+        {
+            if(t.name == "outline")
+            {
+                outline = t;
+            }
+        }
     }
 
     public void EnterWorld()
     {
-        print("LOADING: " + selectedWorld.id);
-        PlayerPrefs.SetInt("loadedWorld", selectedWorld.id);
-      
+        if (selectedWorld.objects == null)
+        {
+            //NEW WORLD
+            print("LOADING NEW: " + GameDataController.NumberOfWorlds); //1 more than last
+            PlayerPrefs.SetInt("loadedWorld", GameDataController.NumberOfWorlds); //defaults to zero
+
+        }
+        else
+        {
+            print("LOADING: " + selectedWorld.id);
+            PlayerPrefs.SetInt("loadedWorld", selectedWorld.id); //defaults to zero
+        }
+           
         SceneManager.LoadScene("TiltWorldScene");
     }
 
@@ -61,12 +81,15 @@ public class ScrollItem : MonoBehaviour
         }
         if(worldNumText != null)
         {
-            worldNumText.text = selectedWorld.id.ToString();
-        }
+            
+            worldNumText.text = (selectedWorld.objects == null) ? "new world" : selectedWorld.id.ToString();
+        } 
         if(btn != null)
         {
-            btn.enabled = (selectedWorld.date != "");
+            //btn.gameObject.SetActive(!(selectedWorld.objects == null));
         }
+        outline.GetComponent<Image>().enabled = (!(selectedWorld.objects == null));
+        outline.GetChild(0).GetComponent<Image>().enabled = (!(selectedWorld.objects == null));
 
     }
 }
