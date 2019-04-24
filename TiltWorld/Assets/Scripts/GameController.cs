@@ -66,6 +66,7 @@ public class GameController : MonoBehaviour {
     private void Start()
     {
         print("HAS KEY: " + (PlayerPrefs.HasKey("loadedWorld")));
+        //print("KEY: " + PlayerPrefs.GetInt("loadedWorld"));
         if (PlayerPrefs.HasKey("loadedWorld"))  
         {
             print("Loading world "+ PlayerPrefs.GetInt("loadedWorld"));

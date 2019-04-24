@@ -215,12 +215,6 @@ public class UIManager : MonoBehaviour
 
         }
 
-        if(playingInstructions)
-        {
-
-            PlayerPrefs.SetInt("playedOnce", 1);
-
-        }
 
         if(Input.GetKey(KeyCode.A) && !menuIn)
         {

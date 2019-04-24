@@ -63,6 +63,7 @@ public class ScrollItem : MonoBehaviour
         {
             print("LOADING: " + selectedWorld.id);
             PlayerPrefs.SetInt("loadedWorld", selectedWorld.id); //defaults to zero
+           
             PlayerPrefs.Save();
         }
 
@@ -71,6 +72,10 @@ public class ScrollItem : MonoBehaviour
 
     void LoadSceneNext()
     {
+        foreach (GameObject g in GameObject.FindObjectsOfType<GameObject>())
+        {
+            Destroy(g);
+        }
         SceneManager.LoadScene("TiltWorldScene");
     }
 
