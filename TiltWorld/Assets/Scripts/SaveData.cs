@@ -46,6 +46,7 @@ public struct ObjectControllerData
     public Vector3 position;
     public Quaternion rotation;
     public bool isInWorld;
+    public bool wasACombineObject;
 }
 
 [Serializable]

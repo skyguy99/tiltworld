@@ -54,9 +54,19 @@ public class ScrollItem : MonoBehaviour
         if (selectedWorld.objects == null)
         {
             //NEW WORLD
-            print("LOADING NEW: " + GameDataController.NumberOfWorlds); //1 more than last
-            PlayerPrefs.SetInt("loadedWorld", GameDataController.NumberOfWorlds); //defaults to zero
-            PlayerPrefs.Save();
+            int numChildren = GameObject.FindObjectOfType<IntroUI>().scrollContainer.childCount;
+            if(GameDataController.NumberOfWorlds < numChildren)
+            {
+                print("LOADING NEW: " + GameDataController.NumberOfWorlds); //1 more than last
+                PlayerPrefs.SetInt("loadedWorld", GameDataController.NumberOfWorlds); //defaults to zero
+                PlayerPrefs.Save();
+            } else
+            {
+                print("LOADING NEW: " + numChildren); //1 more than last
+                PlayerPrefs.SetInt("loadedWorld", numChildren); //defaults to zero
+                PlayerPrefs.Save();
+            }
+           
 
         }
         else

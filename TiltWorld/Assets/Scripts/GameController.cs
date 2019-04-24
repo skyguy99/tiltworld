@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
     PlayerController playerController;
     CharController character;
     string dateNow;
+    UIManager uIManager;
 
 
     // Use this for initialization
@@ -16,8 +17,11 @@ public class GameController : MonoBehaviour {
         playerController = GameObject.FindObjectOfType<PlayerController>();
         character = playerController.character;
 
+        uIManager = GameObject.FindObjectOfType<UIManager>();
+
     }
-          
+     
+    //Actually sets up in game objects accoridng to saved data   
     void SetStates(int worldNum)
     {
         print("Player data:" + GameDataController.GetPlayerControllerState(worldNum).position);
@@ -41,6 +45,10 @@ public class GameController : MonoBehaviour {
                         o.transform.position = obj.position;
                         o.transform.rotation = obj.rotation;
                         o.gameObject.SetActive(obj.isInWorld);
+                    }
+                    if(obj.wasACombineObject)
+                    {
+                        uIManager.objectsThatWereCombined.Add(o);
                     }
                 }
             }
@@ -73,7 +81,7 @@ public class GameController : MonoBehaviour {
             SetStates(PlayerPrefs.GetInt("loadedWorld"));
         } else
         {
-            print("fallback");
+            //print("fallback");
             SetStates(0);
         }
     }
@@ -81,6 +89,11 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+        if(DateTime.Now.Minute < 10)
+        {
+            dateNow = DateTime.Now.ToString("MM-dd-yyyy") + "@" + DateTime.Now.Hour + ":0" + DateTime.Now.Minute;
+        }
+        
         dateNow = DateTime.Now.ToString("MM-dd-yyyy")+"@"+DateTime.Now.Hour+":"+DateTime.Now.Minute;
      
     }

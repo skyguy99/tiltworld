@@ -143,7 +143,13 @@ public class GameDataController : MonoBehaviour
 
         foreach(ObjectController o in objects)
         {
-            var objData = new ObjectControllerData {position = o.transform.position, rotation = o.transform.rotation, isInWorld = o.gameObject.active, name = o.name};
+
+            bool wasCombined = GameObject.FindObjectOfType<UIManager>().objectsThatWereCombined.Contains(o);
+            if(wasCombined)
+            {
+                //print(o.objName);
+            }
+            var objData = new ObjectControllerData {position = o.transform.position, rotation = o.transform.rotation, isInWorld = o.gameObject.active, name = o.name, wasACombineObject = wasCombined};
             objectControllerDatas.Add(objData);
         }
         foreach(WorldController w in worlds)
@@ -157,18 +163,5 @@ public class GameDataController : MonoBehaviour
         saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
         saveData.fullWorlds.Add(worldData);
     }
-
-    //public void AddNewWorld()
-    //{
-       
-    
-    //    var worldData = new World() { id = worldIndex, date = DateTime.Now.ToString("MM-dd-yyyy") + "@" + DateTime.Now.Hour + ":" + DateTime.Now.Minute };
-    //    worldIndex++;
-    //    print("Adding world " + worldIndex);
-
-    //    saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
-    //    saveData.fullWorlds.Add(worldData);
-
-    //}
 
 }
