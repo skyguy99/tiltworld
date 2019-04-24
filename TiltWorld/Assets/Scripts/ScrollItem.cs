@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class ScrollItem : MonoBehaviour
 {
 
-    public int worldNum;
+    public int worldNum = 0;
     public string savedDate;
     public Text dateText;
+    public Text worldNumText;
+    public Button btn;
 
     Animator anim;
     public Transform pointer;
@@ -44,6 +46,13 @@ public class ScrollItem : MonoBehaviour
         SceneManager.LoadScene("TiltWorldScene");
     }
 
+    public void AddAndEnterWorld()
+    {
+
+        GameObject.FindObjectOfType<GameDataController>().AddNewWorld();
+SceneManager.LoadScene("TiltWorldScene");
+    }
+
     // Update is called once per frame 
     void Update()
     {
@@ -55,5 +64,14 @@ public class ScrollItem : MonoBehaviour
         {
             dateText.text = savedDate;
         }
+        if(worldNumText != null)
+        {
+            worldNumText.text = selectedWorld.id.ToString();
+        }
+        if(btn != null)
+        {
+            btn.enabled = (selectedWorld.date != "");
+        }
+
     }
 }

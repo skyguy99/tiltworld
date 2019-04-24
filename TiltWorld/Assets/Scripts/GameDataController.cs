@@ -159,13 +159,15 @@ public class GameDataController : MonoBehaviour
 
     public void AddNewWorld()
     {
-        print("Adding world");
+       
     
         var worldData = new World() { id = worldIndex, date = DateTime.Now.ToString("MM-dd-yyyy") + "@" + DateTime.Now.Hour + ":" + DateTime.Now.Minute };
         worldIndex++;
+        print("Adding world " + worldIndex);
 
         saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
         saveData.fullWorlds.Add(worldData);
+
     }
 
 }

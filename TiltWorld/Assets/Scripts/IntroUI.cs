@@ -18,6 +18,7 @@ public class IntroUI : MonoBehaviour
     public Transform scrollContainer;
     List<ScrollItem> scrollItems = new List<ScrollItem>();
     GameDataController gameDataController;
+ 
 
     public ScrollItem selectedItem;
 
@@ -43,16 +44,25 @@ public class IntroUI : MonoBehaviour
         for(int i =0; i<scrollContainer.childCount; i++)
         {
 
-            if(i >= 4 && !scrollContainer.GetChild(i).GetComponent<ScrollItem>().isTheAddWorld)
-            {
-                scrollContainer.GetChild(i).gameObject.SetActive(false);
-            } else
-            {
-                scrollContainer.GetChild(i).gameObject.SetActive(true);
-            }
+            //if(i >= GameDataController.NumberOfWorlds && !scrollContainer.GetChild(i).GetComponent<ScrollItem>().isTheAddWorld)
+            //{
+            //    scrollContainer.GetChild(i).gameObject.SetActive(false);
+            //} else
+            //{
+            //    scrollContainer.GetChild(i).gameObject.SetActive(true);
+            //}
 
             scrollContainer.GetChild(i).GetComponent<ScrollItem>().worldNum = i;
-            scrollContainer.GetChild(i).GetComponent<ScrollItem>().savedDate = GameDataController.GetFullWorldState(i).date;
+            if(GameDataController.GetFullWorldState(i).date != "")
+            {
+                scrollContainer.GetChild(i).GetComponent<ScrollItem>().savedDate = GameDataController.GetFullWorldState(i).date;
+            } else
+            {
+                scrollContainer.GetChild(i).GetComponent<ScrollItem>().savedDate = "null";
+            }
+
+            //set world
+            print("setting world " + GameDataController.GetFullWorldState(i).player.position);
             scrollContainer.GetChild(i).GetComponent<ScrollItem>().selectedWorld = GameDataController.GetFullWorldState(i);
 
         }
