@@ -67,7 +67,7 @@ public class GameController : MonoBehaviour {
     {
 
         //Set game state from serialization:
-       // SetStates(0);
+        print("Hllo: " + PlayerPrefs.GetInt("loadedWorld"));
         if (PlayerPrefs.HasKey("loadedWorld"))  
         {
             print("Loading world "+ PlayerPrefs.GetInt("loadedWorld"));
@@ -92,8 +92,16 @@ public class GameController : MonoBehaviour {
         if (PlayerPrefs.HasKey("loadedWorld"))
         {
             GameDataController.SetState(dateNow, PlayerPrefs.GetInt("loadedWorld"), playerController, playerController.character, playerController.objects, playerController.worlds);
+            //PlayerPrefs.SetInt("loadedWorld", PlayerPrefs.GetInt("loadedWorld"));
+        } else
+        {
+            print("first");
+            GameDataController.SetState(dateNow, 0, playerController, playerController.character, playerController.objects, playerController.worlds);
+            PlayerPrefs.SetInt("loadedWorld", 0);
+            PlayerPrefs.Save();
         }
-            
+       
+
     }
 
 }

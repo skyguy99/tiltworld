@@ -7,7 +7,6 @@ public class GameDataController : MonoBehaviour
 {
 	public static SaveData saveData;
     public static int NumberOfWorlds;
-    public int worldIndex;
 
 	private void Awake()
 	{
@@ -21,10 +20,12 @@ public class GameDataController : MonoBehaviour
 	[ContextMenu("Save Data")]
 	public void SaveGame()
 	{
-        print("saving");
+       // print("saving");
 		var data = JsonUtility.ToJson(saveData);
 		PlayerPrefs.SetString("GameData", data);
-	}
+        PlayerPrefs.Save();
+
+    }
 
 	[ContextMenu("Load Data")]
 	public void LoadData()
@@ -50,7 +51,7 @@ public class GameDataController : MonoBehaviour
 
 	private void OnDisable()
 	{
-		//SaveGame();
+		SaveGame();
 	}
 
     private void Update()
@@ -157,17 +158,17 @@ public class GameDataController : MonoBehaviour
         saveData.fullWorlds.Add(worldData);
     }
 
-    public void AddNewWorld()
-    {
+    //public void AddNewWorld()
+    //{
        
     
-        var worldData = new World() { id = worldIndex, date = DateTime.Now.ToString("MM-dd-yyyy") + "@" + DateTime.Now.Hour + ":" + DateTime.Now.Minute };
-        worldIndex++;
-        print("Adding world " + worldIndex);
+    //    var worldData = new World() { id = worldIndex, date = DateTime.Now.ToString("MM-dd-yyyy") + "@" + DateTime.Now.Hour + ":" + DateTime.Now.Minute };
+    //    worldIndex++;
+    //    print("Adding world " + worldIndex);
 
-        saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
-        saveData.fullWorlds.Add(worldData);
+    //    saveData.fullWorlds.RemoveAll(t => t.id == worldData.id);
+    //    saveData.fullWorlds.Add(worldData);
 
-    }
+    //}
 
 }

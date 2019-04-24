@@ -62,7 +62,7 @@ public class IntroUI : MonoBehaviour
             }
 
             //set world
-            print("setting world " + GameDataController.GetFullWorldState(i).player.position);
+            print("Number of worlds: "+GameDataController.NumberOfWorlds+"setting world " + GameDataController.GetFullWorldState(i).player.position);
             scrollContainer.GetChild(i).GetComponent<ScrollItem>().selectedWorld = GameDataController.GetFullWorldState(i);
 
         }

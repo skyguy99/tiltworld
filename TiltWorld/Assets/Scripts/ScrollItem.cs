@@ -15,6 +15,7 @@ public class ScrollItem : MonoBehaviour
 
     Animator anim;
     public Transform pointer;
+
     public World selectedWorld;
     public bool isTheAddWorld;
 
@@ -46,12 +47,6 @@ public class ScrollItem : MonoBehaviour
         SceneManager.LoadScene("TiltWorldScene");
     }
 
-    public void AddAndEnterWorld()
-    {
-
-        GameObject.FindObjectOfType<GameDataController>().AddNewWorld();
-SceneManager.LoadScene("TiltWorldScene");
-    }
 
     // Update is called once per frame 
     void Update()

@@ -86,6 +86,20 @@ public class UIManager : MonoBehaviour
         gameDataController.SaveGame();
     }
 
+    public void BackToMenu()
+    {
+
+        gc.SaveWholeWorld();
+        gameDataController.SaveGame();
+        foreach (GameObject g in GameObject.FindObjectsOfType<GameObject>())
+        {
+            Destroy(g);
+        }
+        SceneManager.LoadScene("INTRO");
+
+
+    }
+
     public void ToggleResetScene()
     {
         print("Resetting this scene");
