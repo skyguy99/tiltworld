@@ -25,13 +25,19 @@ public class Mover : MonoBehaviour
     {
 
         moveVector = (transform.right * joystick.Horizontal + transform.forward * joystick.Vertical);
-
+      
 
         isMoving = (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected);
         if (moveVector != Vector3.zero && !LeanSelectable.SomethingIsSelected && (player.room.bounds.Contains(player.transform.position + moveVector)))
             {
-                //transform.rotation = Quaternion.LookRotation(moveVector);
+                if((player.transform.position + moveVector).y >= 0.69f && (player.transform.position + moveVector).y <= 4f)
+                {
                 transform.Translate(moveVector * speed * Time.deltaTime, Space.World);
+                 } else
+            {
+                transform.Translate(new Vector3(moveVector.x, 0f, moveVector.z) * speed * Time.deltaTime, Space.World);
+            }
+
 
             }
     }

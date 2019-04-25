@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour {
         } else
         {
             //print("fallback");
-            SetStates(0);
+            //SetStates(0);
         }
     }
 

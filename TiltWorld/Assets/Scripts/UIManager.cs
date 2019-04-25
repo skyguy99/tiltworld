@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
         player = GameObject.FindObjectOfType<PlayerController>();
         target = null;
         gc = GameObject.FindObjectOfType<GameController>();
-
+   
 
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         menuObjectSelect = GameObject.FindObjectOfType<MenuObjectSelect>();
