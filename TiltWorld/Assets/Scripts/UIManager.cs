@@ -106,28 +106,55 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //UPDATE MENU HERE
-    public void ToggleMenu()
+    //toggles overall options
+    public void ToggleGlobalMenu()
     {
 
-        if(!canvasAnim.GetCurrentAnimatorStateInfo(0).IsName("ResetObjectTriggerIn"))
+       
+        TriggerSaveScene();
+        if (!canvasAnim.GetCurrentAnimatorStateInfo(0).IsName("ResetObjectTriggerIn"))
         {
             //FOR object menu canvas
 
             canvasAnim.SetBool("buttonTouch", !menuIn);
             mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
-
-            StartCoroutine(ChangeMenuIn());
-
-        } else {
+            menuIn = !menuIn;
+            RemoveObjectMenu();
+        }
+        else
+        {
             //for reset world canvas
-
+            canvasAnim.SetBool("buttonTouch", !menuIn);
             canvasAnim.SetBool("triggerReset", !menuIn);
-         
+
             mainCamera.GetComponent<Animator>().SetBool("menuIn", !menuIn);
 
             menuIn = !menuIn;
         }
+    }
+
+    void RemoveObjectMenu()
+    {
+        canvasAnim.SetBool("onObjectMenu", false);
+        menuObject.gameObject.SetActive(false);
+
+        //menuObjectSelect.UpdateObjects();
+
+        canvas.enabled = false;
+
+    }
+
+    //triggers object menu map
+    public void ToggleMenu()
+    {
+        //print("menu map"+menuIn);
+
+        canvasAnim.SetBool("onObjectMenu", true);
+        menuObject.gameObject.SetActive(menuIn);
+
+        menuObjectSelect.UpdateObjects();
+
+        canvas.enabled = !menuIn;
 
     }
 

@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
+
+
         objects = GameObject.FindObjectsOfType<ObjectController>();
         worlds = GameObject.FindObjectsOfType<WorldController>();
         character = GameObject.FindObjectOfType<CharController>();
