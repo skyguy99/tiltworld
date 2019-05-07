@@ -23,8 +23,8 @@ TagManager:
   - PostProcessing
   - DraggableObjects
   - OtherCam
-  - 
-  - 
+  - GlassFront
+  - GlassBack
   - 
   - 
   - 

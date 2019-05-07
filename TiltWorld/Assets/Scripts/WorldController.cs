@@ -8,13 +8,13 @@ public class WorldController : MonoBehaviour {
 
     public int num;
     PlayerController player;
-    public Vector3 originalPos;
+    Vector3 originalPos;
 
     BoxCollider room;
     public int serializeId;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
 
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
@@ -28,7 +28,7 @@ public class WorldController : MonoBehaviour {
         room = player.room;
         if (!room.bounds.Contains(transform.position))
         {
-            iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
+            //iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.55f, "easetype", iTween.EaseType.easeOutBounce, "oncomplete", "DisableKinematic", "oncompletetarget", gameObject));
         }
 
         //if(Input.GetKey("space"))
