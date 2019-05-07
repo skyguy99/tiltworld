@@ -29,6 +29,7 @@ public class RadialProgress : MonoBehaviour {
             GetComponentInParent<Animator>().SetBool("circleIn", true);
             transform.gameObject.transform.position = pos;
         }
+        GetComponentInParent<Animator>().SetBool("xIn", false);
         GetComponentInParent<Animator>().SetBool("circleIn", true);
 
     }
