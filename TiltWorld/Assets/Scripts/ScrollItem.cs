@@ -99,18 +99,18 @@ public class ScrollItem : MonoBehaviour
 
         if (dateText != null)
         {
-            dateText.text = savedDate;
+            dateText.text = (selectedWorld.objects == null) ? "00" : savedDate;
         }
         if(worldNumText != null)
         {
             
-            worldNumText.text = (selectedWorld.objects == null) ? "new world" : selectedWorld.id.ToString();
+            worldNumText.text = (selectedWorld.objects == null) ? "oo" : "o"+ (selectedWorld.id+1).ToString();
         } 
         if(btn != null)
         {
             //btn.gameObject.SetActive(!(selectedWorld.objects == null));
         }
-        outline.GetComponent<Image>().enabled = (!(selectedWorld.objects == null));
+        //outline.GetComponent<Image>().enabled = (!(selectedWorld.objects == null));
         outline.GetChild(0).GetComponent<Image>().enabled = (!(selectedWorld.objects == null));
 
     }

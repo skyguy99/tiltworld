@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     public Transform selectedObject;
 
     public BoxCollider room;
+    public Color[] roomColors;
+    public Color[] fogColors;
     Vector3 originPos;
 
     public AudioClip[] audioClips;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     //For serialization
     public ObjectController[] objects;
     public WorldController[] worlds;
+    public Transform world1;
     public CharController character;
 
     public int serializeId;
@@ -138,6 +141,15 @@ public class PlayerController : MonoBehaviour {
         iTween.MoveTo(gameObject, iTween.Hash("position", originPos, "time", 0.45f, "easetype", iTween.EaseType.easeOutExpo));
     }
 
+    public float getSqrDistance(Vector3 v1, Vector3 v2)
+    {
+        return (v1 - v2).sqrMagnitude;
+    }
+    float mapValue(float mainValue, float inValueMin, float inValueMax, float outValueMin, float outValueMax)
+    {
+        return (mainValue - inValueMin) * (outValueMax - outValueMin) / (inValueMax - inValueMin) + outValueMin;
+    }
+
     void Update()
     {
 
@@ -146,6 +158,19 @@ public class PlayerController : MonoBehaviour {
         c = Color.Lerp(particleColors[0], particleColors[1], Mathf.PingPong(Time.time, 1));
         particleMat.color = c;
         particleMat.SetColor("_EmissionColor", c);
+
+
+        float distanceApart = getSqrDistance(world1.position, transform.position);
+
+        //Convert 0 and 200 distance range to 0f and 1f range
+        float lerp = mapValue(distanceApart, 100f, 200f, 0f, 1f); //max = 10f
+
+        //Lerp Color between near and far color
+        Color lerpColor = Color.Lerp(roomColors[0], roomColors[1], lerp);
+        room.GetComponent<Renderer>().material.color = lerpColor;
+
+        Color fogColor = Color.Lerp(fogColors[0], fogColors[1], lerp);
+        RenderSettings.fogColor = fogColor;
 
     }
 
