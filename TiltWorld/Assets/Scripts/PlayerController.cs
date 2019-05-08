@@ -56,8 +56,6 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-
-
         objects = GameObject.FindObjectsOfType<ObjectController>();
         worlds = GameObject.FindObjectsOfType<WorldController>();
         character = GameObject.FindObjectOfType<CharController>();
@@ -160,10 +158,13 @@ public class PlayerController : MonoBehaviour {
         particleMat.SetColor("_EmissionColor", c);
 
 
+        Vector3 toPosition = (world1.transform.position - transform.position).normalized;
+        float angleToPosition = Vector3.Angle(transform.forward, toPosition);
+
         float distanceApart = getSqrDistance(world1.position, transform.position);
 
-        //Convert 0 and 200 distance range to 0f and 1f range
-        float lerp = mapValue(distanceApart, 100f, 200f, 0f, 1f); //max = 10f
+        float lerp = mapValue(angleToPosition, 20f, 180f, 0f, 1f); //max = 10f
+        //float lerp = mapValue(distanceApart, 100f, 200f, 0f, 1f); //max = 10f
 
         //Lerp Color between near and far color
         Color lerpColor = Color.Lerp(roomColors[0], roomColors[1], lerp);

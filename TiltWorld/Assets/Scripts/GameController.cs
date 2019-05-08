@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
+
+
         playerController = GameObject.FindObjectOfType<PlayerController>();
         character = playerController.character;
 
@@ -73,6 +75,7 @@ public class GameController : MonoBehaviour {
 
     private void Start()
     {
+       
         print("HAS KEY: " + (PlayerPrefs.HasKey("loadedWorld")));
         //print("KEY: " + PlayerPrefs.GetInt("loadedWorld"));
         if (PlayerPrefs.HasKey("loadedWorld"))
@@ -86,14 +89,23 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    private void OnDisable()
+    {
+
+    }
+
     // Update is called once per frame
     void Update () {
+
 
         if(DateTime.Now.Minute < 10)
         {
             dateNow = DateTime.Now.ToString("MM-dd-yyyy") + " " + DateTime.Now.Hour + ":0" + DateTime.Now.Minute;
+        } else if(DateTime.Now.Minute % 10 == 0)
+        {
+            dateNow = DateTime.Now.ToString("MM-dd-yyyy") + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + "0";
         }
-        dateNow = DateTime.Now.ToString("MM-dd-yyyy")+" "+DateTime.Now.Hour+":"+DateTime.Now.Minute+"0";
+        dateNow = DateTime.Now.ToString("MM-dd-yyyy") + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
 
     }
 

@@ -131,6 +131,8 @@ public class UIManager : MonoBehaviour
 
             menuIn = !menuIn;
         }
+
+        canvas.enabled = !menuIn;
     }
 
     void RemoveObjectMenu()

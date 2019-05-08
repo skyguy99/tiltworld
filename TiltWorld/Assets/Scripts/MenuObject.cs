@@ -15,7 +15,7 @@ public class MenuObject : MonoBehaviour
     Transform container;
     public Transform platContainer;
     UIManager uIManager;
-   
+
     public string[] objectsThatProduceThis;
 
     Vector3 rot = new Vector3(17.1f, -129f, 21f);
@@ -99,7 +99,7 @@ public class MenuObject : MonoBehaviour
 
 
         objName = o.objName;
-        headline.text = isLocked ? "??" : objName.ToUpper();
+        headline.text = isLocked ? "unknown" : objName.ToUpper();
 
         if (CheckForCustomSize(objName) != Vector3.zero)
         {
@@ -108,7 +108,7 @@ public class MenuObject : MonoBehaviour
 
         if (player.combineObjects.ContainsKey(objName))
         {
-         
+
             string text = "(" + player.combineObjects[objName][0].ToUpper() + " + " + player.combineObjects[objName][1].ToUpper() + ")";
             subtext.text = text;
         }
@@ -151,11 +151,11 @@ public class MenuObject : MonoBehaviour
         }
 
         for (int i = 0; i < platContainer.childCount; i++)
-        { 
+        {
             platContainer.GetChild(i).GetComponent<Renderer>().material = isLocked ? menuObjectSelect.blackMat : menuObjectSelect.platMats[myObject.world];
         }
 
-        headline.text = isLocked ? "??" : objName.ToUpper();
+        headline.text = isLocked ? "unknown" : objName.ToUpper();
 
         if (container.transform.childCount > 0)
         {
@@ -172,7 +172,7 @@ public class MenuObject : MonoBehaviour
                 //allMats[i] = originMats[i];
             }
             container.GetChild(0).gameObject.GetComponent<Renderer>().materials = allMats;
-       
+
             if (container.GetChild(0).eulerAngles != rot)
             {
                 container.GetChild(0).eulerAngles = rot;
