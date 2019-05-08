@@ -99,7 +99,7 @@ public class ScrollItem : MonoBehaviour
 
         if (dateText != null)
         {
-            dateText.text = (selectedWorld.objects == null) ? "00" : savedDate;
+            dateText.text = (selectedWorld.objects == null) ? "never saved" : savedDate;
         }
         if(worldNumText != null)
         {
@@ -111,7 +111,7 @@ public class ScrollItem : MonoBehaviour
             //btn.gameObject.SetActive(!(selectedWorld.objects == null));
         }
         //outline.GetComponent<Image>().enabled = (!(selectedWorld.objects == null));
-        outline.GetChild(0).GetComponent<Image>().enabled = (!(selectedWorld.objects == null));
+        //outline.GetChild(0).GetComponent<Image>().enabled = (!(selectedWorld.objects == null));
 
     }
 }

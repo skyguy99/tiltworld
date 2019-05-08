@@ -16,12 +16,12 @@ public class WorldController : MonoBehaviour {
     // Use this for initialization
     void Awake () {
 
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         originalPos = transform.position;
         player = GameObject.FindObjectOfType<PlayerController>();
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -48,7 +48,7 @@ public class WorldController : MonoBehaviour {
 
     public void ResetWorld()
     {
-       
+
         iTween.MoveTo(gameObject, iTween.Hash("position", originalPos, "time", 0.6f, "easetype", "easeOutBounce", "oncomplete", "ResetRotation", "oncompletetarget", gameObject));
 
 

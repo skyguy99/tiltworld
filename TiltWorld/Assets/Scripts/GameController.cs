@@ -20,8 +20,8 @@ public class GameController : MonoBehaviour {
         uIManager = GameObject.FindObjectOfType<UIManager>();
 
     }
-     
-    //Actually sets up in game objects accoridng to saved data   
+
+    //Actually sets up in game objects accoridng to saved data
     void SetStates(int worldNum)
     {
         print("Player data:" + GameDataController.GetPlayerControllerState(worldNum).position);
@@ -68,14 +68,14 @@ public class GameController : MonoBehaviour {
 
 
         }
-      
-    }  
+
+    }
 
     private void Start()
     {
         print("HAS KEY: " + (PlayerPrefs.HasKey("loadedWorld")));
         //print("KEY: " + PlayerPrefs.GetInt("loadedWorld"));
-        if (PlayerPrefs.HasKey("loadedWorld"))  
+        if (PlayerPrefs.HasKey("loadedWorld"))
         {
             print("Loading world "+ PlayerPrefs.GetInt("loadedWorld"));
             SetStates(PlayerPrefs.GetInt("loadedWorld"));
@@ -91,11 +91,10 @@ public class GameController : MonoBehaviour {
 
         if(DateTime.Now.Minute < 10)
         {
-            dateNow = DateTime.Now.ToString("MM-dd-yyyy") + "@" + DateTime.Now.Hour + ":0" + DateTime.Now.Minute;
+            dateNow = DateTime.Now.ToString("MM-dd-yyyy") + " " + DateTime.Now.Hour + ":0" + DateTime.Now.Minute;
         }
-        
-        dateNow = DateTime.Now.ToString("MM-dd-yyyy")+"@"+DateTime.Now.Hour+":"+DateTime.Now.Minute;
-     
+        dateNow = DateTime.Now.ToString("MM-dd-yyyy")+" "+DateTime.Now.Hour+":"+DateTime.Now.Minute+"0";
+
     }
 
     public void SaveWholeWorld()
@@ -116,7 +115,7 @@ public class GameController : MonoBehaviour {
             PlayerPrefs.SetInt("loadedWorld", 0);
             PlayerPrefs.Save();
         }
-       
+
 
     }
 
